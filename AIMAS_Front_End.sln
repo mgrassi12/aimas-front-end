@@ -1,0 +1,24 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "AIMAS_Front_End", "AIMAS_Front_End.njsproj", "{AD0DE081-2FBF-454A-84EA-3185850565D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD0DE081-2FBF-454A-84EA-3185850565D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD0DE081-2FBF-454A-84EA-3185850565D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD0DE081-2FBF-454A-84EA-3185850565D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD0DE081-2FBF-454A-84EA-3185850565D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7515DD49-DD17-4BA1-B603-816C8FA627E0}
+	EndGlobalSection
+EndGlobal
