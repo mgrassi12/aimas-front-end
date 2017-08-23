@@ -1,0 +1,19 @@
+<md-list-item [ngSwitch]="hasRoute()">
+
+  <button md-button *ngSwitchCase="false" (click)="onBTNClick($event)">
+    <md-icon md-list-icon *ngIf="hasIcon()">{{icon}}</md-icon>
+    <span>
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </span>
+  </button>
+
+  <a md-button *ngSwitchCase="true" (click)="onBTNClick($event)" [routerLink]="route" routerLinkActive="active">
+    <md-icon md-list-icon *ngIf="hasIcon()">{{icon}}</md-icon>
+    <span>
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </span>
+  </a>
+
+</md-list-item>
+
+<ng-template #content><ng-content></ng-content></ng-template>

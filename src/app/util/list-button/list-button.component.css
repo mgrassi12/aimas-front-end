@@ -1,0 +1,10 @@
+md-list-item button, a {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+}
+
+.active{
+  background-color:lightgray;
+}
