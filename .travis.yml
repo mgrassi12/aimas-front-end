@@ -1,0 +1,30 @@
+language: node_js
+node_js: "6"
+dist: trusty
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start    
+
+install:
+  - npm install
+  - npm install @angular/cli
+
+script:
+  - npm run ng-build-prod
+  - npm run ng-test-prod
+
+
+deploy:
+  provider: heroku
+  app: aimas-front-end
+  api_key:
+    secure: "dKIPklA7tMJCVT2RPPBhRgrh45xy93/He9Ex6VFur60SVhGtmPnXaWguTiMkTjaKNdZwV1UHdv0tT2ZulP4t4PihxrJZvN8IhfJIZK7M18eAHl3umjYnwq8UzH+lo3QuErtOJDaU6wVPZ6V9obbj2t+fQw31gR4ZrFH7VP4IcSVrwCqOe5JIq9HlTgVoInpfXu+KarLdmi6uqjGx/hn/FykY4HZRm/Pd5xhFPMk+D5vCqgDN+eFnSJ0/Ru/kzO5s8T7QCamzsHW91cfmAw5rGcPOnNYIV4j/uA+ZsGAcDpgrjTOM820FYYzD5NZsKfMKfO5GsBjYlyHOW3nmzyJrkSrjcwVyxDgC4hvwUJhNvB19+8Jew/ebKlBG4dMrvzPIUkwdQ7tKx2PbhCc5//nX10ev4JzP/B3pVZBFINufIAboISP48MUJsAi+Z5ncBR9bCg9x8HWcaH8zIlZjR/qmyzQ0m0SkHiE0VUl05nJQwiivaTi/C0YhBOQTSv5BlQjmuwSzc+5wyWiXzSqTfrinPXH4I3X7Z0Vv2OnmiQEY1ExKXIz1KDw0h6J9CTcpYWu0AvzkhA8gAQlJJs1wKBhmJZTHxbWgX6GqaiJZsBzf0j/YkXTREzLVJjz80eTZZtvWlHrdyI0yKoMW7mPPWpI4M9eDZ9H1bTGK8XAFMBw0GuU="

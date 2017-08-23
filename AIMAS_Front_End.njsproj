@@ -49,6 +49,7 @@
     <Content Include=".angular-cli.json" />
     <Content Include=".editorconfig" />
     <Content Include=".gitignore" />
+    <Content Include=".travis.yml" />
     <Content Include="e2e\tsconfig.e2e.json" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />

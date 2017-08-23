@@ -13,7 +13,7 @@
     "ng-lint": "ng lint",
     "ng-e2e": "ng e2e",
     "ng-build-prod": "ng build -prod",
-    "ng-test-prod": "ng test --single-run",
+    "ng-test-prod": "ng test --watch=false --single-run",
     "postinstall": "npm run ng-build-prod"
   },
   "engines": {
