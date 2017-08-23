@@ -1,4 +1,4 @@
-# AIMAS
+# AIMAS [![Build Status](https://travis-ci.org/mgrassi12/aimas-front-end.svg?branch=master)](https://travis-ci.org/mgrassi12/aimas-front-end)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
 
