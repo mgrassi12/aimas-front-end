@@ -14,7 +14,7 @@
     "ng-e2e": "ng e2e",
     "ng-build-prod": "ng build -prod",
     "ng-test-prod": "ng test --watch=false --single-run",
-    "postinstall": "npm run ng-build-prod"
+    "heroku-postbuild": "npm run ng-build-prod"
   },
   "engines": {
     "node": "~6.11.2",

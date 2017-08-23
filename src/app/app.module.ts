@@ -25,7 +25,7 @@ import { ListButtonComponent } from './util/list-button/list-button.component';
                 , { path: 'inventoty/dashboard', component: InventoryDashboardComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
-            , { enableTracing: true } // <-- debugging purposes only
+            //, { enableTracing: true } // <-- debugging purposes only
         )
     ],
     declarations: [
