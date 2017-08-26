@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // Root Imports
 import 'hammerjs';
+import 'rxjs/Rx';
 
 // APP
 import { AppModule } from './app/app.module';

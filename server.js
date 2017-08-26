@@ -1,4 +1,5 @@
 const express = require("express");
+const proxy = require("express-http-proxy");
 const http = require("http");
 const compression = require("compression");
 const compressible = require("compressible");
@@ -9,6 +10,7 @@ const app = express();
 
 // Config
 app.use(Loger);
+app.use("/api", proxy("aimas-back-end.herokuapp.com"));
 app.use(compression({ filter: shouldCompress }));
 app.use(express.static(path.join(__dirname, "dist")));
 
