@@ -1,7 +1,6 @@
 {
   "name": "aimas_front_end",
   "description": "AIMAS Front End Using Angular with Material UI",
-  "main": "server.js",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
