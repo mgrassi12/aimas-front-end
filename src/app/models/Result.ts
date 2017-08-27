@@ -14,19 +14,26 @@ export class Error {
 export class Result {
     @JsonMember()
     public Success: boolean;
+    @JsonMember()
+    public ErrorMessage: string;
     @JsonMember({ type: Array, elements: Error })
     public Errors: Array<Error>;
+
+    public static ResultFromJson(obj: object) {
+        return TypedJSON.parse(JSON.stringify(obj), Result) as Result;
+    }
 }
 
 @JsonObject()
 export class ResultObj<TReturnType extends object> extends Result {
     public ReturnObj: TReturnType;
 
-    public static FromJson<TReturnType extends object>(objClass, obj, isArray: boolean = false) {
+    public static ResultObjFromJson<TReturnType extends object>(objClass, obj, isArray: boolean = false) {
         let result = new ResultObj<TReturnType>();
 
         let tempResult = TypedJSON.parse(JSON.stringify(obj), Result) as Result;
         result.Success = tempResult.Success
+        result.ErrorMessage = tempResult.ErrorMessage;
         result.Errors = tempResult.Errors;
 
         if (isArray) {

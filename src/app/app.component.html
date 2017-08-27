@@ -2,9 +2,16 @@
   <md-sidenav #sidenav mode="side">
     <md-toolbar color="accent">
       <h1>Navigation</h1>
+      <md-toolbar-row fxLayout="row">
+        <md-icon class="space right">account_circle</md-icon>
+        <samp>Name</samp>
+        <span fxFlex></span>
+        <button md-icon-button (click)="logout()"><md-icon>exit_to_app</md-icon></button>
+      </md-toolbar-row>
     </md-toolbar>
     <md-list>
-      <md-list-button Icon="home" Route="inventoty/dashboard">Inventory Dashboard</md-list-button>
+      <md-list-button Icon="account_circle" Route="auth/login" *ngIf="!authInfo.IsAuth">Login</md-list-button>
+      <md-list-button Icon="home" Route="inventory/dashboard" *ngIf="authInfo.IsAuth">Inventory Dashboard</md-list-button>
     </md-list>
   </md-sidenav>
   <main class="full" fxLayout="column">

@@ -7,3 +7,19 @@ html, body, app-root, .full {
   margin: 0;
   padding: 0;
 }
+
+.space.top {
+  margin-top: 16px;
+}
+
+.space.bottom {
+  margin-bottom: 16px;
+}
+
+.space.right {
+  margin-right: 16px;
+}
+
+.space.left {
+  margin-left: 16px;
+}

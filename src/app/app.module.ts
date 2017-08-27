@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +17,9 @@ import { ListButtonComponent } from './util/list-button/list-button.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
-import { InventoryAPIService } from './services/api/inventory/inventoryapi.service'
+import { AuthAPIService } from './services/api/auth/authapi.service'
+import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
+import { LoginComponent } from './auth/login/login.component'
 
 @NgModule({
     imports: [
@@ -25,10 +28,13 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
         FlexLayoutModule,
         MaterialModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot(
             [
-                { path: '', redirectTo: '/inventoty/dashboard', pathMatch: 'full' }
-                , { path: 'inventoty/dashboard', component: InventoryDashboardComponent }
+                { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
+                , { path: 'inventory/dashboard', component: InventoryDashboardComponent }
+                , { path: 'auth/login', component: LoginComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -37,10 +43,12 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
     declarations: [
         AppComponent,
         InventoryDashboardComponent,
-        ListButtonComponent
+        ListButtonComponent,
+        LoginComponent
     ],
     providers: [
         SharedService,
+        AuthAPIService,
         InventoryAPIService
     ],
     entryComponents: [

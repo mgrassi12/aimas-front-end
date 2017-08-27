@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs/Observable';
 
 import { SharedService } from '../../shared/shared.service';
-import { Result, ResultObj } from '../../../models/Result';
+import { Result, ResultObj } from '../../../models/result';
 import { Inventory } from '../../../models/Inventory';
 
 @Injectable()
@@ -16,7 +15,7 @@ export class InventoryAPIService {
 
     public getInventories() {
         return this.http.get(this.shared.API.Inventory.All)
-            .map(res => ResultObj.FromJson<Array<Inventory>>(Inventory, res, true));
+            .map(res => ResultObj.ResultObjFromJson<Array<Inventory>>(Inventory, res, true));
 
     }
 

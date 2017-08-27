@@ -1,4 +1,4 @@
-import { TypedJSON, JsonObject, JsonMember } from '@upe/typedjson';
+import { JsonObject, JsonMember } from '@upe/typedjson';
 
 @JsonObject()
 export class Inventory {

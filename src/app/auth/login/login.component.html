@@ -1,0 +1,21 @@
+<main fxLayout="column" fxLayoutAlign="start center">
+  <span fxFlex="10"></span>
+  <md-card>
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <md-input-container>
+        <input mdInput name="email" placeholder="Email" type="email" formControlName="email" required>
+        <md-error *ngIf="loginForm.get('email').hasError('pattern')">Please enter a valid email address</md-error>
+        <md-error *ngIf="loginForm.get('email').hasError('required')">Email is <strong>required</strong></md-error>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput name="password" placeholder="Password" type="password" formControlName="password" required>
+        <md-error *ngIf="loginForm.get('password').hasError('required')">Email is <strong>required</strong></md-error>
+      </md-input-container>
+      <div>
+        <button md-raised-button color="accent" [disabled]="loginForm.pristine">Login</button>
+      </div>
+    </form>
+  </md-card>
+</main>
+

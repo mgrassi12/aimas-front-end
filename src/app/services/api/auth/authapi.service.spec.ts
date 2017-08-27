@@ -2,10 +2,10 @@ import { TestBed, inject } from '@angular/core/testing';
 import { APIImports } from '../../../../test.global';
 
 
+import { AuthAPIService } from './authapi.service';
 import { SharedService } from '../../shared/shared.service';
-import { InventoryAPIService } from './inventoryapi.service';
 
-describe('InventoryapiService', () => {
+describe('AuthapiService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -13,14 +13,12 @@ describe('InventoryapiService', () => {
             ],
             providers: [
                 SharedService,
-                InventoryAPIService
+                AuthAPIService
             ]
         });
     });
 
-    it('should be created', inject([InventoryAPIService], (service: InventoryAPIService) => {
+    it('should be created', inject([AuthAPIService], (service: AuthAPIService) => {
         expect(service).toBeTruthy();
     }));
 });
-
-//http://blog.ninja-squad.com/2017/07/17/http-client-module/

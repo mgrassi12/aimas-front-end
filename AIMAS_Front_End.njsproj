@@ -58,6 +58,8 @@
     <Content Include="README.md" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\auth\login\login.component.css" />
+    <Content Include="src\app\auth\login\login.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
@@ -81,8 +83,6 @@
     <Content Include="src\app\inventory\dashboard\dashboard.component.html" />
     <Content Include="src\app\inventory\dashboard\dashboard.component.spec.ts" />
     <Content Include="src\app\inventory\dashboard\dashboard.component.ts" />
-    <Content Include="src\app\services\shared.service.spec.ts" />
-    <Content Include="src\app\services\shared.service.ts" />
     <Content Include="src\app\util\list-button\list-button.component.css" />
     <Content Include="src\app\util\list-button\list-button.component.html" />
     <Content Include="src\app\util\list-button\list-button.component.spec.ts" />
@@ -105,11 +105,14 @@
     <Folder Include="e2e\" />
     <Folder Include="src\" />
     <Folder Include="src\app\" />
+    <Folder Include="src\app\auth\" />
+    <Folder Include="src\app\auth\login\" />
     <Folder Include="src\app\inventory\" />
     <Folder Include="src\app\inventory\dashboard\" />
     <Folder Include="src\app\models\" />
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\services\api\" />
+    <Folder Include="src\app\services\api\auth\" />
     <Folder Include="src\app\services\api\inventory\" />
     <Folder Include="src\app\services\shared\" />
     <Folder Include="src\app\util\" />
@@ -118,16 +121,27 @@
     <Folder Include="src\environments\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\models\Inventory.ts">
+    <TypeScriptCompile Include="src\app\auth\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\auth\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\models\auth.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\app\models\Result.ts">
+    <TypeScriptCompile Include="src\app\models\inventory.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\models\result.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\models\user.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\app\services\api\auth\authapi.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\api\auth\authapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\api\inventory\inventoryapi.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\api\inventory\inventoryapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.ts" />
+    <TypeScriptCompile Include="src\test.global.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

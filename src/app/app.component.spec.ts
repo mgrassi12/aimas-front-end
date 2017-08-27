@@ -1,24 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
-
-import { RouterTestingModule } from '@angular/router/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@angular/material';
+import { APIImports, MaterialImports, RouterTestingModule } from '../test.global';
 
 import { AppComponent } from './app.component';
 import { ListButtonComponent } from './util/list-button/list-button.component';
+import { AuthAPIService } from './services/api/auth/authapi.service';
+import { SharedService } from './services/shared/shared.service';
 
 
 describe("AppComponent", () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                RouterTestingModule ,
-                MaterialModule,
-                FlexLayoutModule
+                RouterTestingModule,
+                ...APIImports,
+                ...MaterialImports
+            ],
+            providers: [
+                AuthAPIService,
+                SharedService
             ],
             declarations: [
-                AppComponent,
-                ListButtonComponent
+                ListButtonComponent,
+                AppComponent
             ],
         }).compileComponents();
     }));
