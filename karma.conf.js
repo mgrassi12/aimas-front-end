@@ -2,7 +2,7 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-    config.set({
+    var configuration = {
         basePath: '',
         frameworks: ['jasmine', '@angular/cli'],
         plugins: [
@@ -32,5 +32,21 @@ module.exports = function (config) {
         files: [
             { pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css' }
         ],
-    });
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        }
+    };
+
+    if (process.env.TRAVIS) {
+        configuration.browsers = ['Chrome_travis_ci'];
+        console.log("Using Travis");
+    }
+    else {
+        console.log("NOT Using Travis");
+    }
+
+    config.set(configuration);
 };
