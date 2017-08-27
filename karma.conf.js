@@ -33,15 +33,19 @@ module.exports = function (config) {
             { pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css' }
         ],
         customLaunchers: {
-            Chrome_travis_ci: {
+            Chrome_Travis_Ci: {
                 base: 'Chrome',
-                flags: ['--no-sandbox']
+                flags: [
+                    '--headless',
+                    '--disable-gpu',
+                    '--remote-debugging-port=9222',
+                ]
             }
         }
     };
 
     if (process.env.TRAVIS) {
-        configuration.browsers = ['Chrome_travis_ci'];
+        configuration.browsers = ['Chrome_Travis_Ci'];
         console.log("Using Travis");
     }
     else {
