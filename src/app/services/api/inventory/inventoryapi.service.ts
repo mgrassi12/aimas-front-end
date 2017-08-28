@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj } from '../../../models/result';
-import { Inventory } from '../../../models/Inventory';
+import { Inventory } from '../../../models/inventory';
 
 @Injectable()
 export class InventoryAPIService {
