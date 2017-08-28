@@ -14,6 +14,8 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 export class LoginComponent implements OnInit {
 
     public loginForm: FormGroup;
+    public inProgress: boolean;
+    public errorMessage: string;
 
     constructor(private auth: AuthAPIService, private fb: FormBuilder, private router: Router) {
         this.loginForm = this.fb.group({
@@ -33,7 +35,15 @@ export class LoginComponent implements OnInit {
                 if (result.Success) {
                     this.router.navigate(["inventory/dashboard"]);
                 }
+                else {
+                    this.errorMessage = result.ErrorMessage;
+                }
+
+                this.inProgress = false;
             });
+
+            this.inProgress = true;
+            this.errorMessage = "";
         }
     }
 

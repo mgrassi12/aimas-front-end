@@ -3,11 +3,11 @@ import { APIImports, MaterialImports } from '../../../test.global';
 
 import { InventoryAPIService } from '../../services/api/inventory/inventoryapi.service';
 import { SharedService } from '../../services/shared/shared.service';
-import { InventoryDashboardComponent } from './dashboard.component';
+import { InventoryManagementComponent } from './management.component';
 
-describe('DashboardComponent', () => {
-    let component: InventoryDashboardComponent;
-    let fixture: ComponentFixture<InventoryDashboardComponent>;
+describe('ManagementComponent', () => {
+    let component: InventoryManagementComponent;
+    let fixture: ComponentFixture<InventoryManagementComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -16,18 +16,18 @@ describe('DashboardComponent', () => {
                 MaterialImports
             ],
             providers: [
-                InventoryAPIService,
-                SharedService
+                SharedService,
+                InventoryAPIService
             ],
             declarations: [
-                InventoryDashboardComponent
+                InventoryManagementComponent
             ]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(InventoryDashboardComponent);
+        fixture = TestBed.createComponent(InventoryManagementComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
