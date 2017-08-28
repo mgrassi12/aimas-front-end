@@ -11,12 +11,12 @@ export class InventoryDashboardComponent implements OnInit {
 
     public items;
 
-    constructor(private inventoryAPI: InventoryAPIService) {
+    constructor(private inventory: InventoryAPIService) {
 
     }
 
     ngOnInit() {
-        this.inventoryAPI.getInventories().subscribe(result => {
+        this.inventory.getInventories().subscribe(result => {
             this.items = result.ReturnObj;
         });
     }

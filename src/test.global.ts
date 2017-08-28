@@ -10,10 +10,12 @@ export const APIImports = [
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 export const MaterialImports = [
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    CdkTableModule
 ];
 
 // Others
