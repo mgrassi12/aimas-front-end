@@ -22,6 +22,9 @@ script:
   - npm run ng-build-prod
   - npm run ng-test-prod
 
+branches:
+  only:
+  - master
 
 deploy:
   provider: heroku
