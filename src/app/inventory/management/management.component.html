@@ -1,44 +1,54 @@
-<div class="mat-typography">
-  <md-table [dataSource]="inventoryDataSource">
+<div fxLoyout="column" fxLayoutAlign="center start">
+  <div fxFlex fxFlex.gt-md="80">
+    <md-toolbar fxLayout="column">
+      <h1>Inventory Management</h1>
+      <button md-raised-button color="primary" class="space left" (click)="showSearchOptions()">Search</button>
+      <button md-mini-fab class="space left" (click)="addInventory()"><md-icon>add</md-icon></button>
+      <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
+    </md-toolbar>
+    <div>
+      <md-table [dataSource]="inventoryDataSource">
+        <!-- Define Table Columns-->
 
-    <!-- Define Table Columns-->
+        <ng-container cdkColumnDef="ID">
+          <md-header-cell *cdkHeaderCellDef>ID</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.ID}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="ID">
-      <md-header-cell *cdkHeaderCellDef>ID</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.ID}} </md-cell>
-    </ng-container>
+        <ng-container cdkColumnDef="Name">
+          <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.Name}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="Name">
-      <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.Name}} </md-cell>
-    </ng-container>
+        <ng-container cdkColumnDef="Description">
+          <md-header-cell *cdkHeaderCellDef>Description</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.Description}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="Description">
-      <md-header-cell *cdkHeaderCellDef>Description</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.Description}} </md-cell>
-    </ng-container>
+        <ng-container cdkColumnDef="Expiration">
+          <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.ExpirationDate | date:'medium'}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="Expiration">
-      <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.ExpirationDate | date:'medium'}} </md-cell>
-    </ng-container>
+        <ng-container cdkColumnDef="Maintance">
+          <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.MaintanceDate | date:'medium'}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="Maintance">
-      <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.MaintanceDate | date:'medium'}} </md-cell>
-    </ng-container>
+        <ng-container cdkColumnDef="Location">
+          <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.Location.Name}} </md-cell>
+        </ng-container>
 
-    <ng-container cdkColumnDef="Location">
-      <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.Location.Description}} </md-cell>
-    </ng-container>
+        <!-- End -->
 
-    <!-- End -->
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
 
-    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-  </md-table>
-
-  <md-paginator [length]="inventoryDatabase.length" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50, 100]">
-  </md-paginator>
+      </md-table>
+    </div>
+    <div>
+      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[1, 2 ,5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
+    </div>
+  </div>
 </div>

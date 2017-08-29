@@ -10,7 +10,9 @@ export class SharedService {
     // API Routes
     public API = {
         Inventory: {
-            All: "/api/inventory/all"
+            All: "/api/inventory/all",
+            Search: "/api/inventory/search",
+            Add: "/api/inventory/add"
         },
         Auth: {
             Info: "/api/auth/info",

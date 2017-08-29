@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { InventoryAPIService } from '../../services/api/inventory/inventoryapi.service';
+import { InventoryAPIService, Inventory } from '../../services/api/inventory/inventoryapi.service';
 
 @Component({
     selector: 'inventory-dashboard',
@@ -16,7 +16,7 @@ export class InventoryDashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.inventory.getInventories().subscribe(result => {
+        this.inventory.getAllInventories().subscribe(result => {
             this.items = result.ReturnObj;
         });
     }

@@ -30,6 +30,11 @@ export class ArrayDatabase<T> {
         this.dataChange = new BehaviorSubject<Array<T>>(array);
     }
 
+    public setDB(array: Array<T>) {
+        this._data = array;
+        this.refresh();
+    }
+
     public add(item: T): void {
         this._data.push(item);
         this.refresh();

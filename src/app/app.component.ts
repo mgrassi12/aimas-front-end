@@ -28,10 +28,11 @@ export class AppComponent implements OnInit {
     }
 
     public logout() {
-        this.auth.logout().subscribe(result => {
-            if (result.Success)
-                this.router.navigate(["/auth/login"]);
-        });
+        if (this.authInfo.IsAuth)
+            this.auth.logout().subscribe(result => {
+                if (result.Success)
+                    this.router.navigate(["/auth/login"]);
+            });
     }
 
 }
