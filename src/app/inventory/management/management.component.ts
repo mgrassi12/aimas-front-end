@@ -34,7 +34,7 @@ export class InventoryManagementComponent implements OnInit {
         this.search();
     }
 
-    private updatePage(page: PageEvent) {
+    public updatePage(page: PageEvent) {
 
         if (this.searchParams.PageSize != page.pageSize) {
             this.searchParams.PageSize = page.pageSize;
