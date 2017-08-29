@@ -60,8 +60,12 @@
     <Content Include="src\app\app.component.html" />
     <Content Include="src\app\auth\login\login.component.css" />
     <Content Include="src\app\auth\login\login.component.html" />
+    <Content Include="src\app\inventory\addeditdialog\addeditdialog.component.css" />
+    <Content Include="src\app\inventory\addeditdialog\addeditdialog.component.html" />
     <Content Include="src\app\inventory\management\management.component.css" />
     <Content Include="src\app\inventory\management\management.component.html" />
+    <Content Include="src\app\inventory\searchdialog\searchdialog.component.css" />
+    <Content Include="src\app\inventory\searchdialog\searchdialog.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
@@ -110,8 +114,10 @@
     <Folder Include="src\app\auth\" />
     <Folder Include="src\app\auth\login\" />
     <Folder Include="src\app\inventory\" />
+    <Folder Include="src\app\inventory\addeditdialog\" />
     <Folder Include="src\app\inventory\dashboard\" />
     <Folder Include="src\app\inventory\management\" />
+    <Folder Include="src\app\inventory\searchdialog\" />
     <Folder Include="src\app\models\" />
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\services\api\" />
@@ -126,8 +132,12 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\auth\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\inventory\addeditdialog\addeditdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\inventory\addeditdialog\addeditdialog.component.ts" />
     <TypeScriptCompile Include="src\app\inventory\management\management.component.spec.ts" />
     <TypeScriptCompile Include="src\app\inventory\management\management.component.ts" />
+    <TypeScriptCompile Include="src\app\inventory\searchdialog\searchdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\inventory\searchdialog\searchdialog.component.ts" />
     <TypeScriptCompile Include="src\app\util\arraydatabase.ts" />
     <TypeScriptCompile Include="src\app\models\auth.ts">
       <SubType>Code</SubType>
@@ -147,6 +157,9 @@
     <TypeScriptCompile Include="src\app\services\api\inventory\inventoryapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.ts" />
+    <TypeScriptCompile Include="src\app\util\momentdateadapter.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\test.global.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

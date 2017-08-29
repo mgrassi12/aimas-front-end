@@ -6,6 +6,12 @@ import { Result, ResultObj } from '../../../models/result';
 import { CurrentUserInfo } from '../../../models/auth';
 import { User, UserPassword } from '../../../models/user';
 
+// Exports
+export { Result, ResultObj } from '../../../models/result';
+export { CurrentUserInfo } from '../../../models/auth';
+export { User, UserPassword } from '../../../models/user';
+
+
 @Injectable()
 export class AuthAPIService {
 
@@ -29,7 +35,7 @@ export class AuthAPIService {
 
     public getInfo() {
         return this.http.get(this.shared.API.Auth.Info)
-            .map(res => ResultObj.ResultObjFromJson<CurrentUserInfo>(CurrentUserInfo, res))
+            .map(res => ResultObj.ResultObjFromJson<CurrentUserInfo>(res, CurrentUserInfo))
             .map(result => {
                 if (result.Success)
                     this.authInfo = result.ReturnObj;

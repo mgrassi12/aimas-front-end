@@ -1,6 +1,7 @@
 
 // API Testing
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+export { HttpTestingController } from '@angular/common/http/testing';
 export const APIImports = [
     HttpClientTestingModule
 ];
@@ -15,8 +16,28 @@ export const MaterialImports = [
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
-    CdkTableModule
+    CdkTableModule,
 ];
 
 // Others
 export { RouterTestingModule } from '@angular/router/testing';
+export * from './app/models/user';
+export * from './app/models/inventory';
+export * from './app/models/auth';
+export * from './app/models/result';
+
+
+
+// Test Data
+import { Inventory } from './app/models/inventory';
+
+let I1 = new Inventory();
+I1.ID = 1;
+I1.Name = "Test #1";
+let I2 = new Inventory();
+I2.ID = 2;
+I1.Name = "Test #2";
+let I3 = new Inventory();
+I3.ID = 3;
+I1.Name = "Test #3";
+export const ExpectedInventoryTestData = [I1, I2, I3];

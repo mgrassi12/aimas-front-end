@@ -1,4 +1,4 @@
-<main fxLayout="column" fxLayoutAlign="start center" class="mat-typography">
+<main fxLayout="column" fxLayoutAlign="start center">
   <span fxFlex="10"></span>
   <md-card>
     <h2>Login</h2>
@@ -16,7 +16,6 @@
       </div>
       <div class="space bottom">
         <button md-raised-button color="accent" [disabled]="loginForm.pristine">Login</button>
-        <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
       </div>
       <div>
         <md-error>{{errorMessage}}</md-error>
