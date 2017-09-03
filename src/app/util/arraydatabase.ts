@@ -1,6 +1,6 @@
 import { EventEmitter } from "@angular/core";
 import { BehaviorSubject } from "rxjs/Rx";
-import { DataSource } from "@angular/cdk";
+import { DataSource } from "@angular/cdk/collections";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 

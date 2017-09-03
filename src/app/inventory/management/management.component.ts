@@ -34,6 +34,9 @@ export class InventoryManagementComponent implements OnInit {
         this.search();
     }
 
+
+    // Page Change
+
     public updatePage(page: PageEvent) {
 
         if (this.searchParams.PageSize != page.pageSize) {
@@ -46,6 +49,8 @@ export class InventoryManagementComponent implements OnInit {
         this.search();
     }
 
+    // Search
+
     public search() {
         this.inProgress = true;
         this.inventory.searchInventory(this.searchParams).subscribe(result => {
@@ -57,17 +62,22 @@ export class InventoryManagementComponent implements OnInit {
         });
     }
 
-    public showSearchOptions() {
+    public showSearchOptionsDialog() {
         var ref = this.dialog.open(InventorySearchDialogComponent);
         var instance = ref.componentInstance;
 
         instance.search = this.searchParams;
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
+            .map(res => JSON.parse(res) as number)
             .subscribe(res => {
-                if (res)
+                if (res == 1) {
                     this.search();
+                }
+                else if (res == 2) {
+                    this.searchParams.clear();
+                    this.search();
+                }
             });
     }
 

@@ -61,23 +61,33 @@ describe('InventoryapiService', () => {
 
     it('should get id 2 of inventory items via search', inject([InventoryAPIService, HttpTestingController], (service: InventoryAPIService, http: HttpTestingController) => {
 
-        let expected = ExpectedInventoryTestData.filter(item => item.ID == 2);
+        // Define Expectes and Actural result
+        let expected: Array<Inventory> = ExpectedInventoryTestData.filter(item => item.ID == 2);
         let result: Array<Inventory>;
 
+        // Define the search Paramaters
         let search = new InventorySearch();
         search.ID = 2;
+        // Call the API Service with the search params
         service.searchInventory(search)
             .subscribe(res => {
                 result = res.ReturnObj
             });
 
+        // Get the HTTP reqquest
         let req = http.expectOne('/api/inventory/search')
+        // Get the HTTP body params
         let params = req.request.body as InventorySearch;
+        // Define the HTTP response 
         let httpResponse = new PageResultObj<Array<Inventory>>();
+        // Mock the Response
         httpResponse.Success = true;
+        // Set the returned object, using the given search params from the body to mock the search
         httpResponse.ReturnObj = ExpectedInventoryTestData.filter(item => item.ID == params.ID);
+        // Return the search results mock
         req.flush(httpResponse);
 
+        // Expect the result to be the same as what was expected
         expect(result).toEqual(expected);
     }));
 });

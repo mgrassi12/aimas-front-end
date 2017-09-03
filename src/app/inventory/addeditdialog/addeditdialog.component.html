@@ -12,12 +12,12 @@
   <br />
   <md-input-container>
     <input mdInput [mdDatepicker]="date1" placeholder="Expiration Date" type="date" [(ngModel)]="inventory.ExpirationDate">
-    <button mdSuffix [mdDatepickerToggle]="date1"></button>
+    <md-datepicker-toggle mdSuffix [for]="date1"></md-datepicker-toggle>
   </md-input-container>
   <md-datepicker #date1></md-datepicker>
   <md-input-container>
     <input mdInput [mdDatepicker]="date2" placeholder="Maintance Date" type="date" [(ngModel)]="inventory.MaintanceDate">
-    <button mdSuffix [mdDatepickerToggle]="date2"></button>
+    <md-datepicker-toggle mdSuffix [for]="date2"></md-datepicker-toggle>
   </md-input-container>
   <md-datepicker #date2></md-datepicker>
 

@@ -2,7 +2,7 @@
   <div fxFlex fxFlex.gt-md="80">
     <md-toolbar fxLayout="column">
       <h1>Inventory Management</h1>
-      <button md-raised-button color="primary" class="space left" (click)="showSearchOptions()">Search</button>
+      <button md-raised-button color="primary" class="space left" (click)="showSearchOptionsDialog()">Search</button>
       <button md-mini-fab class="space left" (click)="addInventory()"><md-icon>add</md-icon></button>
       <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
     </md-toolbar>
@@ -27,12 +27,12 @@
 
         <ng-container cdkColumnDef="Expiration">
           <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.ExpirationDate | date:'medium'}} </md-cell>
+          <md-cell *cdkCellDef="let row"> {{row.ExpirationDate | date:'mediumDate'}} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Maintance">
           <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.MaintanceDate | date:'medium'}} </md-cell>
+          <md-cell *cdkCellDef="let row"> {{row.MaintanceDate | date:'mediumDate'}} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Location">

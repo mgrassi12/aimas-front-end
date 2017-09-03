@@ -54,4 +54,10 @@ export class InventorySearch {
         this.PageIndex = 0;
         this.PageSize = 25;
     }
+
+    public clear() {
+        this.ID = null;
+        this.Name = null;
+        this.Description = null;
+    }
 }

@@ -11,7 +11,7 @@ export const APIImports = [
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { CdkTableModule } from '@angular/cdk';
+import { CdkTableModule } from '@angular/cdk/table';
 export const MaterialImports = [
     BrowserAnimationsModule,
     FlexLayoutModule,

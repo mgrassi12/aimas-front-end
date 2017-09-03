@@ -183,4 +183,12 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
             return date;
         }
     }
+
+    isDateInstance(obj: any): boolean {
+        return moment.isMoment(obj);
+    }
+    isValid(date: Moment): boolean {
+        return date.isValid();
+    }
+
 }
