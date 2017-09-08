@@ -1,16 +1,16 @@
 import { Inject, LOCALE_ID } from '@angular/core';
 import { DateAdapter, MdDateFormats } from '@angular/material';
-import { isMoment, Moment, Locale } from 'moment';
+import { Moment, isMoment, Locale } from 'moment';
 import * as moment from 'moment';
 
 export const MOMENT_DATE_FORMATS: MdDateFormats = {
     parse: {
-        dateInput: 'YYYY-MM-DD'
+        dateInput: 'DD/MM/YYYY'
     },
     display: {
-        dateInput: 'YYYY-MM-DD',
+        dateInput: 'DD/MM/YYYY',
         monthYearLabel: 'MMMM Y',
-        dateA11yLabel: 'YYYY-MM-DD',
+        dateA11yLabel: 'DD/MM/YYYY',
         monthYearA11yLabel: 'MMMM Y'
     }
 };
@@ -30,19 +30,23 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         this.localeData = moment.localeData(this.locale);
     }
 
-    getYear(date: Moment): number {
+    getYear(date: Moment | Date): number {
+        date = this.checkDate(date);
         return date.year();
     }
 
-    getMonth(date: Moment): number {
+    getMonth(date: Moment | Date): number {
+        date = this.checkDate(date);
         return date.month();
     }
 
-    getDate(date: Moment): number {
+    getDate(date: Moment | Date): number {
+        date = this.checkDate(date);
         return date.date();
     }
 
-    getDayOfWeek(date: Moment): number {
+    getDayOfWeek(date: Moment | Date): number {
+        date = this.checkDate(date);
         return date.day();
     }
 
@@ -73,7 +77,8 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         }
     }
 
-    getYearName(date: Moment): string {
+    getYearName(date: Moment | Date): string {
+        date = this.checkDate(date);
         return String(date.year());
     }
 
@@ -81,16 +86,18 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         return this.localeData.firstDayOfWeek();
     }
 
-    getNumDaysInMonth(date: Moment): number {
+    getNumDaysInMonth(date: Moment | Date): number {
+        date = this.checkDate(date);
         return date.daysInMonth();
     }
 
-    clone(date: Moment): Moment {
+    clone(date: Moment | Date): Moment {
+        date = this.checkDate(date);
         return date.clone();
     }
 
     createDate(year: number, month: number, date: number): Moment {
-        return moment([year, month, date], "", this.locale, true);
+        return moment([year, month, date], null, this.locale, true);
     }
 
     today(): Moment {
@@ -100,17 +107,13 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     parse(value: any, parseFormat: any): Moment {
         let m = moment(value, parseFormat, this.locale, true)
         if (!m.isValid()) {
-            // try again, forgiving. will get warning if not ISO8601 or RFC2822
             m = moment(value).locale(this.locale);
             console.log(`Moment could not parse '${value}', trying non-strict`, m);
         }
         if (m.isValid()) {
-            // if user omits year, it defaults to 2001, so check for that issue.
             if (m.year() === 2001 && value.indexOf('2001') === -1) {
-                // if 2001 not actually in the value string, change to current year
                 const currentYear = new Date().getFullYear();
                 m.set('year', currentYear);
-                // if date is in the future, set previous year
                 if (m.isAfter(moment())) {
                     m.set('year', currentYear - 1);
                 }
@@ -122,7 +125,9 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         }
     }
 
-    format(date: Moment, displayFormat: any): string {
+    format(date: Moment | Date, displayFormat: any): string {
+        date = this.checkDate(date);
+
         if (date) {
             return date.format(displayFormat);
         }
@@ -131,19 +136,23 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         }
     }
 
-    addCalendarYears(date: Moment, years: number): Moment {
+    addCalendarYears(date: Moment | Date, years: number): Moment {
+        date = this.checkDate(date);
         return date.clone().add(years, 'y');
     }
 
-    addCalendarMonths(date: Moment, months: number): Moment {
+    addCalendarMonths(date: Moment | Date, months: number): Moment {
+        date = this.checkDate(date);
         return date.clone().add(months, 'M');
     }
 
-    addCalendarDays(date: Moment, days: number): Moment {
+    addCalendarDays(date: Moment | Date, days: number): Moment {
+        date = this.checkDate(date);
         return date.clone().add(days, 'd');
     }
 
     getISODateString(date: Moment): string {
+        date = this.checkDate(date);
         return date.toISOString();
     }
 
@@ -153,11 +162,15 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         this.localeData = moment.localeData(locale);
     }
 
-    compareDate(first: Moment, second: Moment): number {
+    compareDate(first: Moment | Date, second: Moment | Date): number {
+        first = this.checkDate(first);
+        second = this.checkDate(second);
         return first.diff(second, 'seconds', true);
     }
 
-    sameDate(first: any | Moment, second: any | Moment): boolean {
+    sameDate(first: Moment | Date, second: Moment | Date): boolean {
+        first = this.checkDate(first);
+        second = this.checkDate(second);
         if (first == null) {
             // same if both null
             return second == null;
@@ -172,7 +185,11 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         }
     }
 
-    clampDate(date: Moment, min?: any | Moment, max?: any | Moment): Moment {
+    clampDate(date: Moment | Date, min?: Moment | Date, max?: Moment | Date): Moment {
+        date = this.checkDate(date);
+        min = this.checkDate(min);
+        max = this.checkDate(max);
+
         if (min && date.isBefore(min)) {
             return min;
         }
@@ -185,10 +202,17 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     }
 
     isDateInstance(obj: any): boolean {
-        return moment.isMoment(obj);
+        return isMoment(obj) || obj instanceof Date;
     }
-    isValid(date: Moment): boolean {
+    isValid(date: Moment | Date): boolean {
+        date = this.checkDate(date);
         return date.isValid();
+    }
+
+    checkDate(date: Moment | Date) {
+        if (date instanceof Date) date = moment(date, null, this.locale, false);
+        //if(date instanceof)
+        return date;
     }
 
 }

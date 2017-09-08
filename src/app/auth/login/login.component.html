@@ -2,20 +2,20 @@
   <span fxFlex="10"></span>
   <md-card>
     <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
       <div class="space bottom">
         <md-input-container>
-          <input mdInput name="email" placeholder="Email" type="email" formControlName="email" required>
-          <md-error *ngIf="loginForm.get('email').hasError('pattern')">Please enter a valid email address</md-error>
-          <md-error *ngIf="loginForm.get('email').hasError('required')">Email is <strong>required</strong></md-error>
+          <input mdInput #email="ngModel" name="email" placeholder="Email" type="email" [(ngModel)]="loginModel.Email" required [pattern]="EMAIL_REGEX">
+          <md-error *ngIf="email.errors?.required">Email is <strong>required</strong></md-error>
+          <md-error *ngIf="email.errors?.pattern">Please enter a valid email address</md-error>
         </md-input-container>
         <md-input-container>
-          <input mdInput name="password" placeholder="Password" type="password" formControlName="password" required>
-          <md-error *ngIf="loginForm.get('password').hasError('required')">Password is <strong>required</strong></md-error>
+          <input mdInput #password="ngModel" name="password" placeholder="Password" type="password" [(ngModel)]="loginModel.Password" required>
+          <md-error *ngIf="password.errors?.required">Password is <strong>required</strong></md-error>
         </md-input-container>
       </div>
       <div class="space bottom">
-        <button md-raised-button color="accent" [disabled]="loginForm.pristine">Login</button>
+        <button md-raised-button color="accent" [disabled]="!loginForm.valid">Login</button>
         <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
       </div>
       <div>

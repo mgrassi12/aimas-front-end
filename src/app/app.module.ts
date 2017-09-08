@@ -1,14 +1,17 @@
 // NG
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MomentModule } from 'angular2-moment';
 
 //Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule, DateAdapter, MD_DATE_FORMATS } from '@angular/material';
+import { MaterialModule, DateAdapter, MD_DATE_FORMATS, NativeDateAdapter } from '@angular/material';
+import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
 import { CdkTableModule } from '@angular/cdk/table';
 
 // App
@@ -17,7 +20,6 @@ import { InventoryDashboardComponent } from './inventory/dashboard/dashboard.com
 import { LoginComponent } from './auth/login/login.component';
 import { InventoryManagementComponent } from './inventory/management/management.component'
 import { ListButtonComponent } from './util/list-button/list-button.component';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -31,12 +33,14 @@ import { AddEditDialogComponent } from './inventory/addeditdialog/addeditdialog.
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        CommonModule,
         FlexLayoutModule,
         MaterialModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         CdkTableModule,
+        MomentModule,
         RouterModule.forRoot(
             [
                 { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }

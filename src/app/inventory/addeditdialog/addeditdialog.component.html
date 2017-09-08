@@ -1,28 +1,31 @@
-<h2 md-dialog-title>{{title}}</h2>
-<md-dialog-content>
-  <md-input-container>
-    <input mdInput placeholder="ID" type="number" [(ngModel)]="inventory.ID">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="Name" type="text" [(ngModel)]="inventory.Name">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput placeholder="Description" type="text" [(ngModel)]="inventory.Description">
-  </md-input-container>
-  <br />
-  <md-input-container>
-    <input mdInput [mdDatepicker]="date1" placeholder="Expiration Date" type="date" [(ngModel)]="inventory.ExpirationDate">
-    <md-datepicker-toggle mdSuffix [for]="date1"></md-datepicker-toggle>
-  </md-input-container>
-  <md-datepicker #date1></md-datepicker>
-  <md-input-container>
-    <input mdInput [mdDatepicker]="date2" placeholder="Maintance Date" type="date" [(ngModel)]="inventory.MaintanceDate">
-    <md-datepicker-toggle mdSuffix [for]="date2"></md-datepicker-toggle>
-  </md-input-container>
-  <md-datepicker #date2></md-datepicker>
-
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-raised-button color="primary" [md-dialog-close]="false" class="space right">Calcel</button>
-  <button md-raised-button color="accent" [md-dialog-close]="true">{{btnText}}</button>
-</md-dialog-actions>
+<form #inventoryForm="ngForm">
+  <h2 md-dialog-title>{{title}}</h2>
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput name="id" placeholder="ID" type="number" [(ngModel)]="inventory.ID">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput name="name" placeholder="Name" type="text" [(ngModel)]="inventory.Name">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput name="description" placeholder="Description" type="text" [(ngModel)]="inventory.Description">
+    </md-input-container>
+    <br />
+    <md-input-container>
+      <input mdInput #expirationDate="ngModel" name="expirationDate" [mdDatepicker]="date1" placeholder="Expiration Date" [(ngModel)]="inventory.ExpirationDate" required [pattern]="DateFormat" [min]="now">
+      <md-datepicker-toggle mdSuffix [for]="date1"></md-datepicker-toggle>
+    </md-input-container>
+    <md-datepicker #date1></md-datepicker>
+    <md-input-container>
+      <input mdInput name="maintanceDate" [mdDatepicker]="date2" placeholder="Maintance Date" [(ngModel)]="inventory.MaintanceDate">
+      <md-datepicker-toggle mdSuffix [for]="date2"></md-datepicker-toggle>
+    </md-input-container>
+    <md-datepicker #date2></md-datepicker>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-raised-button color="primary" [md-dialog-close]="false" class="space right">Calcel</button>
+    <button md-raised-button color="accent" [md-dialog-close]="true">{{btnText}}</button>
+  </md-dialog-actions>
+</form>
+<br />
+{{expirationDate.errors | json}}

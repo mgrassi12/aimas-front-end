@@ -33,4 +33,22 @@ export class InventoryAPIService {
             .map(res => Result.ResultFromJson(res));
     }
 
+    public updateInventory(inventory: Inventory) {
+        return this.http.post(this.shared.API.Inventory.Update, inventory)
+            .map(res => Result.ResultFromJson(res));
+    }
+
+    public removeInventory(id: number) {
+        return this.http.get(this.formatURL(this.shared.API.Inventory.Remove, id))
+            .map(res => Result.ResultFromJson(res));
+    }
+
+
+    private formatURL(url: string, item: string | number | boolean) {
+        var reg = /{[A-Za-z1-9]*}/;
+        return url.replace(reg, item.toString());
+    }
+
 }
+
+// Include Catching errors

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SharedService } from '../../services/shared/shared.service';
 import { InventoryAPIService, Inventory } from '../../services/api/inventory/inventoryapi.service';
 
 @Component({
@@ -11,8 +12,8 @@ export class InventoryDashboardComponent implements OnInit {
 
     public items;
 
-    constructor(private inventory: InventoryAPIService) {
-
+    constructor(private shared: SharedService, private inventory: InventoryAPIService) {
+        this.shared.setTitle("Inventory Dashboard");
     }
 
     ngOnInit() {
