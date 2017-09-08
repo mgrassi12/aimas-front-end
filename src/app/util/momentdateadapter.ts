@@ -209,9 +209,9 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         return date.isValid();
     }
 
-    checkDate(date: Moment | Date) {
+    checkDate(date: Moment | Date | string) {
+        if (typeof date === "string") date = new Date(date);
         if (date instanceof Date) date = moment(date, null, this.locale, false);
-        //if(date instanceof)
         return date;
     }
 

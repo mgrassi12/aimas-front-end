@@ -128,8 +128,4 @@ export class InventoryManagementComponent implements OnInit {
             });
     }
 
-    type(obj) {
-        return isMoment(obj);
-    }
-
 }

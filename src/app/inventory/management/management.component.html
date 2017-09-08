@@ -31,7 +31,7 @@
 
         <ng-container cdkColumnDef="Expiration">
           <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
-          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.ExpirationDate | date:'mediumDate'" mdTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}} {{type(row.ExpirationDate)}}</span></md-cell>
+          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.ExpirationDate | date:'mediumDate'" mdTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}}</span></md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Maintance">
@@ -59,7 +59,7 @@
       </md-table>
     </div>
     <div>
-      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[1, 2 ,5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
+      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
     </div>
   </div>
 </div>
