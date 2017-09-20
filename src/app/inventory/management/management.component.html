@@ -5,7 +5,7 @@
       <!--<md-form-field style="font-size:16px;">
         <input mdInput placeholder="Quick Search">
       </md-form-field>-->
-      <button md-icon-button (click)="clearSearch()" [mdTooltip]="Clear"><md-icon>clear</md-icon></button>
+      <button md-icon-button (click)="clearSearch()" mdTooltip="Clear"><md-icon>clear</md-icon></button>
       <button md-button (click)="showSearchOptionsDialog()"><md-icon>search</md-icon><span>Advance Search</span></button>
       <button md-mini-fab (click)="addInventory()" class="space left"><md-icon>add</md-icon></button>
       <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
