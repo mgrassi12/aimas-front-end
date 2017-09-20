@@ -44,10 +44,11 @@
           <md-cell *cdkCellDef="let row"> {{row.Location.Name}} </md-cell>
         </ng-container>
 
-        <ng-container cdkColumnDef="Edit">
+        <ng-container cdkColumnDef="Actions">
           <md-header-cell *cdkHeaderCellDef fxFlex="40px">Edit</md-header-cell>
           <md-cell *cdkCellDef="let row" fxFlex="40px">
             <button md-icon-button (click)="editInventory(row)"><md-icon>edit</md-icon></button>
+            <button md-icon-button (click)="deleteInventory(row)"><md-icon>delete</md-icon></button>
           </md-cell>
         </ng-container>
 

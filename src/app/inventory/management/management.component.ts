@@ -24,7 +24,8 @@ export class InventoryManagementComponent implements OnInit {
     public inventoryDatabase: ArrayDatabase<Inventory>;
     public inventoryDataSource: ArrayDataSource<Inventory>;
 
-    public displayedColumns = ['ID', 'Name', 'Description', 'Expiration', 'Maintance', 'Location', 'Edit'];
+    public displayedColumns = ['ID', 'Name', 'Description', 'Expiration', 'Maintance', 'Location', 'Actions'];
+
 
     constructor(private shared: SharedService, private inventory: InventoryAPIService, public dialog: MdDialog) {
         this.shared.setTitle("Inventory Management");
@@ -79,11 +80,10 @@ export class InventoryManagementComponent implements OnInit {
         instance.search = this.searchParams;
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as number)
+            .map(res => JSON.parse(res) as boolean)
             .subscribe(res => {
-                if (res == 1) {
+                if (res)
                     this.search();
-                }
             });
     }
 
@@ -100,12 +100,12 @@ export class InventoryManagementComponent implements OnInit {
         ref.afterClosed()
             .map(res => JSON.parse(res) as boolean)
             .subscribe(res => {
-                if (res) {
+                if (res)
                     this.inventory.addInventory(instance.inventory)
                         .subscribe(res => {
-
+                            if (res.Success)
+                                alert("Success");
                         });
-                }
             });
     }
 
@@ -119,13 +119,20 @@ export class InventoryManagementComponent implements OnInit {
         ref.afterClosed()
             .map(res => JSON.parse(res) as boolean)
             .subscribe(res => {
-                if (res) {
+                if (res)
                     this.inventory.updateInventory(instance.inventory)
                         .subscribe(res => {
-                            alert("Success");
+                            if (res.Success)
+                                alert("Success");
                         });
-                }
             });
+    }
+
+    public deleteInventory(inventory: Inventory) {
+        this.inventory.removeInventory(inventory.ID).subscribe(res => {
+            if (res.Success)
+                alert("success");
+        })
     }
 
 }

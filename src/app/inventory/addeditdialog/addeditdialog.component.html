@@ -17,7 +17,7 @@
     </md-input-container>
     <md-datepicker #date1></md-datepicker>
     <md-input-container>
-      <input mdInput name="maintanceDate" [mdDatepicker]="date2" placeholder="Maintance Date" [(ngModel)]="inventory.MaintanceDate">
+      <input mdInput name="maintanceDate" [mdDatepicker]="date2" placeholder="Maintance Date" [(ngModel)]="inventory.MaintanceDate" [min]="now" [max]="inventory.ExpirationDate">
       <md-datepicker-toggle mdSuffix [for]="date2"></md-datepicker-toggle>
     </md-input-container>
     <md-datepicker #date2></md-datepicker>
