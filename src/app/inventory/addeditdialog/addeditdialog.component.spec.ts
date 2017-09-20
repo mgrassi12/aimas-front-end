@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdNativeDateModule, MdDialogRef } from '@angular/material';
-import { MaterialImports, Inventory } from '../../../test.global';
+import { MdDialogRef } from '@angular/material';
+import { MaterialImports, MaterialProviders, Inventory } from '../../../test.global';
 
 import { AddEditDialogComponent } from './addeditdialog.component';
 
@@ -13,14 +13,14 @@ describe('AddeditdialogComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 MaterialImports,
-                MdNativeDateModule,
                 FormsModule
             ],
             declarations: [
                 AddEditDialogComponent
             ],
             providers: [
-                { provide: MdDialogRef, useClass: class { } }
+                { provide: MdDialogRef, useClass: class { } },
+                ...MaterialProviders
             ]
         })
             .compileComponents();
@@ -30,6 +30,7 @@ describe('AddeditdialogComponent', () => {
         fixture = TestBed.createComponent(AddEditDialogComponent);
         component = fixture.componentInstance;
         component.inventory = new Inventory();
+        component.setText("Test", "Test");
         fixture.detectChanges();
     });
 

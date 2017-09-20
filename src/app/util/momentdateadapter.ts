@@ -107,8 +107,10 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     parse(value: any, parseFormat: any): Moment {
         let m = moment(value, parseFormat, this.locale, true)
         if (!m.isValid()) {
-            m = moment(value).locale(this.locale);
-            console.log(`Moment could not parse '${value}', trying non-strict`, m);
+            if (value == "")
+                m = moment().locale(this.locale);
+            else
+                m = moment(value).locale(this.locale);
         }
         if (m.isValid()) {
             if (m.year() === 2001 && value.indexOf('2001') === -1) {

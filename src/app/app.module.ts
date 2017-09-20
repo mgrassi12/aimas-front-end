@@ -10,7 +10,7 @@ import { MomentModule } from 'angular2-moment';
 //Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule, DateAdapter, MD_DATE_FORMATS, NativeDateAdapter } from '@angular/material';
+import { MaterialModule, DateAdapter, MD_DATE_FORMATS } from '@angular/material';
 import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
 import { CdkTableModule } from '@angular/cdk/table';
 
