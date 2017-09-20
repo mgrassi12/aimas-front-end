@@ -1,3 +1,5 @@
+// import Angular
+import { LOCALE_ID } from '@angular/core';
 
 // API Testing
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -11,7 +13,9 @@ export const APIImports = [
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '@angular/material';
-import { CdkTableModule } from '@angular/cdk';
+import { CdkTableModule } from '@angular/cdk/table';
+import { DateAdapter, MD_DATE_FORMATS } from '@angular/material';
+import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './app/util/momentdateadapter';
 export const MaterialImports = [
     BrowserAnimationsModule,
     FlexLayoutModule,
@@ -19,12 +23,19 @@ export const MaterialImports = [
     CdkTableModule,
 ];
 
+export const MaterialProviders = [
+    { provide: LOCALE_ID, useValue: 'en-AU' },
+    { provide: DateAdapter, useClass: MomentDateAdapter },
+    { provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
+]
+
 // Others
 export { RouterTestingModule } from '@angular/router/testing';
 export * from './app/models/user';
 export * from './app/models/inventory';
 export * from './app/models/auth';
 export * from './app/models/result';
+export { MomentModule } from 'angular2-moment';
 
 
 

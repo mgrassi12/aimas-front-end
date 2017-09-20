@@ -1,4 +1,6 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
+import { Moment, isMoment, Locale } from 'moment';
+import * as moment from 'moment';
 
 @JsonObject()
 export class Location {
@@ -53,5 +55,11 @@ export class InventorySearch {
     public constructor() {
         this.PageIndex = 0;
         this.PageSize = 25;
+    }
+
+    public clear() {
+        this.ID = null;
+        this.Name = null;
+        this.Description = null;
     }
 }

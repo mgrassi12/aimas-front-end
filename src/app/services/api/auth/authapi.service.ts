@@ -4,27 +4,27 @@ import { HttpClient } from "@angular/common/http";
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj } from '../../../models/result';
 import { CurrentUserInfo } from '../../../models/auth';
-import { User, UserPassword } from '../../../models/user';
+import { User, RegisterModel, UserLoginModel } from '../../../models/user';
 
 // Exports
 export { Result, ResultObj } from '../../../models/result';
 export { CurrentUserInfo } from '../../../models/auth';
-export { User, UserPassword } from '../../../models/user';
+export { User, RegisterModel, UserLoginModel } from '../../../models/user';
 
 
 @Injectable()
 export class AuthAPIService {
 
-    public authReady: Promise<CurrentUserInfo>;
+    public authReady: Promise<void>;
     public authInfo: CurrentUserInfo;
 
     constructor(private http: HttpClient, private shared: SharedService) {
         this.authInfo = new CurrentUserInfo();
 
-        this.authReady = new Promise<CurrentUserInfo>((resolve, reject) => {
+        this.authReady = new Promise<void>((resolve, reject) => {
             this.getInfo().subscribe(result => {
                 if (result.Success) {
-                    resolve(this.authInfo);
+                    resolve();
                 }
                 else {
                     reject(result);
@@ -43,12 +43,8 @@ export class AuthAPIService {
             });
     }
 
-    public logIn(email: string, password: string) {
-        let userDetails = new UserPassword();
-        userDetails.Email = email;
-        userDetails.Password = password;
-
-        return this.http.post(this.shared.API.Auth.Login, userDetails)
+    public logIn(loginDetails:UserLoginModel) {
+        return this.http.post(this.shared.API.Auth.Login, loginDetails)
             .map(res => Result.ResultFromJson(res))
             .map(result => {
                 if (result.Success)

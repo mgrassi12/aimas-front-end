@@ -1,9 +1,13 @@
 <div fxLoyout="column" fxLayoutAlign="center start">
   <div fxFlex fxFlex.gt-md="80">
-    <md-toolbar fxLayout="column">
-      <h1>Inventory Management</h1>
-      <button md-raised-button color="primary" class="space left" (click)="showSearchOptions()">Search</button>
-      <button md-mini-fab class="space left" (click)="addInventory()"><md-icon>add</md-icon></button>
+    <md-toolbar fxLayout="row">
+      <h1 class="space right">Inventory Management</h1>
+      <md-form-field style="font-size:16px;">
+        <input mdInput placeholder="Quick Search">
+      </md-form-field>
+      <button md-icon-button (click)="clearSearch()"><md-icon>clear</md-icon></button>
+      <button md-button (click)="showSearchOptionsDialog()"><md-icon>search</md-icon><span>Advance Search</span></button>
+      <button md-mini-fab (click)="addInventory()" class="space left"><md-icon>add</md-icon></button>
       <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
     </md-toolbar>
     <div>
@@ -11,8 +15,8 @@
         <!-- Define Table Columns-->
 
         <ng-container cdkColumnDef="ID">
-          <md-header-cell *cdkHeaderCellDef>ID</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.ID}} </md-cell>
+          <md-header-cell *cdkHeaderCellDef fxFlex="30px">ID</md-header-cell>
+          <md-cell *cdkCellDef="let row" fxFlex="30px"> {{row.ID}} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Name">
@@ -27,17 +31,25 @@
 
         <ng-container cdkColumnDef="Expiration">
           <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.ExpirationDate | date:'medium'}} </md-cell>
+          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.ExpirationDate | date:'mediumDate'" mdTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}}</span></md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Maintance">
           <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.MaintanceDate | date:'medium'}} </md-cell>
+          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.MaintanceDate | date:'mediumDate'" mdTooltipPosition="after">{{row.MaintanceDate | amTimeAgo}}</span></md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Location">
           <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
           <md-cell *cdkCellDef="let row"> {{row.Location.Name}} </md-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Actions">
+          <md-header-cell *cdkHeaderCellDef fxFlex="40px">Edit</md-header-cell>
+          <md-cell *cdkCellDef="let row" fxFlex="40px">
+            <button md-icon-button (click)="editInventory(row)"><md-icon>edit</md-icon></button>
+            <button md-icon-button (click)="deleteInventory(row)"><md-icon>delete</md-icon></button>
+          </md-cell>
         </ng-container>
 
         <!-- End -->
@@ -48,7 +60,7 @@
       </md-table>
     </div>
     <div>
-      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[1, 2 ,5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
+      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
     </div>
   </div>
 </div>

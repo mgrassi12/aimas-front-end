@@ -10,10 +10,30 @@ export class User {
     public FirstName: string;
     @JsonMember()
     public LastName: string;
+
+    constructor() {
+
+    }
 }
 
 @JsonObject()
-export class UserPassword extends User {
+export class RegisterModel extends User {
     @JsonMember()
     public Password: string;
+
+    constructor() {
+        super();
+    }
+}
+
+@JsonObject()
+export class UserLoginModel {
+    @JsonMember()
+    public Email: string;
+    @JsonMember()
+    public Password: string;
+
+    constructor() {
+
+    }
 }

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthAPIService } from '../../services/api/auth/authapi.service';
-
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+import { SharedService, EMAIL_REGEX } from '../../services/shared/shared.service';
+import { AuthAPIService, UserLoginModel } from '../../services/api/auth/authapi.service';
 
 @Component({
     selector: 'app-login',
@@ -13,15 +12,16 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 })
 export class LoginComponent implements OnInit {
 
-    public loginForm: FormGroup;
+    public get EMAIL_REGEX() { return EMAIL_REGEX; }
+
     public inProgress: boolean;
     public errorMessage: string;
 
-    constructor(private auth: AuthAPIService, private fb: FormBuilder, private router: Router) {
-        this.loginForm = this.fb.group({
-            email: ['', Validators.compose([Validators.required, Validators.pattern(EMAIL_REGEX)])],
-            password: ['', Validators.required]
-        });
+    public loginModel: UserLoginModel;
+
+    constructor(private shared: SharedService, private auth: AuthAPIService, private fb: FormBuilder, private router: Router) {
+        this.shared.setTitle("Login");
+        this.loginModel = new UserLoginModel();
     }
 
     ngOnInit() {
@@ -29,9 +29,8 @@ export class LoginComponent implements OnInit {
     }
 
     public login() {
-        if (this.loginForm.valid) {
-            var form = this.loginForm.value as LoginForm;
-            this.auth.logIn(form.email, form.password).subscribe(result => {
+        if (!this.inProgress) {
+            this.auth.logIn(this.loginModel).subscribe(result => {
                 if (result.Success) {
                     this.router.navigate(["inventory/dashboard"]);
                 }
@@ -41,15 +40,9 @@ export class LoginComponent implements OnInit {
 
                 this.inProgress = false;
             });
-
             this.inProgress = true;
             this.errorMessage = "";
         }
     }
 
-}
-
-interface LoginForm {
-    email: string;
-    password: string;
 }

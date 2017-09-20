@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { SharedService } from './services/shared/shared.service';
 import { AuthAPIService } from './services/api/auth/authapi.service';
 
 @Component({
@@ -9,19 +10,22 @@ import { AuthAPIService } from './services/api/auth/authapi.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    public title = 'app';
+
+    public get title() {
+        return this.shared.title;
+    }
 
     public get authInfo() {
         return this.auth.authInfo;
     }
 
-    constructor(private auth: AuthAPIService, private router: Router) {
+    constructor(private shared: SharedService, private auth: AuthAPIService, private router: Router) {
 
     }
 
     ngOnInit() {
-        this.auth.authReady.then((authInfo) => {
-            if (!authInfo.IsAuth && !this.router.isActive('/error', false)) {
+        this.auth.authReady.then(() => {
+            if (!this.authInfo.IsAuth && !this.router.isActive('/error', false)) {
                 this.router.navigate(["/auth/login"]);
             }
         });
