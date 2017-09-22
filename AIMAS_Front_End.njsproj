@@ -66,6 +66,9 @@
     <Content Include="src\app\inventory\searchdialog\searchdialog.component.css" />
     <Content Include="src\app\inventory\searchdialog\searchdialog.component.html" />
     <Content Include="src\assets\.gitkeep" />
+    <Content Include="src\assets\theme.scss">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\styles.css" />

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
 
 html, body, app-root, .full {
   height: 100%;
@@ -22,4 +22,8 @@ html, body, app-root, .full {
 
 .space.left {
   margin-left: 16px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px grey !important;
 }
