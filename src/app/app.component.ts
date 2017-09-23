@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.auth.authReady.then(() => {
-            if (!this.authInfo.IsAuth && !this.router.isActive('/error', false)) {
+        this.auth.authChange.subscribe(info => {
+            if (!info.IsAuth && !this.router.isActive('/error', false)) {
                 this.router.navigate(["/auth/login"]);
             }
         });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { InventorySearch } from '../../models/inventory';
+import { InventorySearch } from '../../../models/inventory';
 
 @Component({
   selector: 'app-searchdialog',

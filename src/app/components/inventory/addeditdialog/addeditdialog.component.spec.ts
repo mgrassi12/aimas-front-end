@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
-import { MaterialImports, MaterialProviders, Inventory } from '../../../test.global';
+import { MaterialImports, MaterialProviders, Inventory } from '../../../../test.global';
 
 import { AddEditDialogComponent } from './addeditdialog.component';
 

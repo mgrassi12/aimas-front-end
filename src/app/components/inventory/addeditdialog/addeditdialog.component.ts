@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DateFormat } from '../../services/shared/shared.service';
-import { Inventory } from '../../models/inventory';
+import { DateFormat } from '../../../services/shared/shared.service';
+import { Inventory } from '../../../models/inventory';
 
 @Component({
     selector: 'app-addeditdialog',

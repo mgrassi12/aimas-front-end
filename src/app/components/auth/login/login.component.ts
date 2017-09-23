@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { SharedService, EMAIL_REGEX } from '../../services/shared/shared.service';
-import { AuthAPIService, UserLoginModel } from '../../services/api/auth/authapi.service';
+import { SharedService, EMAIL_REGEX } from '../../../services/shared/shared.service';
+import { AuthAPIService, UserLoginModel } from '../../../services/api/auth/authapi.service';
 
 @Component({
     selector: 'app-login',

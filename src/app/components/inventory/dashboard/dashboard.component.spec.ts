@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { APIImports, MaterialImports } from '../../../test.global';
+import { APIImports, MaterialImports } from '../../../../test.global';
 
-import { InventoryAPIService } from '../../services/api/inventory/inventoryapi.service';
-import { SharedService } from '../../services/shared/shared.service';
+import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
+import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryDashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {

@@ -11,7 +11,7 @@
     </md-toolbar>
     <md-list>
       <md-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *ngIf="!authInfo.IsAuth">Login</md-list-button>
-      <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *ngIf="authInfo.IsAuth">Inventory Dashboard</md-list-button>
+      <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth="Admin">Inventory Dashboard</md-list-button>
       <md-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *ngIf="authInfo.IsAuth">Inventory Management</md-list-button>
     </md-list>
   </md-sidenav>

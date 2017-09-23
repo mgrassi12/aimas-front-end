@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, PageEvent } from '@angular/material';
 
-import { SharedService } from '../../services/shared/shared.service';
-import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultObj } from '../../services/api/inventory/inventoryapi.service';
-import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../util/arraydatabase';
+import { SharedService } from '../../../services/shared/shared.service';
+import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
+import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 
 import { InventorySearchDialogComponent } from '../searchdialog/searchdialog.component';
 import { AddEditDialogComponent } from '../addeditdialog/addeditdialog.component';

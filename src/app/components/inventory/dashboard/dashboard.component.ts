@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SharedService } from '../../services/shared/shared.service';
-import { InventoryAPIService, Inventory } from '../../services/api/inventory/inventoryapi.service';
+import { SharedService } from '../../../services/shared/shared.service';
+import { InventoryAPIService, Inventory } from '../../../services/api/inventory/inventoryapi.service';
 
 @Component({
     selector: 'inventory-dashboard',

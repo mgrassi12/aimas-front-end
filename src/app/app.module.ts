@@ -16,17 +16,18 @@ import { CdkTableModule } from '@angular/cdk/table';
 
 // App
 import { AppComponent } from './app.component';
-import { InventoryDashboardComponent } from './inventory/dashboard/dashboard.component';
-import { LoginComponent } from './auth/login/login.component';
-import { InventoryManagementComponent } from './inventory/management/management.component'
+import { InventoryDashboardComponent } from './components/inventory/dashboard/dashboard.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { InventoryManagementComponent } from './components/inventory/management/management.component'
 import { ListButtonComponent } from './util/list-button/list-button.component';
+import { InventorySearchDialogComponent } from './components/inventory/searchdialog/searchdialog.component';
+import { AddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
-import { InventorySearchDialogComponent } from './inventory/searchdialog/searchdialog.component';
-import { AddEditDialogComponent } from './inventory/addeditdialog/addeditdialog.component';
+import { AuthModule } from './directives/auth/auth.directive';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AddEditDialogComponent } from './inventory/addeditdialog/addeditdialog.
         ReactiveFormsModule,
         CdkTableModule,
         MomentModule,
+        AuthModule,
         RouterModule.forRoot(
             [
                 { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
