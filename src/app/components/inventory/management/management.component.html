@@ -1,10 +1,9 @@
 <div fxLoyout="column" fxLayoutAlign="center start">
   <div fxFlex fxFlex.gt-md="80">
-    <md-toolbar fxLayout="row">
-      <h1 class="space right">Inventory Management</h1>
-      <!--<md-form-field style="font-size:16px;">
+    <md-toolbar fxLayout="row" fxLayoutAlign="end start">
+      <md-form-field class="space right" style="font-size:16px;">
         <input mdInput placeholder="Quick Search">
-      </md-form-field>-->
+      </md-form-field>
       <button md-icon-button (click)="clearSearch()" mdTooltip="Clear"><md-icon>clear</md-icon></button>
       <button md-button (click)="showSearchOptionsDialog()"><md-icon>search</md-icon><span>Advance Search</span></button>
       <button md-mini-fab (click)="addInventory()" class="space left"><md-icon>add</md-icon></button>
@@ -61,6 +60,22 @@
     </div>
     <div>
       <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
+    </div>
+    <br />
+    <br />
+    <div>
+      <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
+        <md-expansion-panel-header>
+          <md-panel-title>{{item.Name}}</md-panel-title>
+          <md-panel-description></md-panel-description>
+        </md-expansion-panel-header>
+        <md-form-field>
+          <input mdInput placeholder="First name">
+        </md-form-field>
+        <md-form-field>
+          <input mdInput placeholder="Age">
+        </md-form-field>
+      </md-expansion-panel>
     </div>
   </div>
 </div>
