@@ -64,18 +64,39 @@
     <br />
     <br />
     <div>
-      <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
-        <md-expansion-panel-header>
-          <md-panel-title>{{item.Name}}</md-panel-title>
-          <md-panel-description></md-panel-description>
-        </md-expansion-panel-header>
-        <md-form-field>
-          <input mdInput placeholder="First name">
-        </md-form-field>
-        <md-form-field>
-          <input mdInput placeholder="Age">
-        </md-form-field>
-      </md-expansion-panel>
+        <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
+          <md-expansion-panel-header>
+            <md-panel-title>{{item.Name}}</md-panel-title>
+            <md-panel-description>{{item.Description}}</md-panel-description>
+          </md-expansion-panel-header>
+          <div fxlayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <md-card fxFlex="30">
+                <md-card-header>
+                  <md-card-title>Location</md-card-title>
+                </md-card-header>
+                {{item.Location.Name}}
+              </md-card>
+              <md-card fxFlex="30">
+                <md-card-header>
+                  <md-card-title>Expiration Date</md-card-title>
+                </md-card-header>
+                {{item.ExpirationDate}}
+              </md-card>
+              <md-card fxFlex="30">
+                <md-card-header>
+                  <md-card-title>Maintenance Date</md-card-title>
+                </md-card-header>
+                {{item.MaintanceDate}}
+              </md-card>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
+              <button md-raised-button color="accent" (click)="editInventory(item)">Edit</button>
+              <button md-raised-button color="warn" (click)="deleteInventory(item)">Delete</button>
+            </div>
+          </div>
+
+        </md-expansion-panel>
     </div>
   </div>
 </div>
