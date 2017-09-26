@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { HttpErrorResponse } from "@angular/common/http";
 
 //Formats
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -36,6 +37,19 @@ export class SharedService {
 
     public setTitle(title: string) {
         this.title = title;
+    }
+
+    // Static
+
+    public static GetHTTPErrorMessage(errorReponse) {
+        let errMsg: string;
+        if (errorReponse instanceof HttpErrorResponse) {
+            let err = errorReponse.message || JSON.stringify(errorReponse.error);
+            errMsg = `${errorReponse.status} - ${errorReponse.statusText || ''} Details: ${err}`;
+        } else {
+            errMsg = errorReponse.message ? errorReponse.message : errorReponse.toString();
+        }
+        return errMsg;
     }
 
 }

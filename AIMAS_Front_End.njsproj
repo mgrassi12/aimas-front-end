@@ -135,6 +135,7 @@
     <Folder Include="src\environments\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\material.module.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.ts" />
     <TypeScriptCompile Include="src\app\directives\auth\auth.directive.spec.ts" />

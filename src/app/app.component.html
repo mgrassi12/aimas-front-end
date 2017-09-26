@@ -2,7 +2,7 @@
   <md-sidenav #sidenav mode="over">
     <md-toolbar color="accent">
       <h1>Navigation</h1>
-      <md-toolbar-row fxLayout="row">
+      <md-toolbar-row fxLayout="row" *showAuth>
         <md-icon class="space right">account_circle</md-icon>
         <samp>Name</samp>
         <span fxFlex></span>
@@ -10,9 +10,9 @@
       </md-toolbar-row>
     </md-toolbar>
     <md-list>
-      <md-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *ngIf="!authInfo.IsAuth">Login</md-list-button>
-      <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth="Admin">Inventory Dashboard</md-list-button>
-      <md-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *ngIf="authInfo.IsAuth">Inventory Management</md-list-button>
+      <md-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *showAuth="'!'">Login</md-list-button>
+      <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth>Inventory Dashboard</md-list-button>
+      <md-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</md-list-button>
     </md-list>
   </md-sidenav>
   <main class="full" fxLayout="column">

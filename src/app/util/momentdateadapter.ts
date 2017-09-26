@@ -217,4 +217,12 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         return date;
     }
 
+    toIso8601(date: Moment | Date): string {
+        date = this.checkDate(date);
+        return date.toISOString();
+    }
+    fromIso8601(iso8601String: string): Moment {
+        return this.parse(iso8601String, null);
+    }
+
 }

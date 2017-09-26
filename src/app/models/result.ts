@@ -19,6 +19,11 @@ export class Result {
     @JsonMember({ type: Array, elements: Error })
     public Errors: Array<Error>;
 
+    constructor() {
+        this.Success = false;
+        this.ErrorMessage = "";
+    }
+
     public static ResultFromJson(obj: object) {
         return this.CastObj(obj, Result) as Result;
     }

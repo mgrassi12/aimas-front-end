@@ -20,15 +20,23 @@ export class AppComponent implements OnInit {
     }
 
     constructor(private shared: SharedService, private auth: AuthAPIService, private router: Router) {
-
+        this.auth.authChange.subscribe(info => {
+            this.checkAuth();
+        });
+        this.checkAuth();
     }
 
     ngOnInit() {
-        this.auth.authChange.subscribe(info => {
-            if (!info.IsAuth && !this.router.isActive('/error', false)) {
-                this.router.navigate(["/auth/login"]);
-            }
-        });
+
+    }
+
+    private checkAuth() {
+        if (!this.authInfo.IsAuth && !this.router.isActive('/error', false)) {
+            this.router.navigate(["/auth/login"]);
+        }
+        else if (!this.router.isActive('/error', false)) {
+            this.router.navigate(["/inventory/dashboard"]);
+        }
     }
 
     public logout() {

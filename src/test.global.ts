@@ -12,10 +12,10 @@ export const APIImports = [
 // Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DateAdapter, MD_DATE_FORMATS } from '@angular/material';
 import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './app/util/momentdateadapter';
+import { MaterialModule } from './app/material.module';
 export const MaterialImports = [
     BrowserAnimationsModule,
     FlexLayoutModule,

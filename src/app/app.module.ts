@@ -8,11 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 
 //Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule, DateAdapter, MD_DATE_FORMATS } from '@angular/material';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
-import { CdkTableModule } from '@angular/cdk/table';
+import { MaterialModule } from "./material.module";
 
 // App
 import { AppComponent } from './app.component';
@@ -33,14 +29,11 @@ import { AuthModule } from './directives/auth/auth.directive';
 @NgModule({
     imports: [
         BrowserModule,
-        BrowserAnimationsModule,
         CommonModule,
-        FlexLayoutModule,
         MaterialModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        CdkTableModule,
         MomentModule,
         AuthModule,
         RouterModule.forRoot(
@@ -67,9 +60,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         SharedService,
         AuthAPIService,
         InventoryAPIService,
-        { provide: LOCALE_ID, useValue: 'en-AU' },
-        { provide: DateAdapter, useClass: MomentDateAdapter },
-        { provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
+        { provide: LOCALE_ID, useValue: 'en-AU' }        
     ],
     entryComponents: [
         InventorySearchDialogComponent,
