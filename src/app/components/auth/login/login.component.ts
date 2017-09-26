@@ -31,10 +31,7 @@ export class LoginComponent implements OnInit {
     public login() {
         if (!this.inProgress) {
             this.auth.logIn(this.loginModel).subscribe(result => {
-                if (result.Success) {
-                    this.router.navigate(["inventory/dashboard"]);
-                }
-                else {
+                if (!result.Success) {
                     this.errorMessage = result.ErrorMessage;
                 }
 

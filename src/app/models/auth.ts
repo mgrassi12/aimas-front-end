@@ -1,5 +1,7 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
 
+import { User } from './user';
+
 @JsonObject()
 export class CurrentUserInfo {
     @JsonMember()
@@ -8,7 +10,8 @@ export class CurrentUserInfo {
     public IsAdmin: boolean;
     @JsonMember()
     public Role: string;
-
+    @JsonMember()
+    public User: User;
     constructor() {
         this.IsAuth = false;
     }

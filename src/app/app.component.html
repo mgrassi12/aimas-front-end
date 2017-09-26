@@ -4,7 +4,7 @@
       <h1>Navigation</h1>
       <md-toolbar-row fxLayout="row" *showAuth>
         <md-icon class="space right">account_circle</md-icon>
-        <samp>Name</samp>
+        <samp>{{authInfo.User.FirstName}}</samp>
         <span fxFlex></span>
         <button md-icon-button (click)="logout()"><md-icon>exit_to_app</md-icon></button>
       </md-toolbar-row>

@@ -46,11 +46,10 @@ export class AuthAPIService {
             .map(res => ResultObj.ResultObjFromJson<CurrentUserInfo>(res, CurrentUserInfo))
             .catch(errorReponse => {
                 let errorMSG = SharedService.GetHTTPErrorMessage(errorReponse);
-
                 let mockPage = new ResultObj<CurrentUserInfo>();
                 mockPage.ReturnObj = new CurrentUserInfo();
                 mockPage.ErrorMessage = errorMSG;
-
+                this.shared.notification(errorMSG);
                 return Observable.of(mockPage);
             })
             .map(result => {
@@ -68,6 +67,12 @@ export class AuthAPIService {
     public logIn(loginDetails: UserLoginModel) {
         return this.http.post(this.shared.API.Auth.Login, loginDetails)
             .map(res => Result.ResultFromJson(res))
+            .catch(errorReponse => {
+                let errorMSG = SharedService.GetHTTPErrorMessage(errorReponse);
+                let mockPage = new Result();
+                mockPage.ErrorMessage = errorMSG;
+                return Observable.of(mockPage);
+            })
             .map(result => {
                 if (result.Success)
                     this.getInfo().subscribe();
@@ -78,6 +83,12 @@ export class AuthAPIService {
     public logout() {
         return this.http.get(this.shared.API.Auth.Logout)
             .map(res => Result.ResultFromJson(res))
+            .catch(errorReponse => {
+                let errorMSG = SharedService.GetHTTPErrorMessage(errorReponse);
+                let mockPage = new Result();
+                mockPage.ErrorMessage = errorMSG;
+                return Observable.of(mockPage);
+            })
             .map(result => {
                 if (result.Success)
                     this.getInfo().subscribe();

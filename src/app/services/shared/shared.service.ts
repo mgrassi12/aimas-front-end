@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpErrorResponse } from "@angular/common/http";
+import { MdSnackBar } from '@angular/material';
 
 //Formats
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -31,12 +32,18 @@ export class SharedService {
         }
     }
 
-    constructor() {
+    constructor(public snackBar: MdSnackBar) {
         this.title = "AIMAS";
     }
 
     public setTitle(title: string) {
         this.title = title;
+    }
+
+    notification(message: string) {
+        this.snackBar.open(message, null, {
+            duration: 5000,
+        });
     }
 
     // Static

@@ -1,4 +1,15 @@
-import { Directive, ViewContainerRef, TemplateRef, Input, NgModule } from '@angular/core';
+import {
+    Directive,
+    ViewContainerRef,
+    TemplateRef,
+    Input,
+    Output,
+    NgModule,
+    ElementRef,
+    EventEmitter
+} from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
 
 import { AuthAPIService } from '../../services/api/auth/authapi.service';
 
@@ -7,6 +18,8 @@ import { AuthAPIService } from '../../services/api/auth/authapi.service';
     selector: '[showAuth]'
 })
 export class ShowAuthDirective {
+
+    private subcription: Subscription;
 
     private _role: string;
     @Input("showAuth") set role(role: string) {
@@ -25,13 +38,13 @@ export class ShowAuthDirective {
         private templateRef: TemplateRef<any>
     ) {
         this.hasView = false;
-        this.authAPI.authChange.subscribe(info => {
+        this.subcription = this.authAPI.authChange.subscribe(info => {
             this.updateView();
         })
     }
 
     private updateView() {
-        let show = this.eveluateRole();
+        let show = this.eveluate();
         if (show && !this.hasView) {
             // If condition is true add template to DOM
             this.viewContainer.createEmbeddedView(this.templateRef);
@@ -43,7 +56,7 @@ export class ShowAuthDirective {
         }
     }
 
-    private eveluateRole() {
+    private eveluate() {
         if (this.role == "!")
             return !this.authAPI.authInfo.IsAuth;
         else if (this.role != null && this.authAPI.authInfo.Role != null)
@@ -54,13 +67,28 @@ export class ShowAuthDirective {
 
 }
 
+@Directive({ selector: '[authReady]' })
+export class AuthReadyDirective {
+
+    @Output("authReady") private callback: EventEmitter<void>;
+
+    constructor(private authAPI: AuthAPIService, el: ElementRef) {
+        this.callback = new EventEmitter<void>();
+        this.authAPI.authReady.then(() => {
+            this.callback.emit();
+        })
+    }
+}
+
 
 @NgModule({
     declarations: [
-        ShowAuthDirective
+        ShowAuthDirective,
+        AuthReadyDirective
     ],
     exports: [
-        ShowAuthDirective
+        ShowAuthDirective,
+        AuthReadyDirective
     ]
 })
 export class AuthModule { }
