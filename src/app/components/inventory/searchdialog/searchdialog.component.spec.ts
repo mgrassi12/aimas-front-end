@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdNativeDateModule, MdDialogRef } from '@angular/material';
-import { MaterialImports, InventorySearch } from '../../../../test.global';
+import { MaterialModule, InventorySearch } from '../../../../test.global';
 
 import { InventorySearchDialogComponent } from './searchdialog.component';
 
@@ -12,7 +12,7 @@ describe('SearchdialogComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialImports,
+                MaterialModule,
                 MdNativeDateModule,
                 FormsModule
             ],

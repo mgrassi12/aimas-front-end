@@ -1,21 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, TestBed } from '@angular/core/testing';
+import { MaterialModule } from '../../../test.global';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@angular/material';
 
 import { ListButtonComponent } from './list-button.component';
 
 describe("ListButtonComponent", () => {
     let component: ListButtonComponent;
-    let fixture: ComponentFixture<ListButtonComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                RouterTestingModule,
                 MaterialModule,
-                FlexLayoutModule
+                RouterTestingModule
             ],
             declarations: [
                 ListButtonComponent
@@ -24,7 +20,7 @@ describe("ListButtonComponent", () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ListButtonComponent);
+        let fixture = TestBed.createComponent(ListButtonComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

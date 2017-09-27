@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { APIImports, MaterialImports } from '../../../../test.global';
+import { APIImports, MaterialModule } from '../../../../test.global';
 
 import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
 import { SharedService } from '../../../services/shared/shared.service';
@@ -13,7 +13,7 @@ describe('DashboardComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 APIImports,
-                MaterialImports
+                MaterialModule
             ],
             providers: [
                 InventoryAPIService,

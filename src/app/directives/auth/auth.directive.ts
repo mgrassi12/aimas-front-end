@@ -17,7 +17,7 @@ import { AuthAPIService } from '../../services/api/auth/authapi.service';
 @Directive({
     selector: '[showAuth]'
 })
-export class ShowAuthDirective {
+export class AuthShowDirective {
 
     private subcription: Subscription;
 
@@ -59,10 +59,10 @@ export class ShowAuthDirective {
     private eveluate() {
         if (this.role == "!")
             return !this.authAPI.authInfo.IsAuth;
-        else if (this.role != null && this.authAPI.authInfo.Role != null)
-            return this.authAPI.authInfo.IsAuth && this.role.indexOf(this.authAPI.authInfo.Role) != -1;
-        else
+        else if (this.role == null)
             return this.authAPI.authInfo.IsAuth;
+        else if (this.role != null)
+            return this.authAPI.authInfo.IsAuth && this.authAPI.authInfo.Role != null && this.role.indexOf(this.authAPI.authInfo.Role) != -1;
     }
 
 }
@@ -83,11 +83,11 @@ export class AuthReadyDirective {
 
 @NgModule({
     declarations: [
-        ShowAuthDirective,
+        AuthShowDirective,
         AuthReadyDirective
     ],
     exports: [
-        ShowAuthDirective,
+        AuthShowDirective,
         AuthReadyDirective
     ]
 })

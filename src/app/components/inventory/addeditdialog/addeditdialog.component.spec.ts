@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
-import { MaterialImports, MaterialProviders, Inventory } from '../../../../test.global';
+import { MaterialModule, Providers, Inventory } from '../../../../test.global';
 
 import { AddEditDialogComponent } from './addeditdialog.component';
 
@@ -12,7 +12,7 @@ describe('AddeditdialogComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialImports,
+                MaterialModule,
                 FormsModule
             ],
             declarations: [
@@ -20,7 +20,7 @@ describe('AddeditdialogComponent', () => {
             ],
             providers: [
                 { provide: MdDialogRef, useClass: class { } },
-                ...MaterialProviders
+                Providers
             ]
         })
             .compileComponents();

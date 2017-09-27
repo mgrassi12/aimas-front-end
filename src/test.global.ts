@@ -2,53 +2,51 @@
 import { LOCALE_ID } from '@angular/core';
 
 // API Testing
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 export { HttpTestingController } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material';
 export const APIImports = [
-    HttpClientTestingModule
+    HttpClientTestingModule,
+    MatSnackBarModule
 ];
 
+// API
+export { AuthAPIService } from './app/services/api/auth/authapi.service';
+export { SharedService } from './app/services/shared/shared.service';
+export { InventoryAPIService } from './app/services/api/inventory/inventoryapi.service';
 
 // Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CdkTableModule } from '@angular/cdk/table';
-import { DateAdapter, MD_DATE_FORMATS } from '@angular/material';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './app/util/momentdateadapter';
-import { MaterialModule } from './app/material.module';
-export const MaterialImports = [
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MaterialModule,
-    CdkTableModule,
-];
-
-export const MaterialProviders = [
+export { MaterialModule } from './app/material.module';
+export const Providers = [
     { provide: LOCALE_ID, useValue: 'en-AU' },
-    { provide: DateAdapter, useClass: MomentDateAdapter },
-    { provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
 ]
 
 // Others
 export { RouterTestingModule } from '@angular/router/testing';
+export { MomentModule } from 'angular2-moment';
 export * from './app/models/user';
 export * from './app/models/inventory';
 export * from './app/models/auth';
 export * from './app/models/result';
-export { MomentModule } from 'angular2-moment';
+export { AuthModule } from './app/directives/auth/auth.directive';
 
 
 
 // Test Data
-import { Inventory } from './app/models/inventory';
+import { Inventory, Location } from './app/models/inventory';
 
-let I1 = new Inventory();
-I1.ID = 1;
-I1.Name = "Test #1";
-let I2 = new Inventory();
-I2.ID = 2;
-I1.Name = "Test #2";
-let I3 = new Inventory();
-I3.ID = 3;
-I1.Name = "Test #3";
-export const ExpectedInventoryTestData = [I1, I2, I3];
+export const ExpectedInventoryTestData: Array<Inventory> = [
+    createInventoryItem(1, "Test #1"),
+    createInventoryItem(2, "Test #2"),
+    createInventoryItem(3, "Test #3")
+];
+
+function createInventoryItem(id: number, name: string) {
+    let item = new Inventory();
+    item.ID = id;
+    item.Name = name;
+    item.Location = new Location();
+    item.ExpirationDate = new Date();
+    item.MaintanceDate = new Date();
+    return item;
+}

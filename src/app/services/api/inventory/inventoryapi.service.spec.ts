@@ -34,7 +34,7 @@ describe('InventoryapiService', () => {
 
         let httpResponse = new ResultObj<Array<Inventory>>();
         httpResponse.Success = true;
-        httpResponse.ReturnObj = expected;
+        httpResponse.ReturnObj = ExpectedInventoryTestData;
         http.expectOne('/api/inventory/all').flush(httpResponse);
 
         expect(result).toEqual(expected);

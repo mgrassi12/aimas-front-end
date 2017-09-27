@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { APIImports, MaterialImports, RouterTestingModule } from '../../../../test.global';
+import { APIImports, MaterialModule, RouterTestingModule } from '../../../../test.global';
 
 import { LoginComponent } from './login.component';
 import { AuthAPIService } from '../../../services/api/auth/authapi.service';
@@ -16,8 +16,8 @@ describe('LoginComponent', () => {
                 FormsModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
-                ...APIImports,
-                ...MaterialImports
+                APIImports,
+                MaterialModule
             ],
             providers: [
                 AuthAPIService,
