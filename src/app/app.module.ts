@@ -18,12 +18,14 @@ import { InventoryManagementComponent } from './components/inventory/management/
 import { ListButtonComponent } from './util/list-button/list-button.component';
 import { InventorySearchDialogComponent } from './components/inventory/searchdialog/searchdialog.component';
 import { AddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
+import { ConfirmationDialogueComponent } from './util/confirmationdialogue/confirmationdialogue.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
+
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { AuthModule } from './directives/auth/auth.directive';
         LoginComponent,
         InventoryManagementComponent,
         InventorySearchDialogComponent,
-        AddEditDialogComponent
+        AddEditDialogComponent,
+        ConfirmationDialogueComponent
     ],
     providers: [
         SharedService,
@@ -64,7 +67,8 @@ import { AuthModule } from './directives/auth/auth.directive';
     ],
     entryComponents: [
         InventorySearchDialogComponent,
-        AddEditDialogComponent
+        AddEditDialogComponent,
+        ConfirmationDialogueComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,10 @@
+<form #confirmationDialogue="ngForm">
+  <h2 md-dialog-title>{{title}}</h2>
+  <md-dialog-content>
+    <p>{{msgText}}</p>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-raised-button color="primary" [md-dialog-close]="false" class="space right">{{negBtnText}}</button>
+    <button md-raised-button color="accent" [md-dialog-close]="true">{{posBtnText}}</button>
+  </md-dialog-actions>
+</form>
