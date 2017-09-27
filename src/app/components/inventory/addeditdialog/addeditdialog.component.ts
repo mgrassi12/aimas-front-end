@@ -28,6 +28,6 @@ export class AddEditDialogComponent implements OnInit {
     }
 
 
-    public get now() { return Date(); }
+    public get now() { return new Date(); }
 
 }

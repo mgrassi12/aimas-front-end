@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
         this.auth.authChange.subscribe(info => {
             this.checkAuth();
         });
-        this.checkAuth();
     }
 
     ngOnInit() {
@@ -34,7 +33,7 @@ export class AppComponent implements OnInit {
         if (!this.authInfo.IsAuth && !this.router.isActive('/error', false)) {
             this.router.navigate(["/auth/login"]);
         }
-        else if (!this.router.isActive('/error', false)) {
+        else if (this.router.isActive("/auth/login", false)) {
             this.router.navigate(["/inventory/dashboard"]);
         }
     }

@@ -21,9 +21,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DateAdapter, MD_DATE_FORMATS } from '@angular/material';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
 import { CdkTableModule } from '@angular/cdk/table';
-
+import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
 
 const MATERIAL_MODULES = [
     MatButtonModule,

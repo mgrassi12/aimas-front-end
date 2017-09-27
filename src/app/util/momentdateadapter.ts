@@ -26,8 +26,13 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
 
     public constructor( @Inject(LOCALE_ID) locale: string) {
         super();
+        this.setLocale(locale);
+    }
+
+    setLocale(locale: any): void {
+        console.info('setLocale', locale);
         this.locale = locale;
-        this.localeData = moment.localeData(this.locale);
+        this.localeData = moment.localeData(locale);
     }
 
     getYear(date: Moment | Date): number {
@@ -151,17 +156,6 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     addCalendarDays(date: Moment | Date, days: number): Moment {
         date = this.checkDate(date);
         return date.clone().add(days, 'd');
-    }
-
-    getISODateString(date: Moment): string {
-        date = this.checkDate(date);
-        return date.toISOString();
-    }
-
-    setLocale(locale: any): void {
-        console.info('setLocale', locale);
-        this.locale = locale;
-        this.localeData = moment.localeData(locale);
     }
 
     compareDate(first: Moment | Date, second: Moment | Date): number {
