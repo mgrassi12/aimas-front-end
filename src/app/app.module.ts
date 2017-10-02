@@ -18,6 +18,8 @@ import { InventoryManagementComponent } from './components/inventory/management/
 import { ListButtonComponent } from './util/list-button/list-button.component';
 import { InventorySearchDialogComponent } from './components/inventory/searchdialog/searchdialog.component';
 import { InventoryAddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
+import { ConfirmationDialogueComponent } from './util/confirmationdialogue/confirmationdialogue.component';
+import { AddEditUserDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -54,7 +56,9 @@ import { AuthModule } from './directives/auth/auth.directive';
         LoginComponent,
         InventoryManagementComponent,
         InventorySearchDialogComponent,
-        InventoryAddEditDialogComponent
+        InventoryAddEditDialogComponent,
+        ConfirmationDialogueComponent,
+        AddEditUserDialogComponent,
     ],
     providers: [
         SharedService,
@@ -64,7 +68,8 @@ import { AuthModule } from './directives/auth/auth.directive';
     ],
     entryComponents: [
         InventorySearchDialogComponent,
-        InventoryAddEditDialogComponent
+        InventoryAddEditDialogComponent,
+        ConfirmationDialogueComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -57,6 +57,8 @@
     <Content Include="README.md" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.css" />
+    <Content Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.html" />
     <Content Include="src\app\components\auth\login\login.component.css" />
     <Content Include="src\app\components\auth\login\login.component.html" />
     <Content Include="src\app\components\inventory\addeditdialog\addeditdialog.component.css" />
@@ -65,6 +67,8 @@
     <Content Include="src\app\components\inventory\management\management.component.html" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.css" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.html" />
+    <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.css" />
+    <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.html" />
     <Content Include="src\assets\.gitkeep" />
     <Content Include="src\assets\theme.scss">
       <SubType>Code</SubType>
@@ -114,6 +118,7 @@
     <Folder Include="src\" />
     <Folder Include="src\app\" />
     <Folder Include="src\app\components\auth\" />
+    <Folder Include="src\app\components\auth\addedituserdialog\" />
     <Folder Include="src\app\components\auth\login\" />
     <Folder Include="src\app\directives\" />
     <Folder Include="src\app\directives\auth\" />
@@ -130,11 +135,14 @@
     <Folder Include="src\app\services\api\inventory\" />
     <Folder Include="src\app\services\shared\" />
     <Folder Include="src\app\util\" />
+    <Folder Include="src\app\util\confirmationdialogue\" />
     <Folder Include="src\app\util\list-button\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\environments\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.ts" />
     <TypeScriptCompile Include="src\app\material.module.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.ts" />
@@ -165,6 +173,8 @@
     <TypeScriptCompile Include="src\app\services\api\inventory\inventoryapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\shared\shared.service.ts" />
+    <TypeScriptCompile Include="src\app\util\confirmationdialogue\confirmationdialogue.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\util\confirmationdialogue\confirmationdialogue.component.ts" />
     <TypeScriptCompile Include="src\app\util\momentdateadapter.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

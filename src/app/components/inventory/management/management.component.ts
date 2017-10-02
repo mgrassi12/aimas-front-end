@@ -7,6 +7,7 @@ import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arra
 
 import { InventorySearchDialogComponent } from '../searchdialog/searchdialog.component';
 import { InventoryAddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
+import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
 
 import { Moment, isMoment } from 'moment';
 
@@ -131,10 +132,20 @@ export class InventoryManagementComponent implements OnInit {
     }
 
     public deleteInventory(inventory: Inventory) {
-        this.inventory.removeInventory(inventory.ID).subscribe(res => {
-            if (res.Success)
-                alert("success");
-        })
+        var ref = this.dialog.open(ConfirmationDialogueComponent);
+        var instance = ref.componentInstance;
+
+        instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.inventory.removeInventory(inventory.ID).subscribe(res => {
+                        if (res.Success)
+                            alert("success");
+                    });
+            });
     }
 
 }
