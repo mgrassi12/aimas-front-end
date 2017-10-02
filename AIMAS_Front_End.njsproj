@@ -57,6 +57,8 @@
     <Content Include="README.md" />
     <Content Include="src\app\app.component.css" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.css" />
+    <Content Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.html" />
     <Content Include="src\app\components\auth\login\login.component.css" />
     <Content Include="src\app\components\auth\login\login.component.html" />
     <Content Include="src\app\components\inventory\addeditdialog\addeditdialog.component.css" />
@@ -116,6 +118,7 @@
     <Folder Include="src\" />
     <Folder Include="src\app\" />
     <Folder Include="src\app\components\auth\" />
+    <Folder Include="src\app\components\auth\addedituserdialog\" />
     <Folder Include="src\app\components\auth\login\" />
     <Folder Include="src\app\directives\" />
     <Folder Include="src\app\directives\auth\" />
@@ -138,6 +141,8 @@
     <Folder Include="src\environments\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.ts" />
     <TypeScriptCompile Include="src\app\material.module.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.ts" />

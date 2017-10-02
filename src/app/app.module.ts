@@ -25,6 +25,7 @@ import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
+import { AddEditUserDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
 
 
 
@@ -57,7 +58,8 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventoryManagementComponent,
         InventorySearchDialogComponent,
         AddEditDialogComponent,
-        ConfirmationDialogueComponent
+        ConfirmationDialogueComponent,
+        AddEditUserDialogComponent,
     ],
     providers: [
         SharedService,
