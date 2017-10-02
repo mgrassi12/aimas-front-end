@@ -20,7 +20,6 @@ export class InventoryAPIService {
     public getAllInventories() {
         return this.http.get(this.shared.API.Inventory.All)
             .map(res => ResultObj.ResultObjFromJson<Array<Inventory>>(res, Inventory, true));
-
     }
 
     public searchInventory(search: InventorySearch) {

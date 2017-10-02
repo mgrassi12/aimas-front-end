@@ -3,11 +3,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
 import { MaterialModule, Providers, Inventory } from '../../../../test.global';
 
-import { AddEditDialogComponent } from './addeditdialog.component';
+import { InventoryAddEditDialogComponent } from './addeditdialog.component';
 
 describe('AddeditdialogComponent', () => {
-    let component: AddEditDialogComponent;
-    let fixture: ComponentFixture<AddEditDialogComponent>;
+    let component: InventoryAddEditDialogComponent;
+    let fixture: ComponentFixture<InventoryAddEditDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -16,7 +16,7 @@ describe('AddeditdialogComponent', () => {
                 FormsModule
             ],
             declarations: [
-                AddEditDialogComponent
+                InventoryAddEditDialogComponent
             ],
             providers: [
                 { provide: MdDialogRef, useClass: class { } },
@@ -27,7 +27,7 @@ describe('AddeditdialogComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AddEditDialogComponent);
+        fixture = TestBed.createComponent(InventoryAddEditDialogComponent);
         component = fixture.componentInstance;
         component.inventory = new Inventory();
         component.setText("Test", "Test");

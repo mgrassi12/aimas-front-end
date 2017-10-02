@@ -6,7 +6,7 @@ import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultOb
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 
 import { InventorySearchDialogComponent } from '../searchdialog/searchdialog.component';
-import { AddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
+import { InventoryAddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
 
 import { Moment, isMoment } from 'moment';
 
@@ -58,14 +58,16 @@ export class InventoryManagementComponent implements OnInit {
     // Search
 
     public search() {
-        this.inProgress = true;
-        this.inventory.searchInventory(this.searchParams).subscribe(result => {
-            if (result.Success) {
-                this.currentPage = result;
-                this.inventoryDatabase.setDB(result.ReturnObj);
-            }
-            this.inProgress = false;
-        });
+        if (!this.inProgress) {
+            this.inProgress = true;
+            this.inventory.searchInventory(this.searchParams).subscribe(result => {
+                if (result.Success) {
+                    this.currentPage = result;
+                    this.inventoryDatabase.setDB(result.ReturnObj);
+                }
+                this.inProgress = false;
+            });
+        }
     }
 
     public clearSearch() {
@@ -90,7 +92,7 @@ export class InventoryManagementComponent implements OnInit {
     // Inventory
 
     public addInventory() {
-        var ref = this.dialog.open(AddEditDialogComponent);
+        var ref = this.dialog.open(InventoryAddEditDialogComponent);
         var instance = ref.componentInstance;
 
         instance.setText("Add Inventory", "Add");
@@ -110,7 +112,7 @@ export class InventoryManagementComponent implements OnInit {
     }
 
     public editInventory(inventory: Inventory) {
-        var ref = this.dialog.open(AddEditDialogComponent);
+        var ref = this.dialog.open(InventoryAddEditDialogComponent);
         var instance = ref.componentInstance;
 
         instance.setText("Edit Inventory", "Edit");

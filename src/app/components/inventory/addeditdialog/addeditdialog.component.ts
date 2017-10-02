@@ -8,7 +8,7 @@ import { Inventory } from '../../../models/inventory';
     templateUrl: './addeditdialog.component.html',
     styleUrls: ['./addeditdialog.component.css']
 })
-export class AddEditDialogComponent implements OnInit {
+export class InventoryAddEditDialogComponent implements OnInit {
 
     public get DateFormat() { return DateFormat; }
 
