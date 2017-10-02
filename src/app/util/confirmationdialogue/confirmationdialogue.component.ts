@@ -24,11 +24,15 @@ export class ConfirmationDialogueComponent implements OnInit {
         this.title = title;
         this.msgText = msgText;
         this.posBtnText = posBtnText;
-        if (negBtnText != null) {
-            this.negBtnText = negBtnText;
-        } else {
-            this.negBtnText = "Cancel";
-        }
+        this.negBtnText = negBtnText;
+
+    }
+
+    public setText(title: string, msgText: string, posBtnText: string, negBtnText: string) {
+        this.title = title;
+        this.msgText = msgText;
+        this.posBtnText = posBtnText;
+        this.negBtnText = "Cancel";
     }
 
 
