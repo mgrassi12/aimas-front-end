@@ -28,7 +28,6 @@ export class InventoryDashboardComponent implements OnInit {
     public addUser() {
         var ref = this.dialog.open(AddEditUserDialogComponent);
         var instance = ref.componentInstance;
-        instance.
 
         instance.setText("Add User", "Add");
     }

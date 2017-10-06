@@ -3,6 +3,8 @@ import { JsonObject, JsonMember } from '@upe/typedjson';
 @JsonObject()
 export class User {
     @JsonMember()
+    public Id: number;
+    @JsonMember()
     public UserName: string;
     @JsonMember()
     public Email: string;
@@ -10,6 +12,8 @@ export class User {
     public FirstName: string;
     @JsonMember()
     public LastName: string;
+    @JsonMember()
+    public Position: string;
 
     constructor() {
 
