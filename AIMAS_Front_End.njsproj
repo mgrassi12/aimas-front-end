@@ -154,6 +154,7 @@
     <TypeScriptCompile Include="src\app\components\inventory\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\models\alerttime.ts" />
     <TypeScriptCompile Include="src\app\util\arraydatabase.ts" />
     <TypeScriptCompile Include="src\app\models\auth.ts">
       <SubType>Code</SubType>

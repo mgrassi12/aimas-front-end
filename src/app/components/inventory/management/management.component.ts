@@ -96,9 +96,9 @@ export class InventoryManagementComponent implements OnInit {
         var ref = this.dialog.open(InventoryAddEditDialogComponent);
         var instance = ref.componentInstance;
 
-        instance.setText("Add Inventory", "Add");
         instance.inventory = new Inventory();
-        instance.inventory.Location.ID = 1;
+        instance.inventory.CurrentLocation.ID = 1;
+        instance.setText("Add Inventory", "Add");
 
         ref.afterClosed()
             .map(res => JSON.parse(res) as boolean)
@@ -106,8 +106,10 @@ export class InventoryManagementComponent implements OnInit {
                 if (res)
                     this.inventory.addInventory(instance.inventory)
                         .subscribe(res => {
-                            if (res.Success)
-                                alert("Success");
+                            if (res.Success) {
+                                this.search();
+                                this.shared.notification("Add was Successful");
+                            }
                         });
             });
     }
@@ -116,8 +118,8 @@ export class InventoryManagementComponent implements OnInit {
         var ref = this.dialog.open(InventoryAddEditDialogComponent);
         var instance = ref.componentInstance;
 
-        instance.setText("Edit Inventory", "Edit");
         instance.inventory = inventory;
+        instance.setText("Edit Inventory", "Edit");
 
         ref.afterClosed()
             .map(res => JSON.parse(res) as boolean)
@@ -125,8 +127,10 @@ export class InventoryManagementComponent implements OnInit {
                 if (res)
                     this.inventory.updateInventory(instance.inventory)
                         .subscribe(res => {
-                            if (res.Success)
-                                alert("Success");
+                            if (res.Success) {
+                                this.search();
+                                this.shared.notification("Edit was Successful");
+                            }
                         });
             });
     }
@@ -142,8 +146,10 @@ export class InventoryManagementComponent implements OnInit {
             .subscribe(res => {
                 if (res)
                     this.inventory.removeInventory(inventory.ID).subscribe(res => {
-                        if (res.Success)
-                            alert("success");
+                        if (res.Success) {
+                            this.search();
+                            this.shared.notification("Removal was Successful");
+                        }
                     });
             });
     }

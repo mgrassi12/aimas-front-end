@@ -1,6 +1,4 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
-import { Moment, isMoment, Locale } from 'moment';
-import * as moment from 'moment';
 
 @JsonObject()
 export class Location {
@@ -26,15 +24,16 @@ export class Inventory {
     public Description: string;
     @JsonMember({ type: Date })
     public ExpirationDate: Date;
-    @JsonMember({ type: Date })
-    public MaintanceDate: Date;
+    @JsonMember()
+    public MaintenanceIntervalDays: number;
     @JsonMember({ type: Location })
-    public Location: Location;
+    public CurrentLocation: Location;
+    @JsonMember({ type: Location })
+    public DefaultLocation: Location;
 
     public constructor() {
         this.ExpirationDate = new Date();
-        this.MaintanceDate = new Date();
-        this.Location = new Location();
+        this.CurrentLocation = new Location();
     }
 }
 

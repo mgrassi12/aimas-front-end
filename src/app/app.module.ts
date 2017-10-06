@@ -64,12 +64,13 @@ import { AuthModule } from './directives/auth/auth.directive';
         SharedService,
         AuthAPIService,
         InventoryAPIService,
-        { provide: LOCALE_ID, useValue: 'en-AU' }        
+        { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
         InventorySearchDialogComponent,
         InventoryAddEditDialogComponent,
-        ConfirmationDialogueComponent
+        ConfirmationDialogueComponent,
+        AddEditUserDialogComponent
     ],
     bootstrap: [AppComponent]
 })

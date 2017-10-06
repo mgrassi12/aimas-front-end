@@ -35,12 +35,12 @@
 
         <ng-container cdkColumnDef="Maintance">
           <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
-          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.MaintanceDate | date:'mediumDate'" mdTooltipPosition="after">{{row.MaintanceDate | amTimeAgo}}</span></md-cell>
+          <md-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Location">
           <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.Location.Name}} </md-cell>
+          <md-cell *cdkCellDef="let row"> {{row.CurrentLocation.Name}} </md-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Actions">
@@ -64,39 +64,33 @@
     <br />
     <br />
     <div>
-        <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
-          <md-expansion-panel-header>
-            <md-panel-title>{{item.Name}}</md-panel-title>
-            <md-panel-description>{{item.Description}}</md-panel-description>
-          </md-expansion-panel-header>
-          <div fxlayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-              <md-card fxFlex="30">
-                <md-card-header>
-                  <md-card-title>Location</md-card-title>
-                </md-card-header>
-                {{item.Location.Name}}
-              </md-card>
-              <md-card fxFlex="30">
-                <md-card-header>
-                  <md-card-title>Expiration Date</md-card-title>
-                </md-card-header>
-                {{item.ExpirationDate}}
-              </md-card>
-              <md-card fxFlex="30">
-                <md-card-header>
-                  <md-card-title>Maintenance Date</md-card-title>
-                </md-card-header>
-                {{item.MaintanceDate}}
-              </md-card>
-            </div>
-            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
-              <button md-raised-button color="accent" (click)="editInventory(item)">Edit</button>
-              <button md-raised-button color="warn" (click)="deleteInventory(item)">Delete</button>
-            </div>
+      <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
+        <md-expansion-panel-header>
+          <md-panel-title>{{item.Name}}</md-panel-title>
+          <md-panel-description>{{item.Description}}</md-panel-description>
+        </md-expansion-panel-header>
+        <div fxlayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <md-card fxFlex="30">
+              <md-card-header>
+                <md-card-title>Location</md-card-title>
+              </md-card-header>
+              {{item.CurrentLocation.Name}}
+            </md-card>
+            <md-card fxFlex="30">
+              <md-card-header>
+                <md-card-title>Expiration Date</md-card-title>
+              </md-card-header>
+              {{item.ExpirationDate}}
+            </md-card>
           </div>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
+            <button md-raised-button color="accent" (click)="editInventory(item)">Edit</button>
+            <button md-raised-button color="warn" (click)="deleteInventory(item)">Delete</button>
+          </div>
+        </div>
 
-        </md-expansion-panel>
+      </md-expansion-panel>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <form #inventoryForm="ngForm">
   <h2 md-dialog-title>{{title}}</h2>
   <md-dialog-content>
-    <md-input-container>
+    <!--<md-input-container>
       <input mdInput name="id" placeholder="ID" type="number" [(ngModel)]="inventory.ID">
-    </md-input-container>
+    </md-input-container>-->
     <md-input-container>
       <input mdInput name="name" placeholder="Name" type="text" [(ngModel)]="inventory.Name">
     </md-input-container>
@@ -17,10 +17,23 @@
     </md-input-container>
     <md-datepicker #date1></md-datepicker>
     <md-input-container>
-      <input mdInput name="maintanceDate" [mdDatepicker]="date2" placeholder="Maintance Date" [(ngModel)]="inventory.MaintanceDate" [min]="now" [max]="inventory.ExpirationDate">
-      <md-datepicker-toggle mdSuffix [for]="date2"></md-datepicker-toggle>
+      <input mdInput name="maintanceDate" placeholder="Maintance Interval" type="text" [(ngModel)]="inventory.MaintenanceIntervalDays">
     </md-input-container>
-    <md-datepicker #date2></md-datepicker>
+    <br />
+    <div>
+      <span>Expiry Alert Times</span>
+      <div *ngFor="let alert of expirationAlertTimes">
+        <span>{{alert.Name}}</span>
+        <span>{{alert.DaysBefore}}</span>
+      </div>
+    </div>
+    <br />
+    <md-select #slectAlert placeholder="Select Alert Time" style="width:200px;">
+      <md-option *ngFor="let alert of allAlertTimes" [value]="alert.ID">
+        {{ alert.Name }} ({{alert.DaysBefore}})
+      </md-option>
+    </md-select>
+    <button md-raised-button color="accent" (click)="addAlert(slectAlert.value)">{{btnText}}</button>
   </md-dialog-content>
   <md-dialog-actions>
     <button md-raised-button color="primary" [md-dialog-close]="false" class="space right">Cancel</button>

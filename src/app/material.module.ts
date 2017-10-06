@@ -15,7 +15,8 @@ import {
     MatPaginatorModule,
     MatExpansionModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +41,7 @@ const MATERIAL_MODULES = [
     MatExpansionModule,
     MatCardModule,
     MatSnackBarModule,
+    MatSelectModule,
 
     BrowserAnimationsModule,
     FlexLayoutModule,

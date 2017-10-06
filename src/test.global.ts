@@ -47,6 +47,6 @@ function createInventoryItem(id: number, name: string) {
     item.Name = name;
     item.Location = new Location();
     item.ExpirationDate = new Date();
-    item.MaintanceDate = new Date();
+    item.MaintenanceIntervalDays = 10;
     return item;
 }

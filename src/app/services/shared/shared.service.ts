@@ -22,7 +22,9 @@ export class SharedService {
             Search: "/api/inventory/search",
             Add: "/api/inventory/add",
             Update: "/api/inventory/update",
-            Remove: "/api/inventory/remove/{id}"
+            Remove: "/api/inventory/remove/{id}",
+            AllAlerts: "/api/inventory/alerts",
+            Alerts: "/api/inventory/alerts/{id}"
         },
         Auth: {
             Info: "/api/auth/info",

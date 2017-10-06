@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
 import { Inventory, Location, InventorySearch } from '../../../models/inventory';
+import { AlertTime } from '../../../models/alerttime';
 
 // Exports
 export { Result, ResultObj, PageResultObj } from '../../../models/result';
@@ -40,6 +41,16 @@ export class InventoryAPIService {
     public removeInventory(id: number) {
         return this.http.get(this.formatURL(this.shared.API.Inventory.Remove, id))
             .map(res => Result.ResultFromJson(res));
+    }
+
+    public getAlerts() {
+        return this.http.get(this.shared.API.Inventory.AllAlerts)
+            .map(res => ResultObj.ResultObjFromJson<Array<AlertTime>>(res, AlertTime, true));
+    }
+
+    public getInventoryAlerts(inventory: Inventory) {
+        return this.http.get(this.formatURL(this.shared.API.Inventory.Alerts, inventory.ID))
+            .map(res => ResultObj.ResultObjFromJson<Array<AlertTime>>(res, AlertTime, true));
     }
 
 
