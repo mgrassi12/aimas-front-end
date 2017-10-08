@@ -26,6 +26,7 @@ import { UserManagementComponent } from './components/auth/usermanagement/userma
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
+import { AuthModule } from './directives/auth/auth.directive';
 
 
 
@@ -38,12 +39,14 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
         FormsModule,
         ReactiveFormsModule,
         MomentModule,
+        AuthModule,
         RouterModule.forRoot(
             [
                 { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
                 , { path: 'inventory/dashboard', component: InventoryDashboardComponent }
                 , { path: 'inventory/management', component: InventoryManagementComponent }
                 , { path: 'auth/login', component: LoginComponent }
+                , { path: 'auth/usermanagement', component: UserManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only

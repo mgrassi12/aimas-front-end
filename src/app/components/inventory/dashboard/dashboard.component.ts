@@ -3,7 +3,6 @@ import { MdDialog, PageEvent } from '@angular/material';
 
 import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryAPIService, Inventory } from '../../../services/api/inventory/inventoryapi.service';
-import { AddEditUserDialogComponent } from '../../auth/addedituserdialog/addedituserdialog.component';
 
 @Component({
     selector: 'inventory-dashboard',
@@ -25,11 +24,6 @@ export class InventoryDashboardComponent implements OnInit {
         });
     }
 
-    public addUser() {
-        var ref = this.dialog.open(AddEditUserDialogComponent);
-        var instance = ref.componentInstance;
-
-        instance.setText("Add User", "Add");
-    }
+    
 
 }
