@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { User } from '../../../models/user';
+
 @Component({
   selector: 'app-addedituserdialog',
   templateUrl: './addedituserdialog.component.html',
@@ -9,6 +11,8 @@ export class AddEditUserDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;
+    public user: User;
+
 
     constructor() { }
 

@@ -13,6 +13,7 @@
       <md-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *showAuth="'!'">Login</md-list-button>
       <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth>Inventory Dashboard</md-list-button>
       <md-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</md-list-button>
+      <md-list-button Icon="home" Route="auth/usermanagement" (btn-click)="sidenav.close()" *showAuth="admin">User Management</md-list-button>
     </md-list>
   </md-sidenav>
   <main class="full" fxLayout="column">

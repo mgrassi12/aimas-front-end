@@ -20,12 +20,13 @@ import { InventorySearchDialogComponent } from './components/inventory/searchdia
 import { InventoryAddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
 import { ConfirmationDialogueComponent } from './util/confirmationdialogue/confirmationdialogue.component';
 import { AddEditUserDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
+import { UserManagementComponent } from './components/auth/usermanagement/usermanagement.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
-import { AuthModule } from './directives/auth/auth.directive';
+
 
 
 @NgModule({
@@ -37,7 +38,6 @@ import { AuthModule } from './directives/auth/auth.directive';
         FormsModule,
         ReactiveFormsModule,
         MomentModule,
-        AuthModule,
         RouterModule.forRoot(
             [
                 { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
@@ -59,6 +59,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventoryAddEditDialogComponent,
         ConfirmationDialogueComponent,
         AddEditUserDialogComponent,
+        UserManagementComponent,
     ],
     providers: [
         SharedService,
