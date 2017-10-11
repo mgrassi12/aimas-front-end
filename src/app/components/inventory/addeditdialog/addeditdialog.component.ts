@@ -18,6 +18,8 @@ export class InventoryAddEditDialogComponent implements OnInit {
     public options: Array<Option>;
     public expirationFactorVal: number;
     public maintenanceFactorVal: number;
+    public expirationPeriodVal: number;
+    public maintenancePeriodVal: number;
 
     public title: string
     public btnText: string
@@ -59,10 +61,16 @@ export class InventoryAddEditDialogComponent implements OnInit {
 
     public addAlert(period: string, factor: string, maintenance: boolean = false) {
         let days = parseInt(period) * parseInt(factor);
-        let alert = new InventoryAlertTimeModel();
-        alert.Type = maintenance ? AlertInventoryTimeType.Inventory_M_Date : AlertInventoryTimeType.Inventory_E_Date;
-        alert.DaysBefore = days;
-        this.inventory.AlertTimeInventories.push(alert);
+        if (!isNaN(days)) {
+            let alert = new InventoryAlertTimeModel();
+            alert.Type = maintenance ? AlertInventoryTimeType.Inventory_M_Date : AlertInventoryTimeType.Inventory_E_Date;
+            alert.DaysBefore = days;
+            this.inventory.AlertTimeInventories.push(alert);
+        }
+        if (maintenance)
+            this.maintenancePeriodVal = null;
+        else
+            this.expirationPeriodVal = null;
     }
 
     public removeAlert(item: InventoryAlertTimeModel) {

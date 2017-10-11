@@ -25,7 +25,7 @@ export class InventoryManagementComponent implements OnInit {
     public inventoryDatabase: ArrayDatabase<Inventory>;
     public inventoryDataSource: ArrayDataSource<Inventory>;
 
-    public displayedColumns = ['ID', 'Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
+    public displayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
 
 
     constructor(private shared: SharedService, private inventory: InventoryAPIService, public dialog: MatDialog) {

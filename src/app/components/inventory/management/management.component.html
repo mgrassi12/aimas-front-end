@@ -6,17 +6,16 @@
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
       <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
-      <button mat-mini-fab (click)="addInventory()" class="space left"><mat-icon>add</mat-icon></button>
+      <button mat-mini-fab (click)="addInventory()" class="space left" matTooltip="Add"><mat-icon>add</mat-icon></button>
       <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
       <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
     </mat-toolbar>
     <div>
       <mat-table [dataSource]="inventoryDataSource">
-        <!-- Define Table Columns-->
 
         <ng-container cdkColumnDef="ID">
-          <mat-header-cell *cdkHeaderCellDef fxFlex="30px">ID</mat-header-cell>
-          <mat-cell *cdkCellDef="let row" fxFlex="30px"> {{row.ID}} </mat-cell>
+          <mat-header-cell *cdkHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.ID}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Name">
@@ -25,8 +24,8 @@
         </ng-container>
 
         <ng-container cdkColumnDef="Description">
-          <mat-header-cell *cdkHeaderCellDef>Description</mat-header-cell>
-          <mat-cell *cdkCellDef="let row"> {{row.Description}} </mat-cell>
+          <mat-header-cell *cdkHeaderCellDef fxFlex>Description</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxFlex> {{row.Description}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Expiration">
@@ -45,14 +44,15 @@
         </ng-container>
 
         <ng-container cdkColumnDef="Actions">
-          <mat-header-cell *cdkHeaderCellDef fxFlex="40px">Edit</mat-header-cell>
-          <mat-cell *cdkCellDef="let row" fxFlex="40px">
-            <button mat-icon-button (click)="editInventory(row)"><mat-icon>edit</mat-icon></button>
-            <button mat-icon-button (click)="deleteInventory(row)"><mat-icon>delete</mat-icon></button>
+          <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon> </button>
+            <mat-menu #moreMenu="matMenu">
+              <button mat-menu-item (click)="editInventory(row)">Edit</button>
+              <button mat-menu-item (click)="deleteInventory(row)">Remove</button>
+            </mat-menu>
           </mat-cell>
         </ng-container>
-
-        <!-- End -->
 
         <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -62,7 +62,7 @@
     <div>
       <mat-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
     </div>
-    <br />
+    <!--<br />
     <br />
     <div>
       <mat-expansion-panel *ngFor="let item of inventoryDatabase.data">
@@ -92,6 +92,6 @@
         </div>
 
       </mat-expansion-panel>
-    </div>
+    </div>-->
   </div>
 </main>

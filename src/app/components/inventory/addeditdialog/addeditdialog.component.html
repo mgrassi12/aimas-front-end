@@ -48,14 +48,14 @@
             </mat-chip>
           </mat-chip-list>
           <mat-form-field>
-            <input matInput #expirationDays="ngModel" name="expirationDays" placeholder="Period" type="number" ngModel min="1">
+            <input matInput #expirationPeriod="ngModel" name="expirationPeriod" placeholder="Period" type="number" [(ngModel)]="expirationPeriodVal" min="1">
           </mat-form-field>
           <mat-form-field>
             <mat-select #expirationFactor="ngModel" name="expirationFactor" placeholder="Factor" [(ngModel)]="expirationFactorVal">
               <mat-option *ngFor="let option of options" [value]="option.factor">{{option.name}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="addAlert(expirationDays.value, expirationFactor.value)">Add</button>
+          <button mat-raised-button color="primary" (click)="addAlert(expirationPeriod.value, expirationFactor.value)">Add</button>
         </div>
         <div class="alert space top bottom">
           <h1>Maintenance Alerts</h1>
@@ -66,14 +66,14 @@
             </mat-chip>
           </mat-chip-list>
           <mat-form-field>
-            <input matInput #maintenanceDays="ngModel" name="maintenanceDays" placeholder="Period" type="number" ngModel min="1">
+            <input matInput #maintenancePeriod="ngModel" name="maintenancePeriod" placeholder="Period" type="number" [(ngModel)]="maintenancePeriodVal" min="1">
           </mat-form-field>
           <mat-form-field>
             <mat-select #maintenanceFactor="ngModel" name="maintenanceFactor" placeholder="Factor" [value]="1" [(ngModel)]="maintenanceFactorVal">
               <mat-option *ngFor="let option of options" [value]="option.factor">{{option.name}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="addAlert(maintenanceDays.value, maintenanceFactor.value, true)">Add</button>
+          <button mat-raised-button color="primary" (click)="addAlert(maintenancePeriod.value, maintenanceFactor.value, true)">Add</button>
         </div>
         <div>
           <button mat-raised-button color="primary" matStepperPrevious>Back</button>
