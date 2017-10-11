@@ -12,8 +12,9 @@
     <mat-list>
       <mat-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *showAuth="'!'">Login</mat-list-button>
       <mat-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth>Inventory Dashboard</mat-list-button>
-      <mat-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</mat-list-button>
-      <mat-list-button Icon="home" Route="auth/usermanagement" (btn-click)="sidenav.close()" *showAuth="admin">User Management</mat-list-button>
+      <mat-list-button Icon="view_list" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</mat-list-button>
+      <mat-list-button Icon="book" Route="reservation/management" (btn-click)="sidenav.close()" *showAuth>Reservation Management</mat-list-button>
+      <mat-list-button Icon="supervisor_account" Route="user/management" (btn-click)="sidenav.close()" *showAuth="admin">User Management</mat-list-button>
     </mat-list>
   </mat-sidenav>
   <main class="full" fxLayout="column">

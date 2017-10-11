@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { SharedService, EMAIL_REGEX } from '../../../services/shared/shared.service';
 import { AuthAPIService, UserLoginModel } from '../../../services/api/auth/authapi.service';
-import { AddEditUserDialogComponent } from '../addedituserdialog/addedituserdialog.component';
+import { UserAddEditDialogComponent } from '../addedituserdialog/addedituserdialog.component';
 
 @Component({
     selector: 'app-usermanagement',
@@ -22,7 +22,7 @@ export class UserManagementComponent implements OnInit {
     }
 
     public addUser() {
-        var ref = this.dialog.open(AddEditUserDialogComponent);
+        var ref = this.dialog.open(UserAddEditDialogComponent);
         var instance = ref.componentInstance;
 
         instance.setText("Add User", "Add");

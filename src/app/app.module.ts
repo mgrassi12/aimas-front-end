@@ -19,15 +19,16 @@ import { ListButtonComponent } from './util/list-button/list-button.component';
 import { InventorySearchDialogComponent } from './components/inventory/searchdialog/searchdialog.component';
 import { InventoryAddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
 import { ConfirmationDialogueComponent } from './util/confirmationdialogue/confirmationdialogue.component';
-import { AddEditUserDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
+import { UserAddEditDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
 import { UserManagementComponent } from './components/auth/usermanagement/usermanagement.component';
+import { ReservationManagementComponent } from './components/reservation/management/management.component';
+import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
-
 
 
 @NgModule({
@@ -42,11 +43,12 @@ import { AuthModule } from './directives/auth/auth.directive';
         AuthModule,
         RouterModule.forRoot(
             [
-                { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
-                , { path: 'inventory/dashboard', component: InventoryDashboardComponent }
-                , { path: 'inventory/management', component: InventoryManagementComponent }
-                , { path: 'auth/login', component: LoginComponent }
-                , { path: 'auth/usermanagement', component: UserManagementComponent }
+                { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+                { path: 'inventory/dashboard', component: InventoryDashboardComponent },
+                { path: 'inventory/management', component: InventoryManagementComponent },
+                { path: 'auth/login', component: LoginComponent },
+                { path: 'user/management', component: UserManagementComponent },
+                { path: 'reservation/management', component: ReservationManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -61,8 +63,10 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventorySearchDialogComponent,
         InventoryAddEditDialogComponent,
         ConfirmationDialogueComponent,
-        AddEditUserDialogComponent,
+        UserAddEditDialogComponent,
         UserManagementComponent,
+        ReservationManagementComponent,
+        ReservationAddEditDialogComponent,
     ],
     providers: [
         SharedService,
@@ -74,7 +78,8 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventorySearchDialogComponent,
         InventoryAddEditDialogComponent,
         ConfirmationDialogueComponent,
-        AddEditUserDialogComponent
+        UserAddEditDialogComponent,
+        ReservationAddEditDialogComponent
     ],
     bootstrap: [AppComponent]
 })

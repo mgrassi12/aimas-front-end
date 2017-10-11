@@ -1,15 +1,15 @@
 <mat-list-item [ngSwitch]="hasRoute()">
 
   <button mat-button *ngSwitchCase="false" (click)="onBTNClick($event)">
-    <mat-icon mat-list-icon *ngIf="hasIcon()">{{icon}}</mat-icon>
-    <span>
+    <mat-icon mat-list-icon *ngIf="hasIcon()" class="space left">{{icon}}</mat-icon>
+    <span class="space left">
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </span>
   </button>
 
   <a mat-button *ngSwitchCase="true" (click)="onBTNClick($event)" [routerLink]="route" routerLinkActive="active">
-    <mat-icon mat-list-icon *ngIf="hasIcon()">{{icon}}</mat-icon>
-    <span>
+    <mat-icon mat-list-icon *ngIf="hasIcon()" class="space left">{{icon}}</mat-icon>
+    <span class="space left">
       <ng-container *ngTemplateOutlet="content"></ng-container>
     </span>
   </a>

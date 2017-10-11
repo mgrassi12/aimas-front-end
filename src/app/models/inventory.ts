@@ -8,10 +8,6 @@ export class Location {
     public Name: string;
     @JsonMember()
     public Description: string;
-
-    public constructor() {
-        this.ID = -1;
-    }
 }
 
 export enum AlertInventoryTimeType {
