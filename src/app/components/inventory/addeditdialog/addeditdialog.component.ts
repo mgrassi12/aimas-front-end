@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatChipInputEvent } from "@angular/material";
 
 import { DateFormat } from '../../../services/shared/shared.service';
 import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
-import { Inventory } from '../../../models/inventory';
-import { AlertTime } from '../../../models/alerttime';
+import { Inventory, InventoryAlertTimeModel, AlertInventoryTimeType, Location } from '../../../models/inventory';
 
 @Component({
     selector: 'app-addeditdialog',
@@ -13,16 +13,40 @@ import { AlertTime } from '../../../models/alerttime';
 export class InventoryAddEditDialogComponent implements OnInit {
 
     public get DateFormat() { return DateFormat; }
+    public get now() { return new Date(); }
 
-    public inventory: Inventory;
+    public options: Array<Option>;
+    public expirationFactorVal: number;
+    public maintenanceFactorVal: number;
+
     public title: string
     public btnText: string
-    public expirationAlertTimes: Array<AlertTime>;
-    public allAlertTimes: Array<AlertTime>;
+    public inventory: Inventory;
+    public get ExpirationAlerts() {
+        return this.inventory.AlertTimeInventories
+            .filter(item => item.Type == AlertInventoryTimeType.Inventory_E_Date)
+            .sort(this.sortAlerts);
+    }
+    public get maintenanceAlerts() {
+        return this.inventory.AlertTimeInventories
+            .filter(item => item.Type == AlertInventoryTimeType.Inventory_M_Date)
+            .sort(this.sortAlerts);
+    }
+    public locations: Array<Location>;
 
     constructor(private inventoryAPI: InventoryAPIService) {
-        this.expirationAlertTimes = [];
-        this.allAlertTimes = [];
+        this.options = [
+            { factor: 1, name: "Days" },
+            { factor: 7, name: "Weeks" },
+            { factor: 30, name: "Months " },
+            { factor: 365, name: "Years " }
+        ];
+        this.expirationFactorVal = this.options[0].factor;
+        this.maintenanceFactorVal = this.options[0].factor;
+        this.inventoryAPI.getLocations().subscribe(res => {
+            if (res.Success)
+                this.locations = res.ReturnObj;
+        })
     }
 
     ngOnInit() {
@@ -31,22 +55,43 @@ export class InventoryAddEditDialogComponent implements OnInit {
     public setText(title: string, btn: string) {
         this.title = title;
         this.btnText = btn;
+    }
 
-        if (this.inventory.ID != null)
-            this.inventoryAPI.getInventoryAlerts(this.inventory).subscribe(res => {
-                this.expirationAlertTimes = res.ReturnObj;
-            })
-        this.inventoryAPI.getAlerts().subscribe(res => {
-            this.allAlertTimes = res.ReturnObj;
+    public addAlert(period: string, factor: string, maintenance: boolean = false) {
+        let days = parseInt(period) * parseInt(factor);
+        let alert = new InventoryAlertTimeModel();
+        alert.Type = maintenance ? AlertInventoryTimeType.Inventory_M_Date : AlertInventoryTimeType.Inventory_E_Date;
+        alert.DaysBefore = days;
+        this.inventory.AlertTimeInventories.push(alert);
+    }
+
+    public removeAlert(item: InventoryAlertTimeModel) {
+        this.inventory.AlertTimeInventories.splice(this.inventory.AlertTimeInventories.indexOf(item), 1);
+    }
+
+    public decodeDays(days: number) {
+        var option: Option;
+        this.options.forEach(item => {
+            if (days % item.factor == 0)
+                option = item;
         })
+        var num = days / option.factor;
+        return `${num} ${option.name}`;
     }
 
-
-    public get now() { return new Date(); }
-
-    public addAlert(id) {
-        if (id != null)
-            this.expirationAlertTimes.push(this.allAlertTimes.find(x => x.ID == id));
+    private sortAlerts(a: InventoryAlertTimeModel, b: InventoryAlertTimeModel) {
+        if (a.DaysBefore < b.DaysBefore)
+            return -1;
+        else if (a.DaysBefore == b.DaysBefore)
+            return 0;
+        else
+            return 1;
     }
 
+}
+
+
+interface Option {
+    factor: number;
+    name: string;
 }

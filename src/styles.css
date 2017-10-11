@@ -8,6 +8,10 @@ html, body, app-root, .full {
   padding: 0;
 }
 
+[hidden] {
+  visibility: hidden !important;
+}
+
 .space.top {
   margin-top: 16px;
 }

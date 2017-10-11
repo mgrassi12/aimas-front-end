@@ -1,22 +1,22 @@
 <form #userForm="ngForm">
-  <h2 md-dialog-title>{{title}}</h2>
-  <md-dialog-content>
+  <h2 mat-dialog-title>{{title}}</h2>
+  <mat-dialog-content>
 
-    <md-input-container>
-      <input mdInput name="id" placeholder="ID" type="number" [(ngModel)]="user.Id" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput name="firstName" placeholder="First Name" type="text" [(ngModel)]="user.FirstName" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput name="lastName" placeholder="Last Name" type="text" [(ngModel)]="user.LastName" />
-    </md-input-container>
-    <md-input-container>
-      <input mdInput name="email" placeholder="Email" type="text" [(ngModel)]="user.Email" />
-    </md-input-container>
-  </md-dialog-content>
-  <md-dialog-actions>
-    <button md-raised-button color="primary" [md-dialog-close]="false" class="space right">Cancel</button>
-    <button md-raised-button color="accent" [md-dialog-close]="true">{{btnText}}</button>
-  </md-dialog-actions>
+    <mat-form-field>
+      <input matInput name="id" placeholder="ID" type="number" [(ngModel)]="user.Id" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="firstName" placeholder="First Name" type="text" [(ngModel)]="user.FirstName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="lastName" placeholder="Last Name" type="text" [(ngModel)]="user.LastName" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="email" placeholder="Email" type="text" [(ngModel)]="user.Email" />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false" class="space right">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="true">{{btnText}}</button>
+  </mat-dialog-actions>
 </form>

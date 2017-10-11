@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { MaterialModule, Providers, Inventory } from '../../../../test.global';
 
 import { InventoryAddEditDialogComponent } from './addeditdialog.component';
@@ -19,7 +19,7 @@ describe('AddeditdialogComponent', () => {
                 InventoryAddEditDialogComponent
             ],
             providers: [
-                { provide: MdDialogRef, useClass: class { } },
+                { provide: MatDialogRef, useClass: class { } },
                 Providers
             ]
         })

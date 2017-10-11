@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, PageEvent } from '@angular/material';
+import { MatDialog, PageEvent } from '@angular/material';
 
 import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
@@ -25,10 +25,10 @@ export class InventoryManagementComponent implements OnInit {
     public inventoryDatabase: ArrayDatabase<Inventory>;
     public inventoryDataSource: ArrayDataSource<Inventory>;
 
-    public displayedColumns = ['ID', 'Name', 'Description', 'Expiration', 'Maintance', 'Location', 'Actions'];
+    public displayedColumns = ['ID', 'Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
 
 
-    constructor(private shared: SharedService, private inventory: InventoryAPIService, public dialog: MdDialog) {
+    constructor(private shared: SharedService, private inventory: InventoryAPIService, public dialog: MatDialog) {
         this.shared.setTitle("Inventory Management");
 
         this.currentPage = new PageResultObj<Array<Inventory>>();
@@ -38,6 +38,10 @@ export class InventoryManagementComponent implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    public authReady() {
         this.search();
     }
 
@@ -83,7 +87,7 @@ export class InventoryManagementComponent implements OnInit {
         instance.search = this.searchParams;
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
+            .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
                     this.search();
@@ -101,7 +105,7 @@ export class InventoryManagementComponent implements OnInit {
         instance.setText("Add Inventory", "Add");
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
+            .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
                     this.inventory.addInventory(instance.inventory)
@@ -122,7 +126,7 @@ export class InventoryManagementComponent implements OnInit {
         instance.setText("Edit Inventory", "Edit");
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
+            .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
                     this.inventory.updateInventory(instance.inventory)
@@ -142,7 +146,7 @@ export class InventoryManagementComponent implements OnInit {
         instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
 
         ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
+            .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
                     this.inventory.removeInventory(inventory.ID).subscribe(res => {

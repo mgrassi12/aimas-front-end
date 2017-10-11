@@ -3,8 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
-import { Inventory, Location, InventorySearch } from '../../../models/inventory';
-import { AlertTime } from '../../../models/alerttime';
+import { Inventory, Location, InventorySearch, InventoryAlertTimeModel } from '../../../models/inventory';
 
 // Exports
 export { Result, ResultObj, PageResultObj } from '../../../models/result';
@@ -43,14 +42,14 @@ export class InventoryAPIService {
             .map(res => Result.ResultFromJson(res));
     }
 
-    public getAlerts() {
-        return this.http.get(this.shared.API.Inventory.AllAlerts)
-            .map(res => ResultObj.ResultObjFromJson<Array<AlertTime>>(res, AlertTime, true));
-    }
-
     public getInventoryAlerts(inventory: Inventory) {
         return this.http.get(this.formatURL(this.shared.API.Inventory.Alerts, inventory.ID))
-            .map(res => ResultObj.ResultObjFromJson<Array<AlertTime>>(res, AlertTime, true));
+            .map(res => ResultObj.ResultObjFromJson<Array<InventoryAlertTimeModel>>(res, InventoryAlertTimeModel, true));
+    }
+
+    public getLocations() {
+        return this.http.get(this.shared.API.Inventory.Locations)
+            .map(res => ResultObj.ResultObjFromJson<Array<Location>>(res, Location, true));
     }
 
 

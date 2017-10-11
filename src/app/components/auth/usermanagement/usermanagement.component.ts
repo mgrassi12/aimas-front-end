@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, PageEvent } from '@angular/material';
+import { MatDialog, PageEvent } from '@angular/material';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SharedService, EMAIL_REGEX } from '../../../services/shared/shared.service';
-import { AuthAPIService, UserLoginModel, RegisterModel } from '../../../services/api/auth/authapi.service';
-import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
-
-import { AddEditUserDialogComponent } from '../addedituserdialog/addedituserdialog.component';
-
-import { User } from '../../../models/user';
+import { AuthAPIService, UserLoginModel } from '../../../services/api/auth/authapi.service';
+import { UserAddEditDialogComponent } from '../addedituserdialog/addedituserdialog.component';
 
 @Component({
     selector: 'app-usermanagement',
@@ -18,7 +14,7 @@ import { User } from '../../../models/user';
 })
 export class UserManagementComponent implements OnInit {
 
-    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MdDialog, public register: RegisterModel) {
+    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MatDialog) {
         this.shared.setTitle("User Management");
     }
 
@@ -26,24 +22,9 @@ export class UserManagementComponent implements OnInit {
     }
 
     public addUser() {
-        var ref = this.dialog.open(AddEditUserDialogComponent);
+        var ref = this.dialog.open(UserAddEditDialogComponent);
         var instance = ref.componentInstance;
 
-        instance.user = new User();
         instance.setText("Add User", "Add");
-
-        ref.afterClosed()
-            .map(res => JSON.parse(res) as boolean)
-            .subscribe(res => {
-                if (res)
-                    this.auth.newUser(instance.user)
-                        .subscribe(res => {
-                            if (res.Success) {
-                                this.shared.notification("Add was Successful");
-                            }
-                        });
-
-            });
     }
-
 }

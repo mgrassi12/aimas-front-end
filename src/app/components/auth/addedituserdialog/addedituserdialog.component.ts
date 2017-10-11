@@ -7,7 +7,7 @@ import { User } from '../../../models/user';
   templateUrl: './addedituserdialog.component.html',
   styleUrls: ['./addedituserdialog.component.css']
 })
-export class AddEditUserDialogComponent implements OnInit {
+export class UserAddEditDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;

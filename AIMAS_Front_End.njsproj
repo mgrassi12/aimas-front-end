@@ -69,6 +69,10 @@
     <Content Include="src\app\components\inventory\management\management.component.html" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.css" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.html" />
+    <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.css" />
+    <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.html" />
+    <Content Include="src\app\components\reservation\management\management.component.css" />
+    <Content Include="src\app\components\reservation\management\management.component.html" />
     <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.css" />
     <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.html" />
     <Content Include="src\assets\.gitkeep" />
@@ -123,6 +127,9 @@
     <Folder Include="src\app\components\auth\addedituserdialog\" />
     <Folder Include="src\app\components\auth\login\" />
     <Folder Include="src\app\components\auth\usermanagement\" />
+    <Folder Include="src\app\components\reservation\" />
+    <Folder Include="src\app\components\reservation\addeditdialog\" />
+    <Folder Include="src\app\components\reservation\management\" />
     <Folder Include="src\app\directives\" />
     <Folder Include="src\app\directives\auth\" />
     <Folder Include="src\app\components\inventory\" />
@@ -148,6 +155,10 @@
     <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usermanagement\usermanagement.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usermanagement\usermanagement.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\management\management.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\material.module.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.ts" />
@@ -159,7 +170,6 @@
     <TypeScriptCompile Include="src\app\components\inventory\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.ts" />
-    <TypeScriptCompile Include="src\app\models\alerttime.ts" />
     <TypeScriptCompile Include="src\app\util\arraydatabase.ts" />
     <TypeScriptCompile Include="src\app\models\auth.ts">
       <SubType>Code</SubType>

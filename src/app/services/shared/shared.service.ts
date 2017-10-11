@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpErrorResponse } from "@angular/common/http";
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 //Formats
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -23,8 +23,8 @@ export class SharedService {
             Add: "/api/inventory/add",
             Update: "/api/inventory/update",
             Remove: "/api/inventory/remove/{id}",
-            AllAlerts: "/api/inventory/alerts",
-            Alerts: "/api/inventory/alerts/{id}"
+            Alerts: "/api/inventory/alerts/{id}",
+            Locations: "api/inventory/locations"
         },
         Auth: {
             Info: "/api/auth/info",
@@ -35,7 +35,7 @@ export class SharedService {
         }
     }
 
-    constructor(public snackBar: MdSnackBar) {
+    constructor(public snackBar: MatSnackBar) {
         this.title = "AIMAS";
     }
 

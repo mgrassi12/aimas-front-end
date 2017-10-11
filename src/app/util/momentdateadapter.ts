@@ -1,9 +1,9 @@
 import { Inject, LOCALE_ID } from '@angular/core';
-import { DateAdapter, MdDateFormats } from '@angular/material';
+import { DateAdapter, MatDateFormats } from '@angular/material';
 import { Moment, isMoment, Locale } from 'moment';
 import * as moment from 'moment';
 
-export const MOMENT_DATE_FORMATS: MdDateFormats = {
+export const MOMENT_DATE_FORMATS: MatDateFormats = {
     parse: {
         dateInput: 'DD/MM/YYYY'
     },
