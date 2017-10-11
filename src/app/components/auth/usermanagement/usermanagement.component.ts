@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, PageEvent } from '@angular/material';
+import { MatDialog, PageEvent } from '@angular/material';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { AddEditUserDialogComponent } from '../addedituserdialog/addedituserdial
 })
 export class UserManagementComponent implements OnInit {
 
-    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MdDialog) {
+    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MatDialog) {
         this.shared.setTitle("User Management");
     }
 

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdNativeDateModule, MdDialogRef } from '@angular/material';
+import { MatNativeDateModule, MatDialogRef } from '@angular/material';
 import { MaterialModule, InventorySearch } from '../../../../test.global';
 
 import { InventorySearchDialogComponent } from './searchdialog.component';
@@ -13,14 +13,14 @@ describe('SearchdialogComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 MaterialModule,
-                MdNativeDateModule,
+                MatNativeDateModule,
                 FormsModule
             ],
             declarations: [
                 InventorySearchDialogComponent
             ],
             providers: [
-                { provide: MdDialogRef, useClass: class { } }
+                { provide: MatDialogRef, useClass: class { } }
             ]
         })
             .compileComponents();

@@ -14,6 +14,23 @@ export class Location {
     }
 }
 
+export enum AlertInventoryTimeType {
+    Inventory_E_Date = 1,
+    Inventory_M_Date = 2
+}
+
+@JsonObject()
+export class InventoryAlertTimeModel {
+    @JsonMember()
+    public ID: number;
+    @JsonMember()
+    public Type: AlertInventoryTimeType;
+    @JsonMember()
+    public DaysBefore: number;
+    @JsonMember({ type: Date })
+    public SentTime: Date;
+}
+
 @JsonObject()
 export class Inventory {
     @JsonMember()
@@ -30,10 +47,18 @@ export class Inventory {
     public CurrentLocation: Location;
     @JsonMember({ type: Location })
     public DefaultLocation: Location;
+    @JsonMember()
+    public IsArchived: boolean;
+    @JsonMember()
+    public IsCritical: boolean;
+    @JsonMember({ type: Array, elements: InventoryAlertTimeModel })
+    public AlertTimeInventories: Array<InventoryAlertTimeModel>;
 
     public constructor() {
         this.ExpirationDate = new Date();
         this.CurrentLocation = new Location();
+        this.DefaultLocation = new Location();
+        this.AlertTimeInventories = [];
     }
 }
 

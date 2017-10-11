@@ -1,96 +1,97 @@
-<div fxLoyout="column" fxLayoutAlign="center start">
+<main fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
   <div fxFlex fxFlex.gt-md="80">
-    <md-toolbar fxLayout="row" fxLayoutAlign="end start">
-      <md-form-field class="space right" style="font-size:16px;">
-        <input mdInput placeholder="Quick Search">
-      </md-form-field>
-      <button md-icon-button (click)="clearSearch()" mdTooltip="Clear"><md-icon>clear</md-icon></button>
-      <button md-button (click)="showSearchOptionsDialog()"><md-icon>search</md-icon><span>Advance Search</span></button>
-      <button md-mini-fab (click)="addInventory()" class="space left"><md-icon>add</md-icon></button>
-      <md-spinner *ngIf="inProgress" class="space left"></md-spinner>
-    </md-toolbar>
+    <mat-toolbar fxLayout="row" fxLayoutAlign="end start">
+      <mat-form-field class="space right" style="font-size:16px;">
+        <input matInput placeholder="Quick Search">
+      </mat-form-field>
+      <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
+      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
+      <button mat-mini-fab (click)="addInventory()" class="space left"><mat-icon>add</mat-icon></button>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
+      <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
+    </mat-toolbar>
     <div>
-      <md-table [dataSource]="inventoryDataSource">
+      <mat-table [dataSource]="inventoryDataSource">
         <!-- Define Table Columns-->
 
         <ng-container cdkColumnDef="ID">
-          <md-header-cell *cdkHeaderCellDef fxFlex="30px">ID</md-header-cell>
-          <md-cell *cdkCellDef="let row" fxFlex="30px"> {{row.ID}} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef fxFlex="30px">ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxFlex="30px"> {{row.ID}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Name">
-          <md-header-cell *cdkHeaderCellDef>Name</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.Name}} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Name}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Description">
-          <md-header-cell *cdkHeaderCellDef>Description</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.Description}} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef>Description</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Description}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Expiration">
-          <md-header-cell *cdkHeaderCellDef>Expiration</md-header-cell>
-          <md-cell *cdkCellDef="let row"><span [mdTooltip]="row.ExpirationDate | date:'mediumDate'" mdTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}}</span></md-cell>
+          <mat-header-cell *cdkHeaderCellDef>Expiration</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"><span [matTooltip]="row.ExpirationDate | date:'mediumDate'" matTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}}</span></mat-cell>
         </ng-container>
 
-        <ng-container cdkColumnDef="Maintance">
-          <md-header-cell *cdkHeaderCellDef>Maintance</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} </md-cell>
+        <ng-container cdkColumnDef="Maintenance">
+          <mat-header-cell *cdkHeaderCellDef>Maintenance</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Location">
-          <md-header-cell *cdkHeaderCellDef>Location</md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.CurrentLocation.Name}} </md-cell>
+          <mat-header-cell *cdkHeaderCellDef>Location</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.CurrentLocation.Name}} </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Actions">
-          <md-header-cell *cdkHeaderCellDef fxFlex="40px">Edit</md-header-cell>
-          <md-cell *cdkCellDef="let row" fxFlex="40px">
-            <button md-icon-button (click)="editInventory(row)"><md-icon>edit</md-icon></button>
-            <button md-icon-button (click)="deleteInventory(row)"><md-icon>delete</md-icon></button>
-          </md-cell>
+          <mat-header-cell *cdkHeaderCellDef fxFlex="40px">Edit</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxFlex="40px">
+            <button mat-icon-button (click)="editInventory(row)"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button (click)="deleteInventory(row)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
         </ng-container>
 
         <!-- End -->
 
-        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
 
-      </md-table>
+      </mat-table>
     </div>
     <div>
-      <md-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></md-paginator>
+      <mat-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
     </div>
     <br />
     <br />
     <div>
-      <md-expansion-panel *ngFor="let item of inventoryDatabase.data">
-        <md-expansion-panel-header>
-          <md-panel-title>{{item.Name}}</md-panel-title>
-          <md-panel-description>{{item.Description}}</md-panel-description>
-        </md-expansion-panel-header>
+      <mat-expansion-panel *ngFor="let item of inventoryDatabase.data">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{item.Name}}</mat-panel-title>
+          <mat-panel-description>{{item.Description}}</mat-panel-description>
+        </mat-expansion-panel-header>
         <div fxlayout="column" fxLayoutGap="10px" fxLayoutAlign="space-around center">
           <div fxLayout="row" fxLayoutAlign="space-around center">
-            <md-card fxFlex="30">
-              <md-card-header>
-                <md-card-title>Location</md-card-title>
-              </md-card-header>
+            <mat-card fxFlex="30">
+              <mat-card-header>
+                <mat-card-title>Location</mat-card-title>
+              </mat-card-header>
               {{item.CurrentLocation.Name}}
-            </md-card>
-            <md-card fxFlex="30">
-              <md-card-header>
-                <md-card-title>Expiration Date</md-card-title>
-              </md-card-header>
+            </mat-card>
+            <mat-card fxFlex="30">
+              <mat-card-header>
+                <mat-card-title>Expiration Date</mat-card-title>
+              </mat-card-header>
               {{item.ExpirationDate}}
-            </md-card>
+            </mat-card>
           </div>
           <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
-            <button md-raised-button color="accent" (click)="editInventory(item)">Edit</button>
-            <button md-raised-button color="warn" (click)="deleteInventory(item)">Delete</button>
+            <button mat-raised-button color="accent" (click)="editInventory(item)">Edit</button>
+            <button mat-raised-button color="warn" (click)="deleteInventory(item)">Delete</button>
           </div>
         </div>
 
-      </md-expansion-panel>
+      </mat-expansion-panel>
     </div>
   </div>
-</div>
+</main>
