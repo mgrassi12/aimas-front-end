@@ -30,7 +30,8 @@ export class SharedService {
             Info: "/api/auth/info",
             Login: "/api/auth/login",
             Logout: "/api/auth/logout",
-            Users: "/api/auth/users"
+            Users: "/api/auth/users",
+            Add: "/api/auth/register/user"
         }
     }
 
