@@ -96,5 +96,9 @@ export class AuthAPIService {
             });
     }
 
+    public newUser(user: User) {
+        return this.http.post(this.shared.API.Auth.Add, user)
+            .map(res => Result.ResultFromJson(res))
+    }
 
 }

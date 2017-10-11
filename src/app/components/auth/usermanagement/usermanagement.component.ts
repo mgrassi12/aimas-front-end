@@ -4,8 +4,12 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { SharedService, EMAIL_REGEX } from '../../../services/shared/shared.service';
-import { AuthAPIService, UserLoginModel } from '../../../services/api/auth/authapi.service';
+import { AuthAPIService, UserLoginModel, RegisterModel } from '../../../services/api/auth/authapi.service';
+import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
+
 import { AddEditUserDialogComponent } from '../addedituserdialog/addedituserdialog.component';
+
+import { User } from '../../../models/user';
 
 @Component({
     selector: 'app-usermanagement',
@@ -14,7 +18,7 @@ import { AddEditUserDialogComponent } from '../addedituserdialog/addedituserdial
 })
 export class UserManagementComponent implements OnInit {
 
-    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MdDialog) {
+    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MdDialog, public register: RegisterModel) {
         this.shared.setTitle("User Management");
     }
 
@@ -25,6 +29,21 @@ export class UserManagementComponent implements OnInit {
         var ref = this.dialog.open(AddEditUserDialogComponent);
         var instance = ref.componentInstance;
 
+        instance.user = new User();
         instance.setText("Add User", "Add");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.auth.newUser(instance.user)
+                        .subscribe(res => {
+                            if (res.Success) {
+                                this.shared.notification("Add was Successful");
+                            }
+                        });
+
+            });
     }
+
 }
