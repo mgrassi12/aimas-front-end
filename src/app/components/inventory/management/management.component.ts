@@ -9,7 +9,6 @@ import { InventorySearchDialogComponent } from '../searchdialog/searchdialog.com
 import { InventoryAddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
 import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
 
-import { Moment, isMoment } from 'moment';
 
 @Component({
     selector: 'app-management',
@@ -20,6 +19,7 @@ export class InventoryManagementComponent implements OnInit {
 
     public inProgress: boolean;
     public currentPage: PageResultObj<Array<Inventory>>;
+    public quickSearchVal: string;
     public searchParams: InventorySearch;
 
     public inventoryDatabase: ArrayDatabase<Inventory>;
@@ -28,7 +28,7 @@ export class InventoryManagementComponent implements OnInit {
     public displayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
 
 
-    constructor(private shared: SharedService, private inventory: InventoryAPIService, public dialog: MatDialog) {
+    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, public dialog: MatDialog) {
         this.shared.setTitle("Inventory Management");
 
         this.currentPage = new PageResultObj<Array<Inventory>>();
@@ -65,7 +65,7 @@ export class InventoryManagementComponent implements OnInit {
     public search() {
         if (!this.inProgress) {
             this.inProgress = true;
-            this.inventory.searchInventory(this.searchParams).subscribe(result => {
+            this.inventoryAPI.searchInventory(this.searchParams).subscribe(result => {
                 if (result.Success) {
                     this.currentPage = result;
                     this.inventoryDatabase.setDB(result.ReturnObj);
@@ -75,8 +75,15 @@ export class InventoryManagementComponent implements OnInit {
         }
     }
 
+    public quickSearch() {
+        this.searchParams.clear()
+        this.searchParams.Name = this.quickSearchVal;
+        this.search()
+    }
+
     public clearSearch() {
         this.searchParams.clear();
+        this.quickSearchVal = "";
         this.search();
     }
 
@@ -108,7 +115,7 @@ export class InventoryManagementComponent implements OnInit {
             .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
-                    this.inventory.addInventory(instance.inventory)
+                    this.inventoryAPI.addInventory(instance.inventory)
                         .subscribe(res => {
                             if (res.Success) {
                                 this.search();
@@ -129,7 +136,7 @@ export class InventoryManagementComponent implements OnInit {
             .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
-                    this.inventory.updateInventory(instance.inventory)
+                    this.inventoryAPI.updateInventory(instance.inventory)
                         .subscribe(res => {
                             if (res.Success) {
                                 this.search();
@@ -149,7 +156,7 @@ export class InventoryManagementComponent implements OnInit {
             .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
                 if (res)
-                    this.inventory.removeInventory(inventory.ID).subscribe(res => {
+                    this.inventoryAPI.removeInventory(inventory.ID).subscribe(res => {
                         if (res.Success) {
                             this.search();
                             this.shared.notification("Removal was Successful");

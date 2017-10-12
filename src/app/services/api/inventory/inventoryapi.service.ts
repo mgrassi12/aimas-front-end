@@ -3,11 +3,11 @@ import { HttpClient } from "@angular/common/http";
 
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
-import { Inventory, Location, InventorySearch, InventoryAlertTimeModel } from '../../../models/inventory';
+import { Inventory, InventorySearch, InventoryAlertTimeModel } from '../../../models/inventory';
+import { Location } from '../../../models/models';
 
 // Exports
-export { Result, ResultObj, PageResultObj } from '../../../models/result';
-export { Inventory, Location, InventorySearch } from '../../../models/inventory';
+export { Inventory, Location, InventorySearch, Result, ResultObj, PageResultObj };
 
 @Injectable()
 export class InventoryAPIService {

@@ -3,7 +3,9 @@ import { MatChipInputEvent } from "@angular/material";
 
 import { DateFormat } from '../../../services/shared/shared.service';
 import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
-import { Inventory, InventoryAlertTimeModel, AlertInventoryTimeType, Location } from '../../../models/inventory';
+import { Inventory, InventoryAlertTimeModel, AlertInventoryTimeType } from '../../../models/inventory';
+import { Location } from '../../../models/models';
+
 
 @Component({
     selector: 'app-addeditdialog',

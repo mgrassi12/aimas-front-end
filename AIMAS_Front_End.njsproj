@@ -73,6 +73,9 @@
     <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.html" />
     <Content Include="src\app\components\reservation\management\management.component.css" />
     <Content Include="src\app\components\reservation\management\management.component.html" />
+    <Content Include="src\app\components\reservation\searchdialog\searchdialog.component.css" />
+    <Content Include="src\app\components\reservation\searchdialog\searchdialog.component.html" />
+    <Content Include="src\app\models\models.ts" />
     <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.css" />
     <Content Include="src\app\util\confirmationdialogue\confirmationdialogue.component.html" />
     <Content Include="src\assets\.gitkeep" />
@@ -130,6 +133,7 @@
     <Folder Include="src\app\components\reservation\" />
     <Folder Include="src\app\components\reservation\addeditdialog\" />
     <Folder Include="src\app\components\reservation\management\" />
+    <Folder Include="src\app\components\reservation\searchdialog\" />
     <Folder Include="src\app\directives\" />
     <Folder Include="src\app\directives\auth\" />
     <Folder Include="src\app\components\inventory\" />
@@ -143,6 +147,8 @@
     <Folder Include="src\app\services\api\" />
     <Folder Include="src\app\services\api\auth\" />
     <Folder Include="src\app\services\api\inventory\" />
+    <Folder Include="src\app\services\api\reservation\" />
+    <Folder Include="src\app\services\api\util\" />
     <Folder Include="src\app\services\shared\" />
     <Folder Include="src\app\util\" />
     <Folder Include="src\app\util\confirmationdialogue\" />
@@ -159,6 +165,8 @@
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\searchdialog\searchdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\searchdialog\searchdialog.component.ts" />
     <TypeScriptCompile Include="src\app\material.module.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\login\login.component.ts" />
@@ -170,6 +178,11 @@
     <TypeScriptCompile Include="src\app\components\inventory\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\models\reservation.ts" />
+    <TypeScriptCompile Include="src\app\services\api\reservation\reservationapi.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\api\reservation\reservationapi.service.ts" />
+    <TypeScriptCompile Include="src\app\services\api\util\utilapi.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\api\util\utilapi.service.ts" />
     <TypeScriptCompile Include="src\app\util\arraydatabase.ts" />
     <TypeScriptCompile Include="src\app\models\auth.ts">
       <SubType>Code</SubType>

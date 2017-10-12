@@ -2,7 +2,7 @@
   <div fxFlex fxFlex.gt-md="80">
     <mat-toolbar fxLayout="row" fxLayoutAlign="end start">
       <mat-form-field class="space right" style="font-size:16px;">
-        <input matInput placeholder="Quick Search">
+        <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
       <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
@@ -34,8 +34,8 @@
         </ng-container>
 
         <ng-container cdkColumnDef="Maintenance">
-          <mat-header-cell *cdkHeaderCellDef>Maintenance</mat-header-cell>
-          <mat-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} </mat-cell>
+          <mat-header-cell *cdkHeaderCellDef>Maintenance Interval</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} days </mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Location">
