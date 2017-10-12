@@ -33,7 +33,8 @@ export { AuthModule } from './app/directives/auth/auth.directive';
 
 
 // Test Data
-import { Inventory, Location } from './app/models/inventory';
+import { Inventory } from './app/models/inventory';
+import { Location } from './app/models/models';
 
 export const ExpectedInventoryTestData: Array<Inventory> = [
     createInventoryItem(1, "Test #1"),

@@ -26,6 +26,9 @@ export class SharedService {
             Alerts: "/api/inventory/alerts/{id}",
             Locations: "api/inventory/locations"
         },
+        Reservation: {
+            Search:"api/reservation/search"
+        },
         Auth: {
             Info: "/api/auth/info",
             Login: "/api/auth/login",

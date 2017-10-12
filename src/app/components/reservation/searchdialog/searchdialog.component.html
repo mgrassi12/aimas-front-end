@@ -1,0 +1,12 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>Search Reservation</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="UserName" type="text" [(ngModel)]="search.UserName">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="true">Search</button>
+  </mat-dialog-actions>
+</div>

@@ -28,6 +28,7 @@ import { ReservationAddEditDialogComponent } from './components/reservation/adde
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
+import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
 
 
@@ -72,6 +73,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         SharedService,
         AuthAPIService,
         InventoryAPIService,
+        ReservationAPIService,
         { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
