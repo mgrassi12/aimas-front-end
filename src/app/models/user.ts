@@ -41,3 +41,29 @@ export class UserLoginModel {
 
     }
 }
+
+@JsonObject()
+export class UserSearch {
+    @JsonMember()
+    public FirstName: string;
+    @JsonMember()
+    public LastName: string;
+    @JsonMember()
+    public Email: string;
+
+    @JsonMember()
+    public PageIndex: number;
+    @JsonMember()
+    public PageSize: number;
+
+    public constructor() {
+        this.PageIndex = 0;
+        this.PageSize = 25;
+    }
+
+    public clear() {
+        this.FirstName = null;
+        this.LastName = null;
+        this.Email = null;
+    }
+}

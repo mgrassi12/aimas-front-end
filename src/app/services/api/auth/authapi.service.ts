@@ -3,14 +3,14 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, Subscriber, Subject } from 'rxjs';
 
 import { SharedService } from '../../shared/shared.service';
-import { Result, ResultObj } from '../../../models/result';
+import { Result, ResultObj, PageResultObj } from '../../../models/result';
 import { CurrentUserInfo } from '../../../models/auth';
-import { User, RegisterModel, UserLoginModel } from '../../../models/user';
+import { User, RegisterModel, UserLoginModel, UserSearch } from '../../../models/user';
 
 // Exports
-export { Result, ResultObj } from '../../../models/result';
+export { Result, ResultObj, PageResultObj } from '../../../models/result';
 export { CurrentUserInfo } from '../../../models/auth';
-export { User, RegisterModel, UserLoginModel } from '../../../models/user';
+export { User, RegisterModel, UserLoginModel, UserSearch } from '../../../models/user';
 
 
 @Injectable()
@@ -99,6 +99,11 @@ export class AuthAPIService {
     public newUser(user: User) {
         return this.http.post(this.shared.API.Auth.Add, user)
             .map(res => Result.ResultFromJson(res))
+    }
+
+    public searchUser(search: UserSearch) {
+        return this.http.post(this.shared.API.Inventory.Search, search)
+            .map(res => PageResultObj.PageResultObjFromJson<Array<User>>(res, User, true));
     }
 
 }
