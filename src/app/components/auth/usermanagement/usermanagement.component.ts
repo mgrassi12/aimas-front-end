@@ -37,8 +37,8 @@ export class UserManagementComponent implements OnInit {
 
     public authReady() {
         this.search();
+        
     }
-
     //Searching
 
     public search() {
