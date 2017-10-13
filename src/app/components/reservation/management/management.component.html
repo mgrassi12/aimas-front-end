@@ -46,7 +46,7 @@
         <ng-container cdkColumnDef="Actions">
           <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
           <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
-            <button mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon> </button>
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" *showAuth="'Admin'"><mat-icon>more_vert</mat-icon> </button>
             <mat-menu #moreMenu="matMenu">
               <button mat-menu-item (click)="editReservation(row)">Edit</button>
               <button mat-menu-item (click)="deleteReservation(row)">Remove</button>

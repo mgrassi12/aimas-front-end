@@ -63,6 +63,8 @@
     <Content Include="src\app\components\auth\login\login.component.html" />
     <Content Include="src\app\components\auth\usermanagement\usermanagement.component.css" />
     <Content Include="src\app\components\auth\usermanagement\usermanagement.component.html" />
+    <Content Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.css" />
+    <Content Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.html" />
     <Content Include="src\app\components\inventory\addeditdialog\addeditdialog.component.css" />
     <Content Include="src\app\components\inventory\addeditdialog\addeditdialog.component.html" />
     <Content Include="src\app\components\inventory\management\management.component.css" />
@@ -130,6 +132,7 @@
     <Folder Include="src\app\components\auth\addedituserdialog\" />
     <Folder Include="src\app\components\auth\login\" />
     <Folder Include="src\app\components\auth\usermanagement\" />
+    <Folder Include="src\app\components\auth\usersearchdialog\" />
     <Folder Include="src\app\components\reservation\" />
     <Folder Include="src\app\components\reservation\addeditdialog\" />
     <Folder Include="src\app\components\reservation\management\" />
@@ -161,6 +164,8 @@
     <TypeScriptCompile Include="src\app\components\auth\addedituserdialog\addedituserdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usermanagement\usermanagement.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usermanagement\usermanagement.component.ts" />
+    <TypeScriptCompile Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.spec.ts" />

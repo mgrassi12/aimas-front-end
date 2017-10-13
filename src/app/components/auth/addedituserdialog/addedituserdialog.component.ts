@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../../../models/user';
+import { RegisterModel } from '../../../models/user';
 
 @Component({
   selector: 'app-addedituserdialog',
@@ -11,7 +11,7 @@ export class UserAddEditDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;
-    public user: User;
+    public user: RegisterModel;
 
 
     constructor() { }

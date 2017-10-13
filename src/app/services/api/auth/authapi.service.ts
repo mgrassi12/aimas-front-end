@@ -96,9 +96,15 @@ export class AuthAPIService {
             });
     }
 
-    public newUser(user: User) {
+    public newUser(user: RegisterModel) {
         return this.http.post(this.shared.API.Auth.Add, user)
             .map(res => Result.ResultFromJson(res))
+    }
+
+    public updateUser(user: RegisterModel) {
+        return this.http.post(this.shared.API.Auth.Update, user)
+            .map(res => Result.ResultFromJson(res));
+
     }
 
     public searchUser(search: UserSearch) {

@@ -1,5 +1,9 @@
 
-<h2 mat-dialog-title>{{title}}</h2>
+<h2 mat-dialog-title fxFlexLayout="row">
+  <span fxFlex>{{title}}</span>
+  <button mat-mini-fab color="warn" [mat-dialog-close]="false" matTooltip="Close"><mat-icon>close</mat-icon></button>
+</h2>
+
 <mat-dialog-content>
   <mat-horizontal-stepper linear>
     <mat-step [stepControl]="part1Form">
@@ -12,7 +16,7 @@
           <input matInput #name="ngModel" name="lastName" placeholder="Last Name" type="text" [(ngModel)]="user.LastName" required>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="!part1Form.valid">Next</button>
         </div>
       </form>
     </mat-step>
@@ -20,12 +24,27 @@
     <mat-step [stepControl]="part2Form">
       <form #part2Form="ngForm">
         <ng-template matStepLabel>Login Credentials</ng-template>
-        <mat-form-field>
-          <input matInput #name="ngModel" name="email" placeholder="Email" type="text" [(ngModel)]="user.Email" required>
-        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <input matInput #name="ngModel" name="email" placeholder="Email" type="text" [(ngModel)]="user.Email" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput #name="ngModel" name="password" placeholder="Password" type="text" [(ngModel)]="user.Password" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput #name="ngModel" name="position" placeholder="Position" type="text" [(ngModel)]="user.Position" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select #role="ngModel" name="role" placeholder="Role" [(ngModel)]="user.UserRoles">
+              <mat-option *ngFor="let role of UserRole" [value]="role.Name">{{role.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="!part2Form.valid">Next</button>
         </div>
       </form>
     </mat-step>
@@ -34,14 +53,8 @@
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="accent" [mat-dialog-close]="true">{{btnText}}</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-
-
-
-  <mat-dialog-actions>
-    <button mat-raised-button color="primary" [mat-dialog-close]="false" class="space right">Cancel</button>
-    <button mat-raised-button color="accent" [mat-dialog-close]="true">{{btnText}}</button>
-  </mat-dialog-actions>

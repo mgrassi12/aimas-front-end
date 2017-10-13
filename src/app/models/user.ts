@@ -1,5 +1,11 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
 
+export class Role {
+
+    public Name: string;
+
+}
+
 @JsonObject()
 export class User {
     @JsonMember()
@@ -14,6 +20,8 @@ export class User {
     public LastName: string;
     @JsonMember()
     public Position: string;
+    @JsonMember({ type: Array, elements: Role })
+    public UserRoles: Array<Role>;
 
     constructor() {
 

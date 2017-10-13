@@ -23,6 +23,8 @@ import { UserAddEditDialogComponent } from './components/auth/addedituserdialog/
 import { UserManagementComponent } from './components/auth/usermanagement/usermanagement.component';
 import { ReservationManagementComponent } from './components/reservation/management/management.component';
 import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
+import { ReservationSearchDialogComponent } from './components/reservation/searchdialog/searchdialog.component';
+import { UserSearchDialogComponent } from './components/auth/usersearchdialog/usersearchdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -30,6 +32,7 @@ import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
+
 
 
 @NgModule({
@@ -68,6 +71,8 @@ import { AuthModule } from './directives/auth/auth.directive';
         UserManagementComponent,
         ReservationManagementComponent,
         ReservationAddEditDialogComponent,
+        ReservationSearchDialogComponent,
+        UserSearchDialogComponent
     ],
     providers: [
         SharedService,
@@ -81,7 +86,9 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventoryAddEditDialogComponent,
         ConfirmationDialogueComponent,
         UserAddEditDialogComponent,
-        ReservationAddEditDialogComponent
+        ReservationAddEditDialogComponent,
+        ReservationSearchDialogComponent,
+        UserSearchDialogComponent
     ],
     bootstrap: [AppComponent]
 })

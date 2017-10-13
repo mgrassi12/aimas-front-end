@@ -108,7 +108,7 @@ export class InventoryManagementComponent implements OnInit {
         var instance = ref.componentInstance;
 
         instance.inventory = new Inventory();
-        instance.inventory.CurrentLocation.ID = 1;
+        //instance.inventory.CurrentLocation.ID = 1;
         instance.setText("Add Inventory", "Add");
 
         ref.afterClosed()
