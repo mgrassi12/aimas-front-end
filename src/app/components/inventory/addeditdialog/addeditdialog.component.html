@@ -1,4 +1,8 @@
-<h2 mat-dialog-title>{{title}}</h2>
+<h2 mat-dialog-title fxFlexLayout="row">
+  <span fxFlex>{{title}}</span>
+  <button mat-mini-fab color="warn" [mat-dialog-close]="false" matTooltip="Close"><mat-icon>close</mat-icon></button>
+</h2>
+
 <mat-dialog-content>
   <mat-horizontal-stepper linear>
     <mat-step [stepControl]="part1Form">
@@ -17,7 +21,7 @@
           <mat-datepicker #date1></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
-          <input matInput #maintenanceDate="ngModel" name="maintenanceDate" placeholder="Maintenance Interval (Days)" type="number" [(ngModel)]="inventory.MaintenanceIntervalDays" required min="1">
+          <input matInput #maintenanceDate="ngModel" name="maintenanceDate" placeholder="Maintenance Interval (Days)" type="number" [(ngModel)]="inventory.MaintenanceIntervalDays" required min="1" step="1">
         </mat-form-field>
         <br />
         <mat-form-field>
@@ -48,7 +52,7 @@
             </mat-chip>
           </mat-chip-list>
           <mat-form-field>
-            <input matInput #expirationPeriod="ngModel" name="expirationPeriod" placeholder="Period" type="number" [(ngModel)]="expirationPeriodVal" min="1">
+            <input matInput #expirationPeriod="ngModel" name="expirationPeriod" placeholder="Period" type="number" [(ngModel)]="expirationPeriodVal" min="1" step="1">
           </mat-form-field>
           <mat-form-field>
             <mat-select #expirationFactor="ngModel" name="expirationFactor" placeholder="Factor" [(ngModel)]="expirationFactorVal">
@@ -66,7 +70,7 @@
             </mat-chip>
           </mat-chip-list>
           <mat-form-field>
-            <input matInput #maintenancePeriod="ngModel" name="maintenancePeriod" placeholder="Period" type="number" [(ngModel)]="maintenancePeriodVal" min="1">
+            <input matInput #maintenancePeriod="ngModel" name="maintenancePeriod" placeholder="Period" type="number" [(ngModel)]="maintenancePeriodVal" min="1" step="1">
           </mat-form-field>
           <mat-form-field>
             <mat-select #maintenanceFactor="ngModel" name="maintenanceFactor" placeholder="Factor" [value]="1" [(ngModel)]="maintenanceFactorVal">
@@ -91,6 +95,3 @@
     </mat-step>
   </mat-horizontal-stepper>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-raised-button color="primary" [mat-dialog-close]="false" class="space right">Cancel</button>
-</mat-dialog-actions>
