@@ -28,7 +28,7 @@ export class InventoryManagementComponent implements OnInit {
     public displayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
 
 
-    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, public dialog: MatDialog) {
+    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, private dialog: MatDialog) {
         this.shared.setTitle("Inventory Management");
 
         this.currentPage = new PageResultObj<Array<Inventory>>();

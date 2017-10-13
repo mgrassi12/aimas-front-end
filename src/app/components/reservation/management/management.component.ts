@@ -11,9 +11,9 @@ import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogu
 
 
 @Component({
-  selector: 'app-management',
-  templateUrl: './management.component.html',
-  styleUrls: ['./management.component.css']
+    selector: 'app-management',
+    templateUrl: './management.component.html',
+    styleUrls: ['./management.component.css']
 })
 export class ReservationManagementComponent implements OnInit {
 
@@ -28,7 +28,7 @@ export class ReservationManagementComponent implements OnInit {
     public displayedColumns = ['UserName', 'BookingPurpose', 'BookingStart', 'BookingEnd', 'Location', 'Actions'];
 
 
-    constructor(private shared: SharedService, private reservationAPI: ReservationAPIService, public dialog: MatDialog) {
+    constructor(private shared: SharedService, private reservationAPI: ReservationAPIService, private dialog: MatDialog) {
         this.shared.setTitle("Reservation Management");
 
         this.currentPage = new PageResultObj<Array<Reservation>>();
