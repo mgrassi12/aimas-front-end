@@ -26,8 +26,11 @@ export class UserManagementComponent implements OnInit {
 
     public displayedColumns = ['FirstName', 'LastName', 'Email', 'Actions'];
 
-    constructor(private shared: SharedService, private auth: AuthAPIService, public dialog: MatDialog, public user: User) {
+    constructor(private shared: SharedService, private auth: AuthAPIService, private dialog: MatDialog) {
         this.shared.setTitle("User Management");
+
+        this.searchParams = new UserSearch();
+        this.currentPage = new PageResultObj<Array<User>>();
         this.userDatabase = new ArrayDatabase<User>();
         this.userDataSource = new ArrayDataSource(this.userDatabase);
     }

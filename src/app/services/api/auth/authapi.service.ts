@@ -102,7 +102,7 @@ export class AuthAPIService {
     }
 
     public searchUser(search: UserSearch) {
-        return this.http.post(this.shared.API.Inventory.Search, search)
+        return this.http.post(this.shared.API.Auth.SearchUsers, search)
             .map(res => PageResultObj.PageResultObjFromJson<Array<User>>(res, User, true));
     }
 
