@@ -6,7 +6,8 @@
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
       <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
-      <button mat-mini-fab (click)="addInventory()" class="space left" matTooltip="Add" *showAuth="'Admin'"><mat-icon>add</mat-icon></button>
+      <button mat-mini-fab (click)="addInventory()" class="space left" matTooltip="Add Inventory" *showAuth="'Admin'"><mat-icon>add</mat-icon></button>
+      <div *ngIf="selectedInventory.length > 0"><button mat-mini-fab (click)="newReservation()" class="space left" matTooltip="Reserve Inventory" *showAuth><mat-icon>save</mat-icon></button></div>
       <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
       <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
     </mat-toolbar>
@@ -41,6 +42,11 @@
         <ng-container cdkColumnDef="Location">
           <mat-header-cell *cdkHeaderCellDef>Location</mat-header-cell>
           <mat-cell *cdkCellDef="let row"> {{row.CurrentLocation.Name}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Reserve">
+          <mat-header-cell *cdkHeaderCellDef>Reserve</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"><mat-checkbox [checked]="isSelected(row.ID)" (change)="reserve(row.ID, $event.checked)"></mat-checkbox></mat-cell>
         </ng-container>
 
         <ng-container cdkColumnDef="Actions">

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, PageEvent } from '@angular/material';
 
-import { SharedService } from '../../../services/shared/shared.service';
-import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
-
+import { SharedService } from '../../../services/shared/shared.service';
+import { InventoryAPIService, Inventory, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
 import { InventorySearchDialogComponent } from '../searchdialog/searchdialog.component';
 import { InventoryAddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
 import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
+import { ReservationAddEditDialogComponent } from '../../reservation/addeditdialog/addeditdialog.component';
+import { ReservationAPIService, Reservation } from '../../../services/api/reservation/reservationapi.service';
 
 
 @Component({
@@ -22,19 +23,22 @@ export class InventoryManagementComponent implements OnInit {
     public quickSearchVal: string;
     public searchParams: InventorySearch;
 
+    public displayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Reserve', 'Actions'];
+
     public inventoryDatabase: ArrayDatabase<Inventory>;
     public inventoryDataSource: ArrayDataSource<Inventory>;
 
-    public displayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location', 'Actions'];
+    public selectedInventory: Array<Inventory>;
 
 
-    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, private dialog: MatDialog) {
+    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, private reservationAPI: ReservationAPIService, private dialog: MatDialog) {
         this.shared.setTitle("Inventory Management");
 
         this.currentPage = new PageResultObj<Array<Inventory>>();
         this.searchParams = new InventorySearch();
         this.inventoryDatabase = new ArrayDatabase<Inventory>();
         this.inventoryDataSource = new ArrayDataSource(this.inventoryDatabase);
+        this.selectedInventory = [];
     }
 
     ngOnInit() {
@@ -108,7 +112,6 @@ export class InventoryManagementComponent implements OnInit {
         var instance = ref.componentInstance;
 
         instance.inventory = new Inventory();
-        //instance.inventory.CurrentLocation.ID = 1;
         instance.setText("Add Inventory", "Add");
 
         ref.afterClosed()
@@ -162,6 +165,44 @@ export class InventoryManagementComponent implements OnInit {
                             this.shared.notification("Removal was Successful");
                         }
                     });
+            });
+    }
+
+
+    public isSelected(id: number) {
+        return this.selectedInventory.find(x => x.ID == id) != null;
+    }
+
+    public reserve(id: number, state: boolean) {
+        var item = this.inventoryDatabase.data.find(x => x.ID == id);
+        if (state && !this.selectedInventory.includes(item)) {
+            this.selectedInventory.push(item);
+        }
+        else if (this.selectedInventory.includes(item)) {
+            this.selectedInventory.splice(this.selectedInventory.indexOf(item));
+        }
+    }
+
+    public newReservation() {
+        var ref = this.dialog.open(ReservationAddEditDialogComponent);
+        var instance = ref.componentInstance;
+
+        instance.reservation = new Reservation();
+        instance.reservation.Inventories = this.selectedInventory;
+        instance.setText("Add Reservation", "Add");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res) {
+                    this.reservationAPI.addReservation(instance.reservation)
+                        .subscribe(res => {
+                            if (res.Success) {
+                                this.shared.notification("Reservation was Successful");
+                            }
+                        });
+                    this.selectedInventory = [];
+                }
             });
     }
 

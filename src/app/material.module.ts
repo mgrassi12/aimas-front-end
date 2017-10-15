@@ -19,7 +19,8 @@ import {
     MatSelectModule,
     MatStepperModule,
     MatChipsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +49,7 @@ const MATERIAL_MODULES = [
     MatStepperModule,
     MatChipsModule,
     MatMenuModule,
+    MatCheckboxModule,
 
     BrowserAnimationsModule,
     FlexLayoutModule,

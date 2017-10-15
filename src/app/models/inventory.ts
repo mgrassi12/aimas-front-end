@@ -3,7 +3,7 @@ import { JsonObject, JsonMember } from '@upe/typedjson';
 import { Location } from "./models";
 
 
-export enum AlertInventoryTimeType {
+export enum InventoryAlertTimeType {
     Inventory_E_Date = 1,
     Inventory_M_Date = 2
 }
@@ -13,7 +13,7 @@ export class InventoryAlertTimeModel {
     @JsonMember()
     public ID: number;
     @JsonMember()
-    public Type: AlertInventoryTimeType;
+    public Type: InventoryAlertTimeType;
     @JsonMember()
     public DaysBefore: number;
     @JsonMember({ type: Date })
@@ -43,8 +43,8 @@ export class Inventory {
     @JsonMember({ type: Array, elements: InventoryAlertTimeModel })
     public AlertTimeInventories: Array<InventoryAlertTimeModel>;
 
-    public constructor() {
-        this.ExpirationDate = new Date();
+    public constructor(ID: number = null) {
+        this.ID = ID;
         this.CurrentLocation = new Location();
         this.DefaultLocation = new Location();
         this.AlertTimeInventories = [];

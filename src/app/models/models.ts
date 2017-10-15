@@ -8,4 +8,8 @@ export class Location {
     public Name: string;
     @JsonMember()
     public Description: string;
+
+    public constructor() {
+
+    }
 }
