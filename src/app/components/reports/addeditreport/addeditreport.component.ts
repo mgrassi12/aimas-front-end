@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Report } from "../../../models/report";
+import { AuthAPIService } from "../../../../test.global";
+import { User } from "../../../models/user";
 
 @Component({
     selector: 'app-addeditreport',
@@ -17,9 +19,13 @@ export class AddeditreportComponent implements OnInit {
     }
 
     public report: Report;
+    public users: Array<User>;
 
-    constructor() {
-
+    constructor(private authAPI: AuthAPIService) {
+        this.authAPI.getUsers().subscribe(res => {
+            if (res.Success)
+                this.users = res.ReturnObj;
+        });
     }
 
     ngOnInit() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, PageEvent } from '@angular/material';
 
 import { SharedService } from '../../../services/shared/shared.service';
-import { InventoryAPIService, Inventory, Location, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
+import { InventoryAPIService, Inventory, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
 import { ReservationAPIService, Reservation, ReservationSearch,} from '../../../services/api/reservation/reservationapi.service';
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 

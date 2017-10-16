@@ -54,7 +54,7 @@ export class UserManagementComponent implements OnInit {
     public search() {
         if (!this.inProgress) {
             this.inProgress = true;
-            this.authAPI.searchUser(this.searchParams).subscribe(result => {
+            this.authAPI.searchUsers(this.searchParams).subscribe(result => {
                 if (result.Success) {
                     this.currentPage = result;
                     this.userDatabase.setDB(result.ReturnObj);

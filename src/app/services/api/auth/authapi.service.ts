@@ -107,7 +107,12 @@ export class AuthAPIService {
 
     }
 
-    public searchUser(search: UserSearch) {
+    public getUsers() {
+        return this.http.get(this.shared.API.Auth.AllUsers)
+            .map(res => PageResultObj.PageResultObjFromJson<Array<User>>(res, User, true));
+    }
+
+    public searchUsers(search: UserSearch) {
         return this.http.post(this.shared.API.Auth.SearchUsers, search)
             .map(res => PageResultObj.PageResultObjFromJson<Array<User>>(res, User, true));
     }
