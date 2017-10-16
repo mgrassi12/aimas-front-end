@@ -25,6 +25,9 @@ import { ReservationManagementComponent } from './components/reservation/managem
 import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
 import { ReservationSearchDialogComponent } from './components/reservation/searchdialog/searchdialog.component';
 import { UserSearchDialogComponent } from './components/auth/usersearchdialog/usersearchdialog.component';
+import { ManagementComponent } from './components/reports/management/management.component';
+import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
+import { SearchdialogComponent } from './components/reports/searchdialog/searchdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -32,10 +35,8 @@ import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { UtilAPIService } from './services/api/util/utilapi.service';
+import { ReportAPIService } from "./services/api/report/reportapi.service";
 import { AuthModule } from './directives/auth/auth.directive';
-import { ManagementComponent } from './components/reports/management/management.component';
-import { AddeditreportComponent } from './components/reports/addeditreport/addeditreport.component';
-import { SearchdialogComponent } from './components/reports/searchdialog/searchdialog.component';
 
 
 
@@ -78,7 +79,7 @@ import { SearchdialogComponent } from './components/reports/searchdialog/searchd
         ReservationSearchDialogComponent,
         UserSearchDialogComponent,
         ManagementComponent,
-        AddeditreportComponent,
+        AddEditReportComponent,
         SearchdialogComponent
     ],
     providers: [
@@ -87,6 +88,7 @@ import { SearchdialogComponent } from './components/reports/searchdialog/searchd
         InventoryAPIService,
         ReservationAPIService,
         UtilAPIService,
+        ReportAPIService,
         { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
@@ -96,7 +98,8 @@ import { SearchdialogComponent } from './components/reports/searchdialog/searchd
         UserAddEditDialogComponent,
         ReservationAddEditDialogComponent,
         ReservationSearchDialogComponent,
-        UserSearchDialogComponent
+        UserSearchDialogComponent,
+        AddEditReportComponent
     ],
     bootstrap: [AppComponent]
 })

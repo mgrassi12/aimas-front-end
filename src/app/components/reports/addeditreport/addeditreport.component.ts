@@ -10,13 +10,14 @@ import { User } from "../../../models/user";
     templateUrl: './addeditreport.component.html',
     styleUrls: ['./addeditreport.component.css']
 })
-export class AddeditreportComponent implements OnInit {
+export class AddEditReportComponent implements OnInit {
 
-    btnText: string;
-    title: string;
+    public btnText: string;
+    public title: string;
     public get now() {
         return new Date();
     }
+    public showType: boolean;
 
     public report: Report;
     public users: Array<User>;
@@ -32,9 +33,10 @@ export class AddeditreportComponent implements OnInit {
 
     }
 
-    public setText(title: string, btn: string) {
+    public setText(title: string, btn: string, showType: boolean = true) {
         this.title = title;
         this.btnText = btn;
+        this.showType = showType;
     }
 
 }

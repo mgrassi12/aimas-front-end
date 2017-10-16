@@ -9,6 +9,9 @@ import { InventoryAddEditDialogComponent } from '../addeditdialog/addeditdialog.
 import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
 import { ReservationAddEditDialogComponent } from '../../reservation/addeditdialog/addeditdialog.component';
 import { ReservationAPIService, Reservation } from '../../../services/api/reservation/reservationapi.service';
+import { AddEditReportComponent } from "../../reports/addeditreport/addeditreport.component";
+import { Report } from "../../../models/report";
+import { ReportAPIService } from "../../../services/api/report/reportapi.service";
 
 
 @Component({
@@ -31,7 +34,13 @@ export class InventoryManagementComponent implements OnInit {
     public selectedInventory: Array<Inventory>;
 
 
-    constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, private reservationAPI: ReservationAPIService, private dialog: MatDialog) {
+    constructor(
+        private shared: SharedService,
+        private inventoryAPI: InventoryAPIService,
+        private reservationAPI: ReservationAPIService,
+        private reportAPI: ReportAPIService,
+        private dialog: MatDialog
+    ) {
         this.shared.setTitle("Inventory Management");
 
         this.currentPage = new PageResultObj<Array<Inventory>>();
@@ -203,6 +212,28 @@ export class InventoryManagementComponent implements OnInit {
                         });
                     this.selectedInventory = [];
                 }
+            });
+    }
+
+    public reportInventory(inventory: Inventory) {
+        var ref = this.dialog.open(AddEditReportComponent);
+        var instance = ref.componentInstance;
+
+        instance.report = new Report();
+        instance.report.Inventory = new Inventory(inventory.ID);
+        instance.setText("Submit Report", "Submit");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                //if (res)
+                //this.inventoryAPI.addInventory(instance.inventory)
+                //    .subscribe(res => {
+                //        if (res.Success) {
+                //            this.search();
+                //            this.shared.notification("Add was Successful");
+                //        }
+                //    });
             });
     }
 

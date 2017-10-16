@@ -27,4 +27,8 @@ export class Report {
     public Notes: string;
     @JsonMember()
     public Inventory: Inventory;
+
+    public constructor() {
+        this.Executor = new User();
+    }
 }

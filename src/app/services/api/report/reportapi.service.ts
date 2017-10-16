@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ReportapiService {
+export class ReportAPIService {
 
-  constructor() { }
+    constructor() {
+
+    }
 
 }
