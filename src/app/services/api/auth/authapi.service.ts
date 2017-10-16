@@ -112,4 +112,14 @@ export class AuthAPIService {
             .map(res => PageResultObj.PageResultObjFromJson<Array<User>>(res, User, true));
     }
 
+    public removeUser(id: number) {
+        return this.http.get(this.formatURL(this.shared.API.Auth.Remove, id))
+            .map(res => Result.ResultFromJson(res));
+    }
+
+    private formatURL(url: string, item: string | number | boolean) {
+        var reg = /{[A-Za-z1-9]*}/;
+        return url.replace(reg, item.toString());
+    }
+
 }

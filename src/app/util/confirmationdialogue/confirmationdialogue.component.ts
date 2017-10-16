@@ -13,9 +13,7 @@ export class ConfirmationDialogueComponent implements OnInit {
     public posBtnText: string;
     public negBtnText: string;
 
-
-
-    constructor() { }
+    constructor() {}
 
     ngOnInit() {
     }

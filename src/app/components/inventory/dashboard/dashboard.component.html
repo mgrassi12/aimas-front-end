@@ -1,5 +1,97 @@
 <div fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
-  <div fxFlex fxFlex.gt-md="80">
-    <h1>Inventory Dashboard</h1>
+  <div fxFlex fxFlex.gt-md="80" fxLayout="row" fxLayoutAlign="space-around none">
+
+    <!--Item Reservation--> 
+    <div  fxFlex="45">
+      <div>
+        <div>
+          <h1>Your Reservations</h1>
+          <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="resInProgress; else spaceBlock" class="space left"></mat-spinner>
+        </div>
+        <mat-table [dataSource]="reservationDataSource">
+          <ng-container cdkColumnDef="ID">
+            <mat-header-cell *cdkHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.ID}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="UserName">
+            <mat-header-cell *cdkHeaderCellDef>UserName</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.User.FirstName}} {{row.User.LastName}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="BookingPurpose">
+            <mat-header-cell *cdkHeaderCellDef fxFlex>Purpose</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" fxFlex> {{row.BookingPurpose}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="BookingStart">
+            <mat-header-cell *cdkHeaderCellDef>Start</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span [matTooltip]="row.BookingStart | date:'mediumDate'" matTooltipPosition="after">{{row.BookingStart | amTimeAgo}}</span></mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="BookingEnd">
+            <mat-header-cell *cdkHeaderCellDef>End</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span [matTooltip]="row.BookingEnd | date:'mediumDate'" matTooltipPosition="after">{{row.BookingEnd | amDifference: row.BookingStart :'days' : true}} days</span></mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Location">
+            <mat-header-cell *cdkHeaderCellDef>Location</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.Location.Name}} </mat-cell>
+          </ng-container>
+          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+      <div>
+        <mat-paginator [length]="resCurrentPage.TotalCount" [pageIndex]="resSearchParams.PageIndex" [pageSize]="resSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
+      </div>
+    </div>
+
+    <!--Item Database-->
+    <div  fxFlex="45">
+      <div>
+        <div>
+          <h1>Items that need attention</h1>
+          <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="itemInProgress; else spaceBlock" class="space left"></mat-spinner>
+        </div>
+        <mat-table [dataSource]="inventoryDataSource">
+          <ng-container cdkColumnDef="ID">
+            <mat-header-cell *cdkHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.ID}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Name">
+            <mat-header-cell *cdkHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.Name}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Description">
+            <mat-header-cell *cdkHeaderCellDef fxFlex>Description</mat-header-cell>
+            <mat-cell *cdkCellDef="let row" fxFlex> {{row.Description}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Expiration">
+            <mat-header-cell *cdkHeaderCellDef>Expiration</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"><span [matTooltip]="row.ExpirationDate | date:'mediumDate'" matTooltipPosition="after">{{row.ExpirationDate | amTimeAgo}}</span></mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Maintenance">
+            <mat-header-cell *cdkHeaderCellDef>Maintenance Interval</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.MaintenanceIntervalDays}} days </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Location">
+            <mat-header-cell *cdkHeaderCellDef>Location</mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.CurrentLocation.Name}} </mat-cell>
+          </ng-container>
+          <ng-container cdkColumnDef="Actions">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
+              <button mat-icon-button [matMenuTriggerFor]="moreMenu" *showAuth="'Admin'"><mat-icon>more_vert</mat-icon> </button>
+              <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item (click)="editInventory(row)">Edit</button>
+                <button mat-menu-item (click)="deleteInventory(row)">Remove</button>
+              </mat-menu>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *cdkHeaderRowDef="idisplayedColumns"></mat-header-row>
+          <mat-row *cdkRowDef="let row; columns: idisplayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+      <div>
+        <mat-paginator [length]="itemCurrentPage.TotalCount" [pageIndex]="itemSearchParams.PageIndex" [pageSize]="itemSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -1,13 +1,13 @@
 <div fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
   <div fxFlex fxFlex.gt-md="80">
 
-    <mat-toolbar fxLayout="row" fxLayoutAlign="end start">
+    <mat-toolbar fxLayout="row" fxLayoutAlign="end start" *showAuth="'Admin'">
       <mat-form-field class="space right" style="font-size:16px;">
-        <input matInput placeholder="Quick Search">
+        <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
       <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
-      <button mat-mini-fab (click)="addUser()" class="space left" matTooltip="Add User"><mat-icon>add</mat-icon></button>
+      <button mat-mini-fab (click)="addUser()" class="space left" matTooltip="Add User" ><mat-icon>add</mat-icon></button>
       <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
       <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
     </mat-toolbar>
@@ -37,7 +37,7 @@
 
         <ng-container cdkColumnDef="Role">
           <mat-header-cell *cdkHeaderCellDef>Role(s)</mat-header-cell>
-          <mat-cell *cdkCellDef="let row"><span *ngFor="let role of row.UserRoles">{{role.Name}}</span> </mat-cell>
+          <mat-cell *cdkCellDef="let row"><span *ngFor="let role of row.UserRoles">{{role.Name}} <br/></span> </mat-cell>
         </ng-container>        
 
 
@@ -47,7 +47,7 @@
             <button mat-icon-button [matMenuTriggerFor]="moreMenu"><mat-icon>more_vert</mat-icon> </button>
             <mat-menu #moreMenu="matMenu">
               <button mat-menu-item (click)="editUser(row)">Edit</button>
-              <button mat-menu-item (click)="addUser()">Remove</button>
+              <button mat-menu-item (click)="deleteUser(row)">Remove</button>
             </mat-menu>
           </mat-cell>
         </ng-container>
