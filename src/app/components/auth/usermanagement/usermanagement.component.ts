@@ -7,8 +7,12 @@ import { SharedService, EMAIL_REGEX } from '../../../services/shared/shared.serv
 import { AuthAPIService, UserLoginModel, UserSearch, User, PageResultObj, RegisterModel } from '../../../services/api/auth/authapi.service';
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 
+
 import { UserAddEditDialogComponent } from '../addedituserdialog/addedituserdialog.component';
 import { UserSearchDialogComponent } from '../usersearchdialog/usersearchdialog.component';
+import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
+
+import { Role } from '../../../models/user';
 
 @Component({
     selector: 'app-usermanagement',
@@ -44,6 +48,7 @@ export class UserManagementComponent implements OnInit {
         this.search();
 
     }
+
     //Searching
 
     public search() {
@@ -57,6 +62,12 @@ export class UserManagementComponent implements OnInit {
                 this.inProgress = false;
             });
         }
+    }
+
+    public quickSearch() {
+        this.searchParams.clear()
+        this.searchParams.FirstName = this.quickSearchVal;
+        this.search()
     }
 
     public clearSearch() {
@@ -86,9 +97,11 @@ export class UserManagementComponent implements OnInit {
     public addUser() {
         var ref = this.dialog.open(UserAddEditDialogComponent);
         var instance = ref.componentInstance;
-        instance.user = new RegisterModel();
 
+        instance.user = new RegisterModel();
         instance.setText("Add User", "Add");
+        instance.user.UserRoles = new Array<Role>();
+
         ref.afterClosed()
             .map(res => JSON.parse(res) as boolean)
             .subscribe(res => {
@@ -96,6 +109,7 @@ export class UserManagementComponent implements OnInit {
                     this.authAPI.newUser(instance.user)
                         .subscribe(res => {
                             if (res.Success) {
+                                this.search();
                                 this.shared.notification("Add was Successful");
                             }
                         });
@@ -119,8 +133,30 @@ export class UserManagementComponent implements OnInit {
                             if (res.Success) {
                                 this.search();
                                 this.shared.notification("Edit was Successful");
+                            } else {
+                                this.search();
+                                this.shared.notification("An error occured. Please try again");
                             }
                         });
+            });
+    }
+
+    public deleteUser(user: User) {
+        var ref = this.dialog.open(ConfirmationDialogueComponent);
+        var instance = ref.componentInstance;
+
+        instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.authAPI.removeUser(user.Id).subscribe(res => {
+                        if (res.Success) {
+                            this.search();
+                            this.shared.notification("Removal was Successful");
+                        }
+                    });
             });
     }
 

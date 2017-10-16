@@ -38,6 +38,7 @@ export class SharedService {
             SearchUsers: "/api/auth/user/search",
             Add: "/api/auth/register/user",
             Update: "api/auth/users/update"
+            Remove: "api/auth/users/remove/{id}"
         },
         Util: {
             Locations: "api/util/locations"

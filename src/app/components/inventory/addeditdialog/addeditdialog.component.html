@@ -43,6 +43,7 @@
     <mat-step [stepControl]="part2Form">
       <form #part2Form="ngForm">
         <ng-template matStepLabel>Alerts</ng-template>
+
         <div class="alert space top bottom">
           <h1>Expiration Alerts</h1>
           <mat-chip-list class="space bottom">
@@ -61,6 +62,7 @@
           </mat-form-field>
           <button mat-raised-button color="primary" (click)="addAlert(expirationPeriod.value, expirationFactor.value)">Add</button>
         </div>
+
         <div class="alert space top bottom">
           <h1>Maintenance Alerts</h1>
           <mat-chip-list class="space bottom">

@@ -2,10 +2,13 @@
   <h2 mat-dialog-title>Search Users</h2>
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput placeholder="Name" type="text" [(ngModel)]="search.FirstName">
+      <input matInput placeholder="First Name" type="text" [(ngModel)]="search.FirstName">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Description" type="text" [(ngModel)]="search.LastName">
+      <input matInput placeholder="Last Name" type="text" [(ngModel)]="search.LastName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" type="text" [(ngModel)]="search.Email">
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>

@@ -36,11 +36,21 @@
           <mat-form-field>
             <input matInput #name="ngModel" name="position" placeholder="Position" type="text" [(ngModel)]="user.Position" required>
           </mat-form-field>
-          <mat-form-field>
-            <mat-select #role="ngModel" name="role" placeholder="Role" [(ngModel)]="user.UserRoles">
-              <mat-option *ngFor="let role of UserRole" [value]="role.Name">{{role.Name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div>
+            <h1>Assign Role(s)</h1>
+            <mat-chip-list>
+              <mat-chip *ngFor="let role of user.UserRoles" selectable="false" removable="true" (remove)="removeRole(role)">
+                <span>{{role.Name}}</span>
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <mat-form-field>
+              <mat-select #role="ngModel" name="userRole" placeholder="Role" [(ngModel)]="user.adderRole">
+                <mat-option *ngFor="let role of roles" [value]="role.title">{{role.title}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="addRole(role.value)">Add</button>
+          </div>
         </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
