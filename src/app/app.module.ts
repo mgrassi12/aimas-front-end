@@ -36,6 +36,7 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
+import { ReportAPIService } from './services/api/report/reportapi.service'
 
 
 
@@ -89,6 +90,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         InventoryAPIService,
         ReservationAPIService,
         UtilAPIService,
+        ReportAPIService,
         { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
