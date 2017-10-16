@@ -25,6 +25,9 @@ import { ReservationManagementComponent } from './components/reservation/managem
 import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
 import { ReservationSearchDialogComponent } from './components/reservation/searchdialog/searchdialog.component';
 import { UserSearchDialogComponent } from './components/auth/usersearchdialog/usersearchdialog.component';
+import { ReportManagementComponent } from './components/reports/management/management.component';
+import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
+import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -33,9 +36,7 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
-import { ManagementComponent } from './components/reports/management/management.component';
-import { AddeditreportComponent } from './components/reports/addeditreport/addeditreport.component';
-import { SearchdialogComponent } from './components/reports/searchdialog/searchdialog.component';
+
 
 
 
@@ -56,7 +57,8 @@ import { SearchdialogComponent } from './components/reports/searchdialog/searchd
                 { path: 'inventory/management', component: InventoryManagementComponent },
                 { path: 'auth/login', component: LoginComponent },
                 { path: 'user/management', component: UserManagementComponent },
-                { path: 'reservation/management', component: ReservationManagementComponent }
+                { path: 'reservation/management', component: ReservationManagementComponent },
+                { path: 'reports/management', component: ReportManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -77,9 +79,9 @@ import { SearchdialogComponent } from './components/reports/searchdialog/searchd
         ReservationAddEditDialogComponent,
         ReservationSearchDialogComponent,
         UserSearchDialogComponent,
-        ManagementComponent,
-        AddeditreportComponent,
-        SearchdialogComponent
+        ReportManagementComponent,
+        AddEditReportComponent,
+        ReportSearchDialogComponent
     ],
     providers: [
         SharedService,

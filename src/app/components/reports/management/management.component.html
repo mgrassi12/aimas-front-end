@@ -1,3 +1,19 @@
-<p>
-  management works!
-</p>
+<div fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
+  <div fxFlex fxFlex.gt-md="80">
+
+    <mat-toolbar fxLayout="row" fxLayoutAlign="end start" *showAuth="'Admin'">
+      <mat-form-field class="space right" style="font-size:16px;">
+        <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
+      </mat-form-field>
+      <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
+      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
+      <button mat-mini-fab (click)="addUser()" class="space left" matTooltip="Add User"><mat-icon>add</mat-icon></button>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
+      <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
+    </mat-toolbar>
+
+
+
+
+  </div>
+</div>

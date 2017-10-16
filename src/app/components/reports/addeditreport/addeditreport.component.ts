@@ -10,7 +10,7 @@ import { User } from "../../../models/user";
     templateUrl: './addeditreport.component.html',
     styleUrls: ['./addeditreport.component.css']
 })
-export class AddeditreportComponent implements OnInit {
+export class AddEditReportComponent implements OnInit {
 
     btnText: string;
     title: string;

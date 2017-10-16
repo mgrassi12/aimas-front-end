@@ -28,3 +28,23 @@ export class Report {
     @JsonMember()
     public Inventory: Inventory;
 }
+
+@JsonObject()
+export class ReportSearch {
+    @JsonMember()
+    public Name: string;
+
+    @JsonMember()
+    public PageIndex: number;
+    @JsonMember()
+    public PageSize: number;
+
+    public constructor() {
+        this.PageIndex = 0;
+        this.PageSize = 25;
+    }
+
+    public clear() {
+        this.Name = null;
+    }
+}
