@@ -23,11 +23,11 @@ export class SharedService {
             Add: "/api/inventory/add",
             Update: "/api/inventory/update",
             Remove: "/api/inventory/remove/{id}",
-            Alerts: "/api/inventory/alerts/{id}",
-            Locations: "api/inventory/locations"
+            Alerts: "/api/inventory/alerts/{id}"
         },
         Reservation: {
-            Search:"api/reservation/search"
+            Search: "api/reservation/search",
+            Add: "api/reservation/add"
         },
         Auth: {
             Info: "/api/auth/info",
@@ -36,8 +36,11 @@ export class SharedService {
             AllUsers: "/api/auth/users",
             SearchUsers: "/api/auth/user/search",
             Add: "/api/auth/register/user",
-            Update: "api/auth/users/update",
+            Update: "api/auth/users/update"
             Remove: "api/auth/users/remove/{id}"
+        },
+        Util: {
+            Locations: "api/util/locations"
         }
     }
 

@@ -4,10 +4,9 @@ import { HttpClient } from "@angular/common/http";
 import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
 import { Inventory, InventorySearch, InventoryAlertTimeModel } from '../../../models/inventory';
-import { Location } from '../../../models/models';
 
 // Exports
-export { Inventory, Location, InventorySearch, Result, ResultObj, PageResultObj };
+export { Inventory, InventorySearch, Result, ResultObj, PageResultObj };
 
 @Injectable()
 export class InventoryAPIService {
@@ -46,12 +45,6 @@ export class InventoryAPIService {
         return this.http.get(this.formatURL(this.shared.API.Inventory.Alerts, inventory.ID))
             .map(res => ResultObj.ResultObjFromJson<Array<InventoryAlertTimeModel>>(res, InventoryAlertTimeModel, true));
     }
-
-    public getLocations() {
-        return this.http.get(this.shared.API.Inventory.Locations)
-            .map(res => ResultObj.ResultObjFromJson<Array<Location>>(res, Location, true));
-    }
-
 
     private formatURL(url: string, item: string | number | boolean) {
         var reg = /{[A-Za-z1-9]*}/;

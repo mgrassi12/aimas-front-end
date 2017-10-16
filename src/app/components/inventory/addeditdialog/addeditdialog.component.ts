@@ -3,7 +3,8 @@ import { MatChipInputEvent } from "@angular/material";
 
 import { DateFormat } from '../../../services/shared/shared.service';
 import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
-import { Inventory, InventoryAlertTimeModel, AlertInventoryTimeType } from '../../../models/inventory';
+import { UtilAPIService } from '../../../services/api/util/utilapi.service';
+import { Inventory, InventoryAlertTimeModel, InventoryAlertTimeType } from '../../../models/inventory';
 import { Location } from '../../../models/models';
 
 
@@ -28,17 +29,17 @@ export class InventoryAddEditDialogComponent implements OnInit {
     public inventory: Inventory;
     public get ExpirationAlerts() {
         return this.inventory.AlertTimeInventories
-            .filter(item => item.Type == AlertInventoryTimeType.Inventory_E_Date)
+            .filter(item => item.Type == InventoryAlertTimeType.Inventory_E_Date)
             .sort(this.sortAlerts);
     }
     public get maintenanceAlerts() {
         return this.inventory.AlertTimeInventories
-            .filter(item => item.Type == AlertInventoryTimeType.Inventory_M_Date)
+            .filter(item => item.Type == InventoryAlertTimeType.Inventory_M_Date)
             .sort(this.sortAlerts);
     }
     public locations: Array<Location>;
 
-    constructor(private inventoryAPI: InventoryAPIService) {
+    constructor(private inventoryAPI: InventoryAPIService, private utilAPI: UtilAPIService) {
         this.options = [
             { factor: 1, name: "Days" },
             { factor: 7, name: "Weeks" },
@@ -47,10 +48,10 @@ export class InventoryAddEditDialogComponent implements OnInit {
         ];
         this.expirationFactorVal = this.options[0].factor;
         this.maintenanceFactorVal = this.options[0].factor;
-        this.inventoryAPI.getLocations().subscribe(res => {
+        this.utilAPI.getLocations().subscribe(res => {
             if (res.Success)
                 this.locations = res.ReturnObj;
-        })
+        });
     }
 
     ngOnInit() {
@@ -65,7 +66,7 @@ export class InventoryAddEditDialogComponent implements OnInit {
         let days = parseInt(period) * parseInt(factor);
         if (!isNaN(days)) {
             let alert = new InventoryAlertTimeModel();
-            alert.Type = maintenance ? AlertInventoryTimeType.Inventory_M_Date : AlertInventoryTimeType.Inventory_E_Date;
+            alert.Type = maintenance ? InventoryAlertTimeType.Inventory_M_Date : InventoryAlertTimeType.Inventory_E_Date;
             alert.DaysBefore = days;
             this.inventory.AlertTimeInventories.push(alert);
         }

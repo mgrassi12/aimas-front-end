@@ -1,5 +1,6 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
 
+import { Inventory } from './inventory';
 import { Location } from './models';
 import { User } from './user';
 
@@ -18,6 +19,12 @@ export class Reservation {
     public BookingPurpose: string;
     @JsonMember()
     public Location: Location;
+    @JsonMember()
+    public Inventories: Array<Inventory>;
+
+    public constructor() {
+        this.Location = new Location();
+    }
 
 }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, PageEvent } from '@angular/material';
 
 import { SharedService } from '../../../services/shared/shared.service';
-import { ReservationAPIService, Reservation, Location, ReservationSearch, PageResultObj } from '../../../services/api/reservation/reservationapi.service';
+import { ReservationAPIService, Reservation, ReservationSearch, PageResultObj } from '../../../services/api/reservation/reservationapi.service';
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 
 import { ReservationSearchDialogComponent } from '../searchdialog/searchdialog.component';
