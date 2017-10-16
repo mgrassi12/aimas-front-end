@@ -27,4 +27,14 @@ export class ReservationAPIService {
             .map(res => Result.ResultFromJson(res));
     }
 
+    public removeReservation(id: number) {
+        return this.http.get(this.formatURL(this.shared.API.Reservation.Remove, id))
+            .map(res => Result.ResultFromJson(res));
+    }
+
+
+    private formatURL(url: string, item: string | number | boolean) {
+        var reg = /{[A-Za-z1-9]*}/;
+        return url.replace(reg, item.toString());
+    }
 }

@@ -33,6 +33,9 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { AuthModule } from './directives/auth/auth.directive';
+import { ManagementComponent } from './components/reports/management/management.component';
+import { AddeditreportComponent } from './components/reports/addeditreport/addeditreport.component';
+import { SearchdialogComponent } from './components/reports/searchdialog/searchdialog.component';
 
 
 
@@ -73,7 +76,10 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReservationManagementComponent,
         ReservationAddEditDialogComponent,
         ReservationSearchDialogComponent,
-        UserSearchDialogComponent
+        UserSearchDialogComponent,
+        ManagementComponent,
+        AddeditreportComponent,
+        SearchdialogComponent
     ],
     providers: [
         SharedService,

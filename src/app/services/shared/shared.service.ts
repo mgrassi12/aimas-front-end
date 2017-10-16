@@ -27,7 +27,8 @@ export class SharedService {
         },
         Reservation: {
             Search: "api/reservation/search",
-            Add: "api/reservation/add"
+            Add: "api/reservation/add",
+            Remove: "api/reservation/remove/{id}"
         },
         Auth: {
             Info: "/api/auth/info",

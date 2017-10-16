@@ -62,7 +62,7 @@ export class AuthShowDirective {
         else if (this.role == null)
             return this.authAPI.authInfo.IsAuth;
         else if (this.role != null)
-            return this.authAPI.authInfo.IsAuth && this.authAPI.authInfo.Role != null && this.role.indexOf(this.authAPI.authInfo.Role) != -1;
+            return this.authAPI.authInfo.IsAuth && this.authAPI.authInfo.User.UserRoles != null && this.authAPI.authInfo.User.UserRoles.some(x => this.role.includes(x.Name));
     }
 
 }

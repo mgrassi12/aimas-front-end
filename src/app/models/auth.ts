@@ -7,10 +7,6 @@ export class CurrentUserInfo {
     @JsonMember()
     public IsAuth: boolean;
     @JsonMember()
-    public IsAdmin: boolean;
-    @JsonMember()
-    public Role: string;
-    @JsonMember()
     public User: User;
     constructor() {
         this.IsAuth = false;

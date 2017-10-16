@@ -71,6 +71,12 @@
     <Content Include="src\app\components\inventory\management\management.component.html" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.css" />
     <Content Include="src\app\components\inventory\searchdialog\searchdialog.component.html" />
+    <Content Include="src\app\components\reports\addeditreport\addeditreport.component.css" />
+    <Content Include="src\app\components\reports\addeditreport\addeditreport.component.html" />
+    <Content Include="src\app\components\reports\management\management.component.css" />
+    <Content Include="src\app\components\reports\management\management.component.html" />
+    <Content Include="src\app\components\reports\searchdialog\searchdialog.component.css" />
+    <Content Include="src\app\components\reports\searchdialog\searchdialog.component.html" />
     <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.css" />
     <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.html" />
     <Content Include="src\app\components\reservation\management\management.component.css" />
@@ -133,6 +139,10 @@
     <Folder Include="src\app\components\auth\login\" />
     <Folder Include="src\app\components\auth\usermanagement\" />
     <Folder Include="src\app\components\auth\usersearchdialog\" />
+    <Folder Include="src\app\components\reports\" />
+    <Folder Include="src\app\components\reports\addeditreport\" />
+    <Folder Include="src\app\components\reports\management\" />
+    <Folder Include="src\app\components\reports\searchdialog\" />
     <Folder Include="src\app\components\reservation\" />
     <Folder Include="src\app\components\reservation\addeditdialog\" />
     <Folder Include="src\app\components\reservation\management\" />
@@ -150,6 +160,7 @@
     <Folder Include="src\app\services\api\" />
     <Folder Include="src\app\services\api\auth\" />
     <Folder Include="src\app\services\api\inventory\" />
+    <Folder Include="src\app\services\api\report\" />
     <Folder Include="src\app\services\api\reservation\" />
     <Folder Include="src\app\services\api\util\" />
     <Folder Include="src\app\services\shared\" />
@@ -166,6 +177,12 @@
     <TypeScriptCompile Include="src\app\components\auth\usermanagement\usermanagement.component.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\auth\usersearchdialog\usersearchdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\addeditreport\addeditreport.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\addeditreport\addeditreport.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\management\management.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\management\management.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\searchdialog\searchdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reports\searchdialog\searchdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.spec.ts" />
@@ -183,7 +200,10 @@
     <TypeScriptCompile Include="src\app\components\inventory\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\inventory\searchdialog\searchdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\models\report.ts" />
     <TypeScriptCompile Include="src\app\models\reservation.ts" />
+    <TypeScriptCompile Include="src\app\services\api\report\reportapi.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\services\api\report\reportapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\api\reservation\reservationapi.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\api\reservation\reservationapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\api\util\utilapi.service.spec.ts" />

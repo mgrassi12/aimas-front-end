@@ -147,22 +147,22 @@ export class ReservationManagementComponent implements OnInit {
     }
 
     public deleteReservation(reservation: Reservation) {
-        //var ref = this.dialog.open(ConfirmationDialogueComponent);
-        //var instance = ref.componentInstance;
+        var ref = this.dialog.open(ConfirmationDialogueComponent);
+        var instance = ref.componentInstance;
 
-        //instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
+        instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
 
-        //ref.afterClosed()
-        //    .map(res => JSON.parse(res || false) as boolean)
-        //    .subscribe(res => {
-        //        if (res)
-        //            this.inventory.removeInventory(inventory.ID).subscribe(res => {
-        //                if (res.Success) {
-        //                    this.search();
-        //                    this.shared.notification("Removal was Successful");
-        //                }
-        //            });
-        //    });
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.reservationAPI.removeReservation(reservation.ID).subscribe(res => {
+                        if (res.Success) {
+                            this.search();
+                            this.shared.notification("Removal was Successful");
+                        }
+                    });
+            });
     }
 
 }
