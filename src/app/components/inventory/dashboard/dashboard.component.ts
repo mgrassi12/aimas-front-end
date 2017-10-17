@@ -77,7 +77,7 @@ export class InventoryDashboardComponent implements OnInit {
     public itemSearch() {
         if (!this.itemInProgress) {
             this.itemInProgress = true;
-            this.inventoryAPI.searchInventory(this.itemSearchParams).subscribe(result => {
+            this.inventoryAPI.getInventoryAttention().subscribe(result => {
                 if (result.Success) {
                     this.itemCurrentPage = result;
                     this.inventoryDatabase.setDB(result.ReturnObj);

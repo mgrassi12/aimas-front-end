@@ -1,16 +1,16 @@
 <div fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
-  <div fxFlex fxFlex.gt-md="80" fxLayout="row" fxLayoutAlign="space-around none">
+  <div fxFlex fxFlex.gt-md="80" fxLayout="column" fxLayoutAlign="start start" fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-around start" fxLayoutWrap>
 
-    <!--Item Reservation--> 
-    <div  fxFlex="45">
+    <div fxFlex="90" class="space top bottom">
+      <h1>Tips & Help</h1>
+      <h3>Burwood unit State Emergency Services (SES) are seeking a digital asset management system that would aid in tracking and recording information regarding inventory within the unit. Key processes for the organisation are currently achieved through manually recording information in books or through excel spreadsheets. AIMAS is striving to make asset management a far more simple, accessible, and overall superior experience relative to Burwood SES’ current system. This report will detail the Agile requirements analysis, planning, architecture, timesheets, and engineering logbooks for the AIMAS project in accordance with the templates provided on UTS Online </h3>
+    </div>
+
+    <!--Item Reservation-->
+    <div fxFlex="45">
       <div>
         <div>
-          <h1>Tips & Help</h1>
-          <h3>Burwood unit State Emergency Services (SES) are seeking a digital asset management system that would aid in tracking and recording information regarding inventory within the unit. Key processes for the organisation are currently achieved through manually recording information in books or through excel spreadsheets. AIMAS is striving to make asset management a far more simple, accessible, and overall superior experience relative to Burwood SES’ current system. This report will detail the Agile requirements analysis, planning, architecture, timesheets, and engineering logbooks for the AIMAS project in accordance with the templates provided on UTS Online </h3>
-        </div>
-        <div>
           <h1>Upcomming Reservations</h1>
-          <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="resInProgress; else spaceBlock" class="space left"></mat-spinner>
         </div>
         <mat-table [dataSource]="reservationDataSource">
           <ng-container cdkColumnDef="ID">
@@ -44,14 +44,14 @@
       <div>
         <mat-paginator [length]="resCurrentPage.TotalCount" [pageIndex]="resSearchParams.PageIndex" [pageSize]="resSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
       </div>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="resInProgress; else spaceBlock" class="space left"></mat-spinner>
     </div>
 
     <!--Item Database-->
-    <div  fxFlex="45">
+    <div fxFlex="45">
       <div>
         <div>
-          <h1>Items Close to Expiry</h1>
-          <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="itemInProgress; else spaceBlock" class="space left"></mat-spinner>
+          <h1>Items Needing Attention</h1>
         </div>
         <mat-table [dataSource]="inventoryDataSource">
           <ng-container cdkColumnDef="ID">
@@ -95,7 +95,7 @@
       <div>
         <mat-paginator [length]="itemCurrentPage.TotalCount" [pageIndex]="itemSearchParams.PageIndex" [pageSize]="itemSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
       </div>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="itemInProgress; else spaceBlock" class="space left"></mat-spinner>
     </div>
-
   </div>
 </div>

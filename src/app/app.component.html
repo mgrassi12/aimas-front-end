@@ -15,7 +15,7 @@
       <mat-list-button Icon="view_list" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</mat-list-button>
       <mat-list-button Icon="book" Route="reservation/management" (btn-click)="sidenav.close()" *showAuth>Reservation Management</mat-list-button>
       <mat-list-button Icon="assignment" Route="reports/management" (btn-click)="sidenav.close()" *showAuth="'Admin, InventoryManager'">Report Management</mat-list-button>
-      <mat-list-button Icon="location_on" Route="location/management" (btn-click)="sidenav.close()">Location Management</mat-list-button>
+      <mat-list-button Icon="location_on" Route="location/management" (btn-click)="sidenav.close()" *showAuth>Location Management</mat-list-button>
       <mat-list-button Icon="supervisor_account" Route="user/management" (btn-click)="sidenav.close()" *showAuth="'Admin'">User Management</mat-list-button>
     </mat-list>
   </mat-sidenav>
