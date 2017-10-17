@@ -91,17 +91,17 @@ export class ReservationManagementComponent implements OnInit {
     }
 
     public showSearchOptionsDialog() {
-        //var ref = this.dialog.open(ReservationSearchDialogComponent);
-        //var instance = ref.componentInstance;
+        var ref = this.dialog.open(ReservationSearchDialogComponent);
+        var instance = ref.componentInstance;
 
-        //instance.search = this.searchParams;
+        instance.search = this.searchParams;
 
-        //ref.afterClosed()
-        //    .map(res => JSON.parse(res || false) as boolean)
-        //    .subscribe(res => {
-        //        if (res)
-        //            this.search();
-        //    });
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.search();
+            });
     }
 
     // Inventory
