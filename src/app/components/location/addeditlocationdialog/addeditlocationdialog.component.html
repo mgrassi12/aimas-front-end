@@ -1,0 +1,20 @@
+<h2 mat-dialog-title fxFlexLayout="row">
+  <span fxFlex>{{title}}</span>
+  <button mat-mini-fab color="warn" [mat-dialog-close]="false" matTooltip="Close"><mat-icon>close</mat-icon></button>
+</h2>
+
+<mat-dialog-content>
+  <form #part1Form="ngForm">
+    <ng-template matStepLabel>Fill out Location Details</ng-template>
+    <mat-form-field>
+      <input matInput #name="ngModel" name="name" placeholder="Location Name" type="text" [(ngModel)]="location.Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput #description="ngModel" name="description" placeholder="Description" type="text" [(ngModel)]="location.Description" required>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="accent" [mat-dialog-close]="true">{{btnText}}</button>
+    </div>
+  </form>
+
+</mat-dialog-content>

@@ -49,6 +49,12 @@ export class SharedService {
             Search: "api/report/search",
             Add: "api/report/add",
             Remove: "api/report/remove/{id}",
+        },
+        Location: {
+            Search: "api/util/search",
+            Add: "api/util/add",
+            Update: "api/util/update",
+            Remove: "api/util/remove/{id}"
         }
     }
 

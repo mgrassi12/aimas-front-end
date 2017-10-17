@@ -6,7 +6,7 @@
         <mat-icon class="space right">account_circle</mat-icon>
         <samp>{{authInfo.User.FirstName}}</samp>
         <span fxFlex></span>
-        <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+        <button mat-icon-button (click)="logout()" [matTooltip]="Logout"><mat-icon>exit_to_app</mat-icon></button>
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-list>
@@ -14,8 +14,9 @@
       <mat-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth>Inventory Dashboard</mat-list-button>
       <mat-list-button Icon="view_list" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</mat-list-button>
       <mat-list-button Icon="book" Route="reservation/management" (btn-click)="sidenav.close()" *showAuth>Reservation Management</mat-list-button>
-      <mat-list-button Icon="supervisor_account" Route="user/management" (btn-click)="sidenav.close()" *showAuth="'Admin'">User Management</mat-list-button>
       <mat-list-button Icon="assignment" Route="reports/management" (btn-click)="sidenav.close()" *showAuth="'Admin, InventoryManager'">Report Management</mat-list-button>
+      <mat-list-button Icon="location_on" Route="location/management" (btn-click)="sidenav.close()">Location Management</mat-list-button>
+      <mat-list-button Icon="supervisor_account" Route="user/management" (btn-click)="sidenav.close()" *showAuth="'Admin'">User Management</mat-list-button>
     </mat-list>
   </mat-sidenav>
   <main class="full" fxLayout="column">

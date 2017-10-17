@@ -36,22 +36,12 @@ export class Report {
 @JsonObject()
 export class ReportSearch {
     @JsonMember()
-    public ID: number;
+    public InventoryName: string;
     @JsonMember()
-    public Type: ReportType;
+    public UserName: string;
     @JsonMember()
-    public Creator: User;
-    @JsonMember({ type: Date })
-    public CreationDate: Date;
-    @JsonMember()
-    public Executor: User;
-    @JsonMember({ type: Date })
-    public ExecutionDate: Date;
-    @JsonMember()
-    public Notes: string;
-    @JsonMember()
-    public Inventory: Inventory;
-
+    public ReportType: ReportType;
+ 
     @JsonMember()
     public PageIndex: number;
     @JsonMember()
@@ -63,13 +53,8 @@ export class ReportSearch {
     }
 
     public clear() {
-        this.ID = null;
-        this.CreationDate = null;
-        this.Creator = null;
-        this.ExecutionDate = null;
-        this.Executor = null;
-        this.Inventory = null;
-        this.Notes = null;
-        this.Type = null;
+        this.InventoryName = null;
+        this.UserName = null;
+        this.ReportType = null;
     }
 }

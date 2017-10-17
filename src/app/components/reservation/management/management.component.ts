@@ -175,7 +175,10 @@ export class ReservationManagementComponent implements OnInit {
         this.bodyTxt = "";
         for (let inventory of reserve.Inventories) {
             this.bodyTxt += inventory.Name;
-            this.bodyTxt += "        ";
+            this.bodyTxt += " | ";
+        }
+        if (this.bodyTxt == "") {
+            this.bodyTxt = "This reservation has no items attached to it."
         }
 
         instance.setText("Reservation Details", "Okay", this.bodyTxt)

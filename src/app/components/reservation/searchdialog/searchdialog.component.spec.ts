@@ -3,11 +3,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MatDialogRef } from '@angular/material';
 import { MaterialModule, InventorySearch } from '../../../../test.global';
 
-import { InventorySearchDialogComponent } from './searchdialog.component';
+import { ReservationSearchDialogComponent } from './searchdialog.component';
+import { ReservationSearch } from "../../../models/reservation";
 
 describe('SearchdialogComponent', () => {
-    let component: InventorySearchDialogComponent;
-    let fixture: ComponentFixture<InventorySearchDialogComponent>;
+    let component: ReservationSearchDialogComponent;
+    let fixture: ComponentFixture<ReservationSearchDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -17,7 +18,7 @@ describe('SearchdialogComponent', () => {
                 FormsModule
             ],
             declarations: [
-                InventorySearchDialogComponent
+                ReservationSearchDialogComponent
             ],
             providers: [
                 { provide: MatDialogRef, useClass: class { } }
@@ -27,9 +28,9 @@ describe('SearchdialogComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(InventorySearchDialogComponent);
+        fixture = TestBed.createComponent(ReservationSearchDialogComponent);
         component = fixture.componentInstance;
-        component.search = new InventorySearch();
+        component.search = new ReservationSearch();
         fixture.detectChanges();
     });
 
