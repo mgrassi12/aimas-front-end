@@ -10,7 +10,7 @@ import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogu
 import { ReservationAddEditDialogComponent } from '../../reservation/addeditdialog/addeditdialog.component';
 import { ReservationAPIService, Reservation } from '../../../services/api/reservation/reservationapi.service';
 import { AddEditReportComponent } from "../../reports/addeditreport/addeditreport.component";
-import { Report } from "../../../models/report";
+import { Report, ReportType } from "../../../models/report";
 import { ReportAPIService } from "../../../services/api/report/reportapi.service";
 
 
@@ -215,13 +215,15 @@ export class InventoryManagementComponent implements OnInit {
             });
     }
 
-    public reportInventory(inventory: Inventory) {
+    public reportInventory(inventory: Inventory, reportType: ReportType, title: string) {
         var ref = this.dialog.open(AddEditReportComponent);
         var instance = ref.componentInstance;
 
         instance.report = new Report();
+        instance.report.Type = reportType;
         instance.report.Inventory = new Inventory(inventory.ID);
-        instance.setText("Submit Report", "Submit");
+
+        instance.setText(title, "Submit");
 
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)
@@ -229,8 +231,13 @@ export class InventoryManagementComponent implements OnInit {
                 if (res) {
                     this.reportAPI.addReport(instance.report)
                         .subscribe(res => {
-                            this.search();
-                            this.shared.notification("Report Successfully Sent");
+                            if (res.Success) {
+                                this.search();
+                                this.shared.notification("Report Successfully Sent");
+                            }
+                            else {
+                                this.shared.notification("Report Faild to Send");
+                            }
                         });
                 }
             });
