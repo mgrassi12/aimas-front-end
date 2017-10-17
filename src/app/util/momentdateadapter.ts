@@ -1,9 +1,9 @@
 import { Inject, LOCALE_ID } from '@angular/core';
-import { DateAdapter, MdDateFormats } from '@angular/material';
+import { DateAdapter, MatDateFormats } from '@angular/material';
 import { Moment, isMoment, Locale } from 'moment';
 import * as moment from 'moment';
 
-export const MOMENT_DATE_FORMATS: MdDateFormats = {
+export const MOMENT_DATE_FORMATS: MatDateFormats = {
     parse: {
         dateInput: 'DD/MM/YYYY'
     },
@@ -26,8 +26,13 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
 
     public constructor( @Inject(LOCALE_ID) locale: string) {
         super();
+        this.setLocale(locale);
+    }
+
+    setLocale(locale: any): void {
+        console.info('setLocale', locale);
         this.locale = locale;
-        this.localeData = moment.localeData(this.locale);
+        this.localeData = moment.localeData(locale);
     }
 
     getYear(date: Moment | Date): number {
@@ -153,17 +158,6 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         return date.clone().add(days, 'd');
     }
 
-    getISODateString(date: Moment): string {
-        date = this.checkDate(date);
-        return date.toISOString();
-    }
-
-    setLocale(locale: any): void {
-        console.info('setLocale', locale);
-        this.locale = locale;
-        this.localeData = moment.localeData(locale);
-    }
-
     compareDate(first: Moment | Date, second: Moment | Date): number {
         first = this.checkDate(first);
         second = this.checkDate(second);
@@ -215,6 +209,14 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
         if (typeof date === "string") date = new Date(date);
         if (date instanceof Date) date = moment(date, null, this.locale, false);
         return date;
+    }
+
+    toIso8601(date: Moment | Date): string {
+        date = this.checkDate(date);
+        return date.format();
+    }
+    fromIso8601(iso8601String: string): Moment {
+        return this.parse(iso8601String, null);
     }
 
 }

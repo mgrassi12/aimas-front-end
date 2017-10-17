@@ -1,0 +1,63 @@
+<h2 mat-dialog-title fxFlexLayout="row">
+  <span fxFlex>{{title}}</span>
+  <button mat-mini-fab color="warn" [mat-dialog-close]="false" matTooltip="Close"><mat-icon>close</mat-icon></button>
+</h2>
+
+<mat-dialog-content>
+  <mat-horizontal-stepper linear>
+    <mat-step [stepControl]="part1Form">
+      <form #part1Form="ngForm">
+        <ng-template matStepLabel>Confirm Inventories</ng-template>
+        <div class="space bottom">
+          <h1>Selected Inventories</h1>
+          <mat-chip-list class="space bottom">
+            <mat-chip *ngFor="let inventory of reservation.Inventories; index as i" selectable="false" removable="true" (remove)="removeInventory(i)">
+              <span>{{inventory.Name}}</span>
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <div>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="!part1Form.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="part2Form">
+      <form #part2Form="ngForm">
+        <ng-template matStepLabel>Details</ng-template>
+        <mat-form-field>
+          <input matInput #bookingPurpose="ngModel" name="bookingPurpose" placeholder="Booking Purpose" type="text" [(ngModel)]="reservation.BookingPurpose" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select #location="ngModel" name="location" placeholder="Location" [(ngModel)]="reservation.Location.ID" required>
+            <mat-option *ngFor="let location of locations" [value]="location.ID">{{location.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <input matInput #bookingStart="ngModel" name="bookingStart" [matDatepicker]="date1" placeholder="Booking Start" [(ngModel)]="reservation.BookingStart" required [min]="now"> <!--[pattern]="DateFormat"-->
+          <mat-datepicker-toggle matSuffix [for]="date1"></mat-datepicker-toggle>
+          <mat-datepicker #date1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #bookingEnd="ngModel" name="bookingEnd" [matDatepicker]="date2" placeholder="Booking End" [(ngModel)]="reservation.BookingEnd" required [min]="reservation.BookingStart"> <!--[pattern]="DateFormat"-->
+          <mat-datepicker-toggle matSuffix [for]="date2"></mat-datepicker-toggle>
+          <mat-datepicker #date2></mat-datepicker>
+        </mat-form-field>
+        <br />
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="accent" matStepperNext [disabled]="!part2Form.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Form complete. Would you like to submit?</p>
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="accent" [mat-dialog-close]="true">{{btnText}}</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-dialog-content>

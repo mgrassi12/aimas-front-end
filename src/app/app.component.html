@@ -1,27 +1,31 @@
-<md-sidenav-container class="full">
-  <md-sidenav #sidenav mode="over">
-    <md-toolbar color="accent">
+<mat-sidenav-container class="full">
+  <mat-sidenav #sidenav mode="over">
+    <mat-toolbar color="accent">
       <h1>Navigation</h1>
-      <md-toolbar-row fxLayout="row">
-        <md-icon class="space right">account_circle</md-icon>
-        <samp>Name</samp>
+      <mat-toolbar-row fxLayout="row" *showAuth>
+        <mat-icon class="space right">account_circle</mat-icon>
+        <samp>{{authInfo.User.FirstName}}</samp>
         <span fxFlex></span>
-        <button md-icon-button (click)="logout()"><md-icon>exit_to_app</md-icon></button>
-      </md-toolbar-row>
-    </md-toolbar>
-    <md-list>
-      <md-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *ngIf="!authInfo.IsAuth">Login</md-list-button>
-      <md-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *ngIf="authInfo.IsAuth">Inventory Dashboard</md-list-button>
-      <md-list-button Icon="home" Route="inventory/management" (btn-click)="sidenav.close()" *ngIf="authInfo.IsAuth">Inventory Management</md-list-button>
-    </md-list>
-  </md-sidenav>
+        <button mat-icon-button (click)="logout()" [matTooltip]="Logout"><mat-icon>exit_to_app</mat-icon></button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-list>
+      <mat-list-button Icon="account_circle" Route="auth/login" (btn-click)="sidenav.close()" *showAuth="'!'">Login</mat-list-button>
+      <mat-list-button Icon="home" Route="inventory/dashboard" (btn-click)="sidenav.close()" *showAuth>Inventory Dashboard</mat-list-button>
+      <mat-list-button Icon="view_list" Route="inventory/management" (btn-click)="sidenav.close()" *showAuth>Inventory Management</mat-list-button>
+      <mat-list-button Icon="book" Route="reservation/management" (btn-click)="sidenav.close()" *showAuth>Reservation Management</mat-list-button>
+      <mat-list-button Icon="assignment" Route="reports/management" (btn-click)="sidenav.close()" *showAuth="'Admin, InventoryManager'">Report Management</mat-list-button>
+      <mat-list-button Icon="location_on" Route="location/management" (btn-click)="sidenav.close()" *showAuth>Location Management</mat-list-button>
+      <mat-list-button Icon="supervisor_account" Route="user/management" (btn-click)="sidenav.close()" *showAuth="'Admin'">User Management</mat-list-button>
+    </mat-list>
+  </mat-sidenav>
   <main class="full" fxLayout="column">
-    <md-toolbar color="primary">
-      <button md-button (click)="sidenav.toggle()"><md-icon>menu</md-icon></button>
+    <mat-toolbar color="primary">
+      <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
       <h1>{{title}}</h1>
-    </md-toolbar>
+    </mat-toolbar>
     <content fxFlex>
       <router-outlet></router-outlet>
     </content>
   </main>
-</md-sidenav-container>
+</mat-sidenav-container>

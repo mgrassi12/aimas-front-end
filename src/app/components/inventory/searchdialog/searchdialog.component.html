@@ -1,0 +1,18 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>Search Inventory</h2>
+  <mat-dialog-content>
+    <!--<mat-form-field>
+      <input matInput placeholder="ID" type="number" [(ngModel)]="search.ID">
+    </mat-form-field>-->
+    <mat-form-field>
+      <input matInput placeholder="Name" type="text" [(ngModel)]="search.Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" type="text" [(ngModel)]="search.Description">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="true">Search</button>
+  </mat-dialog-actions>
+</div>

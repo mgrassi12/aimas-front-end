@@ -1,0 +1,72 @@
+<div fxLoyout="column" fxLayoutAlign="center start" (authReady)="authReady()">
+  <div fxFlex fxFlex.gt-md="80">
+
+    <mat-toolbar fxLayout="row" fxLayoutAlign="end start" *showAuth="'Admin, InventoryManager'">
+      <mat-form-field class="space right" style="font-size:16px;">
+        <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
+      </mat-form-field>
+      <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
+      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advanced Search</span></button>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
+      <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
+    </mat-toolbar>
+
+    <div>
+      <mat-table [dataSource]="reportDataSource">
+
+        <ng-container cdkColumnDef="Type">
+          <mat-header-cell *cdkHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <span *ngIf="row.Type == '3'">General</span>
+            <span *ngIf="row.Type == '2'">Maintenance</span>
+            <span *ngIf="row.Type == '1'">Expiration Disposal</span>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Creator">
+          <mat-header-cell *cdkHeaderCellDef>Creator</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Creator.FirstName}} {{row.Creator.LastName}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Executor">
+          <mat-header-cell *cdkHeaderCellDef>Executor</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Executor.FirstName}} {{row.Executor.LastName}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="ExecutionDate">
+          <mat-header-cell *cdkHeaderCellDef>Execution Date</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.ExecutionDate | date:'mediumDate'}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Inventory">
+          <mat-header-cell *cdkHeaderCellDef>Item Details</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">ID: {{row.Inventory.ID}} <br /> Name: {{row.Inventory.Name}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Notes">
+          <mat-header-cell *cdkHeaderCellDef>Notes</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Notes}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Actions">
+          <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" *showAuth="'Admin, InventoryManager'"><mat-icon>more_vert</mat-icon> </button>
+            <mat-menu #moreMenu="matMenu">
+              <button mat-menu-item (click)="deleteReport(row)">Remove</button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+    </div>
+    <div>
+      <mat-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
+    </div>
+
+
+  </div>
+</div>

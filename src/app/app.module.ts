@@ -8,45 +8,67 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 
 //Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule, DateAdapter, MD_DATE_FORMATS } from '@angular/material';
-import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './util/momentdateadapter';
-import { CdkTableModule } from '@angular/cdk/table';
+import { MaterialModule } from "./material.module";
 
 // App
 import { AppComponent } from './app.component';
-import { InventoryDashboardComponent } from './inventory/dashboard/dashboard.component';
-import { LoginComponent } from './auth/login/login.component';
-import { InventoryManagementComponent } from './inventory/management/management.component'
+import { InventoryDashboardComponent } from './components/inventory/dashboard/dashboard.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { InventoryManagementComponent } from './components/inventory/management/management.component'
 import { ListButtonComponent } from './util/list-button/list-button.component';
+import { InventorySearchDialogComponent } from './components/inventory/searchdialog/searchdialog.component';
+import { InventoryAddEditDialogComponent } from './components/inventory/addeditdialog/addeditdialog.component';
+import { ConfirmationDialogueComponent } from './util/confirmationdialogue/confirmationdialogue.component';
+import { UserAddEditDialogComponent } from './components/auth/addedituserdialog/addedituserdialog.component';
+import { UserManagementComponent } from './components/auth/usermanagement/usermanagement.component';
+import { ReservationManagementComponent } from './components/reservation/management/management.component';
+import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
+import { ReservationSearchDialogComponent } from './components/reservation/searchdialog/searchdialog.component';
+import { UserSearchDialogComponent } from './components/auth/usersearchdialog/usersearchdialog.component';
+import { ReportManagementComponent } from './components/reports/management/management.component';
+import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
+import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
+import { ReservationDetailsDialogComponent } from './components/reservation/detailsdialog/detailsdialog.component';
+import { LocationManagementComponent } from './components/location/management/management.component';
+import { AddEditLocationDialogComponent } from './components/location/addeditlocationdialog/addeditlocationdialog.component';
+import { SearchLocationDialogComponent } from './components/location/searchlocationdialog/searchlocationdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
 import { AuthAPIService } from './services/api/auth/authapi.service'
 import { InventoryAPIService } from './services/api/inventory/inventoryapi.service';
-import { InventorySearchDialogComponent } from './inventory/searchdialog/searchdialog.component';
-import { AddEditDialogComponent } from './inventory/addeditdialog/addeditdialog.component';
+import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
+import { UtilAPIService } from './services/api/util/utilapi.service';
+import { ReportAPIService } from "./services/api/report/reportapi.service";
+import { LocationAPIService } from "./services/api/location/locationapi.service";
+import { AuthModule } from './directives/auth/auth.directive';
+
+
+
+
+
 
 
 @NgModule({
     imports: [
         BrowserModule,
-        BrowserAnimationsModule,
         CommonModule,
-        FlexLayoutModule,
         MaterialModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        CdkTableModule,
         MomentModule,
+        AuthModule,
         RouterModule.forRoot(
             [
-                { path: '', redirectTo: '/inventory/dashboard', pathMatch: 'full' }
-                , { path: 'inventory/dashboard', component: InventoryDashboardComponent }
-                , { path: 'inventory/management', component: InventoryManagementComponent }
-                , { path: 'auth/login', component: LoginComponent }
+                { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+                { path: 'inventory/dashboard', component: InventoryDashboardComponent },
+                { path: 'inventory/management', component: InventoryManagementComponent },
+                { path: 'auth/login', component: LoginComponent },
+                { path: 'user/management', component: UserManagementComponent },
+                { path: 'reservation/management', component: ReservationManagementComponent },
+                { path: 'reports/management', component: ReportManagementComponent },
+                { path: 'location/management', component: LocationManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -59,19 +81,45 @@ import { AddEditDialogComponent } from './inventory/addeditdialog/addeditdialog.
         LoginComponent,
         InventoryManagementComponent,
         InventorySearchDialogComponent,
-        AddEditDialogComponent
+        InventoryAddEditDialogComponent,
+        ConfirmationDialogueComponent,
+        UserAddEditDialogComponent,
+        UserManagementComponent,
+        ReservationManagementComponent,
+        ReservationAddEditDialogComponent,
+        ReservationSearchDialogComponent,
+        UserSearchDialogComponent,
+        ReportManagementComponent,
+        AddEditReportComponent,
+        ReportSearchDialogComponent,
+        ReservationDetailsDialogComponent,
+        LocationManagementComponent,
+        AddEditLocationDialogComponent,
+        SearchLocationDialogComponent
     ],
     providers: [
         SharedService,
         AuthAPIService,
         InventoryAPIService,
-        { provide: LOCALE_ID, useValue: 'en-AU' },
-        { provide: DateAdapter, useClass: MomentDateAdapter },
-        { provide: MD_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS },
+        ReservationAPIService,
+        UtilAPIService,
+        ReportAPIService,
+        LocationAPIService,
+        { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
         InventorySearchDialogComponent,
-        AddEditDialogComponent
+        InventoryAddEditDialogComponent,
+        ConfirmationDialogueComponent,
+        UserAddEditDialogComponent,
+        ReservationAddEditDialogComponent,
+        ReservationSearchDialogComponent,
+        UserSearchDialogComponent,
+        AddEditReportComponent,
+        ReportSearchDialogComponent,
+        ReservationDetailsDialogComponent,
+        AddEditLocationDialogComponent,
+        SearchLocationDialogComponent
     ],
     bootstrap: [AppComponent]
 })

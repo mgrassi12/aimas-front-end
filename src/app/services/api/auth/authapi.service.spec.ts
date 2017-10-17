@@ -1,18 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { APIImports } from '../../../../test.global';
+import { APIImports, APIProviders } from '../../../../test.global';
 
 
 import { AuthAPIService } from './authapi.service';
-import { SharedService } from '../../shared/shared.service';
 
 describe('AuthapiService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                ...APIImports
+                APIImports
             ],
             providers: [
-                SharedService,
+                APIProviders,
                 AuthAPIService
             ]
         });

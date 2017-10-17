@@ -1,0 +1,28 @@
+<main fxLayout="column" fxLayoutAlign="start center" class="full">
+  <span fxFlex="10"></span>
+  <mat-card>
+    <h2>Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+      <div class="space bottom">
+        <mat-form-field>
+          <input matInput #email="ngModel" name="email" placeholder="Email" type="email" [(ngModel)]="loginModel.Email" required [pattern]="EMAIL_REGEX">
+          <mat-error *ngIf="email.errors?.required">Email is <strong>required</strong></mat-error>
+          <mat-error *ngIf="email.errors?.pattern">Please enter a valid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput #password="ngModel" name="password" placeholder="Password" type="password" [(ngModel)]="loginModel.Password" required>
+          <mat-error *ngIf="password.errors?.required">Password is <strong>required</strong></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="space bottom">
+        <button mat-raised-button color="accent" [disabled]="!loginForm.valid">Login</button>
+        <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
+        <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
+      </div>
+      <div>
+        <mat-error>{{errorMessage}}</mat-error>
+      </div>
+    </form>
+  </mat-card>
+</main>
+

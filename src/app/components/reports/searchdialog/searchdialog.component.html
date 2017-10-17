@@ -1,0 +1,18 @@
+<div class="mat-typography">
+  <h2 mat-dialog-title>Search Reports</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Type" type="text" [(ngModel)]="search.Type">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="User Name" type="text" [(ngModel)]="search.UserName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Inventory Name" type="text" [(ngModel)]="search.InventoryName">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="true">Search</button>
+  </mat-dialog-actions>
+</div>

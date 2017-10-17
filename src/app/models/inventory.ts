@@ -1,19 +1,23 @@
 import { JsonObject, JsonMember } from '@upe/typedjson';
-import { Moment, isMoment, Locale } from 'moment';
-import * as moment from 'moment';
+
+import { Location } from "./models";
+
+
+export enum InventoryAlertTimeType {
+    Inventory_E_Date = 1,
+    Inventory_M_Date = 2
+}
 
 @JsonObject()
-export class Location {
+export class InventoryAlertTimeModel {
     @JsonMember()
     public ID: number;
     @JsonMember()
-    public Name: string;
+    public Type: InventoryAlertTimeType;
     @JsonMember()
-    public Description: string;
-
-    public constructor() {
-        this.ID = -1;
-    }
+    public DaysBefore: number;
+    @JsonMember({ type: Date })
+    public SentTime: Date;
 }
 
 @JsonObject()
@@ -26,15 +30,24 @@ export class Inventory {
     public Description: string;
     @JsonMember({ type: Date })
     public ExpirationDate: Date;
-    @JsonMember({ type: Date })
-    public MaintanceDate: Date;
+    @JsonMember()
+    public MaintenanceIntervalDays: number;
     @JsonMember({ type: Location })
-    public Location: Location;
+    public CurrentLocation: Location;
+    @JsonMember({ type: Location })
+    public DefaultLocation: Location;
+    @JsonMember()
+    public IsArchived: boolean;
+    @JsonMember()
+    public IsCritical: boolean;
+    @JsonMember({ type: Array, elements: InventoryAlertTimeModel })
+    public AlertTimeInventories: Array<InventoryAlertTimeModel>;
 
-    public constructor() {
-        this.ExpirationDate = new Date();
-        this.MaintanceDate = new Date();
-        this.Location = new Location();
+    public constructor(ID: number = null) {
+        this.ID = ID;
+        this.CurrentLocation = new Location();
+        this.DefaultLocation = new Location();
+        this.AlertTimeInventories = [];
     }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'md-list-button',
+    selector: 'mat-list-button',
     templateUrl: './list-button.component.html',
     styleUrls: ['./list-button.component.css']
 })

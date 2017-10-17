@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { APIImports, HttpTestingController, ResultObj, PageResultObj, InventorySearch, Inventory, ExpectedInventoryTestData } from '../../../../test.global';
+import { APIImports, APIProviders, HttpTestingController, ResultObj, PageResultObj, InventorySearch, Inventory, ExpectedInventoryTestData } from '../../../../test.global';
 
 
 import { SharedService } from '../../shared/shared.service';
@@ -9,10 +9,10 @@ describe('InventoryapiService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
-                ...APIImports
+                APIImports
             ],
             providers: [
-                SharedService,
+                APIProviders,
                 InventoryAPIService
             ]
         });
@@ -34,7 +34,7 @@ describe('InventoryapiService', () => {
 
         let httpResponse = new ResultObj<Array<Inventory>>();
         httpResponse.Success = true;
-        httpResponse.ReturnObj = expected;
+        httpResponse.ReturnObj = ExpectedInventoryTestData;
         http.expectOne('/api/inventory/all').flush(httpResponse);
 
         expect(result).toEqual(expected);

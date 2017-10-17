@@ -1,0 +1,8 @@
+mat-chip-list {
+  max-width: 500px;
+  display: block;
+}
+
+.alert mat-form-field {
+  width: 100px;
+}
