@@ -121,7 +121,7 @@ export class InventoryManagementComponent implements OnInit {
         var instance = ref.componentInstance;
 
         instance.inventory = new Inventory();
-        instance.setText("Add Inventory", "Add");
+        instance.setText("Add Item", "Submit");
 
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)
@@ -142,7 +142,7 @@ export class InventoryManagementComponent implements OnInit {
         var instance = ref.componentInstance;
 
         instance.inventory = inventory;
-        instance.setText("Edit Inventory", "Edit");
+        instance.setText("Edit Item", "Submit");
 
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)
@@ -198,7 +198,7 @@ export class InventoryManagementComponent implements OnInit {
 
         instance.reservation = new Reservation();
         instance.reservation.Inventories = this.selectedInventory;
-        instance.setText("Add Reservation", "Add");
+        instance.setText("Add Reservation", "Submit");
 
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)

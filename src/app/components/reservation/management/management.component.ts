@@ -172,12 +172,12 @@ export class ReservationManagementComponent implements OnInit {
         var ref = this.dialog.open(DetailsDialogComponent);
         var instance = ref.componentInstance;
 
-        this.bodyTxt = "";
+        this.bodyTxt = " | ";
         for (let inventory of reserve.Inventories) {
             this.bodyTxt += inventory.Name;
             this.bodyTxt += " | ";
         }
-        if (this.bodyTxt == "") {
+        if (this.bodyTxt == " | ") {
             this.bodyTxt = "This reservation has no items attached to it."
         }
 
