@@ -24,7 +24,8 @@ export class SharedService {
             Update: "/api/inventory/update",
             Remove: "/api/inventory/remove/{id}",
             Alerts: "/api/inventory/alerts/{id}",
-            Attention: "api/inventory/attention"
+            Attention: "api/inventory/attention",
+            Export: "api/util/exports"
         },
         Reservation: {
             Search: "api/reservation/search",
@@ -49,6 +50,12 @@ export class SharedService {
             Search: "api/report/search",
             Add: "api/report/add",
             Remove: "api/report/remove/{id}",
+        },
+        Location: {
+            Search: "api/util/search",
+            Add: "api/util/add",
+            Update: "api/util/update",
+            Remove: "api/util/remove/{id}"
         }
     }
 

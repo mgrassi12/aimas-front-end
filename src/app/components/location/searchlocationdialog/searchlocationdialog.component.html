@@ -1,14 +1,11 @@
 <div class="mat-typography">
-  <h2 mat-dialog-title>Search Reports</h2>
+  <h2 mat-dialog-title>Search Locations</h2>
   <mat-dialog-content>
     <mat-form-field>
-      <input matInput placeholder="Type" type="text" [(ngModel)]="search.Type">
+      <input matInput placeholder="Name" type="text" [(ngModel)]="search.Name">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="User Name" type="text" [(ngModel)]="search.UserName">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Inventory Name" type="text" [(ngModel)]="search.InventoryName">
+      <input matInput placeholder="Description" type="text" [(ngModel)]="search.Description">
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>

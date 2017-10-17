@@ -5,7 +5,7 @@
         <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
-      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
+      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advanced Search</span></button>
       <button mat-mini-fab (click)="addInventory()" class="space left" matTooltip="Add Inventory" *showAuth="'Admin, InventoryManager'"><mat-icon>add</mat-icon></button>
       <div *ngIf="selectedInventory.length > 0"><button mat-mini-fab (click)="newReservation()" class="space left" matTooltip="Reserve Inventory" *showAuth><mat-icon>save</mat-icon></button></div>
       <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>

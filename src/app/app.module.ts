@@ -29,6 +29,9 @@ import { ReportManagementComponent } from './components/reports/management/manag
 import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
 import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
 import { ReservationDetailsDialogComponent } from './components/reservation/detailsdialog/detailsdialog.component';
+import { LocationManagementComponent } from './components/location/management/management.component';
+import { AddEditLocationDialogComponent } from './components/location/addeditlocationdialog/addeditlocationdialog.component';
+import { SearchLocationDialogComponent } from './components/location/searchlocationdialog/searchlocationdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -37,7 +40,11 @@ import { InventoryAPIService } from './services/api/inventory/inventoryapi.servi
 import { ReservationAPIService } from './services/api/reservation/reservationapi.service';
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { ReportAPIService } from "./services/api/report/reportapi.service";
+import { LocationAPIService } from "./services/api/location/locationapi.service";
 import { AuthModule } from './directives/auth/auth.directive';
+
+
+
 
 
 
@@ -60,7 +67,8 @@ import { AuthModule } from './directives/auth/auth.directive';
                 { path: 'auth/login', component: LoginComponent },
                 { path: 'user/management', component: UserManagementComponent },
                 { path: 'reservation/management', component: ReservationManagementComponent },
-                { path: 'reports/management', component: ReportManagementComponent }
+                { path: 'reports/management', component: ReportManagementComponent },
+                { path: 'location/management', component: LocationManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -84,7 +92,10 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReportManagementComponent,
         AddEditReportComponent,
         ReportSearchDialogComponent,
-        ReservationDetailsDialogComponent
+        ReservationDetailsDialogComponent,
+        LocationManagementComponent,
+        AddEditLocationDialogComponent,
+        SearchLocationDialogComponent
     ],
     providers: [
         SharedService,
@@ -93,6 +104,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReservationAPIService,
         UtilAPIService,
         ReportAPIService,
+        LocationAPIService,
         { provide: LOCALE_ID, useValue: 'en-AU' }
     ],
     entryComponents: [
@@ -105,7 +117,9 @@ import { AuthModule } from './directives/auth/auth.directive';
         UserSearchDialogComponent,
         AddEditReportComponent,
         ReportSearchDialogComponent,
-        ReservationDetailsDialogComponent
+        ReservationDetailsDialogComponent,
+        AddEditLocationDialogComponent,
+        SearchLocationDialogComponent
     ],
     bootstrap: [AppComponent]
 })

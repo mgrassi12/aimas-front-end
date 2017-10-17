@@ -62,7 +62,7 @@ export class ReportManagementComponent implements OnInit {
 
     public quickSearch() {
         this.searchParams.clear()
-        this.searchParams.Notes = this.quickSearchVal;
+        this.searchParams.InventoryName = this.quickSearchVal;
         this.search()
     }
 

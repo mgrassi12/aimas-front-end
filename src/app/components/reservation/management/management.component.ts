@@ -91,17 +91,17 @@ export class ReservationManagementComponent implements OnInit {
     }
 
     public showSearchOptionsDialog() {
-        //var ref = this.dialog.open(ReservationSearchDialogComponent);
-        //var instance = ref.componentInstance;
+        var ref = this.dialog.open(ReservationSearchDialogComponent);
+        var instance = ref.componentInstance;
 
-        //instance.search = this.searchParams;
+        instance.search = this.searchParams;
 
-        //ref.afterClosed()
-        //    .map(res => JSON.parse(res || false) as boolean)
-        //    .subscribe(res => {
-        //        if (res)
-        //            this.search();
-        //    });
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.search();
+            });
     }
 
     // Inventory
@@ -172,10 +172,13 @@ export class ReservationManagementComponent implements OnInit {
         var ref = this.dialog.open(ReservationDetailsDialogComponent);
         var instance = ref.componentInstance;
 
-        this.bodyTxt = "";
+        this.bodyTxt = " | ";
         for (let inventory of reserve.Inventories) {
             this.bodyTxt += inventory.Name;
-            this.bodyTxt += "        ";
+            this.bodyTxt += " | ";
+        }
+        if (this.bodyTxt == " | ") {
+            this.bodyTxt = "This reservation has no items attached to it."
         }
 
         instance.setText("Reservation Details", "Okay", this.bodyTxt)
