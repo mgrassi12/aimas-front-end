@@ -37,7 +37,6 @@ import { ReservationAPIService } from './services/api/reservation/reservationapi
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { ReportAPIService } from "./services/api/report/reportapi.service";
 import { AuthModule } from './directives/auth/auth.directive';
-import { ReportAPIService } from './services/api/report/reportapi.service'
 
 
 

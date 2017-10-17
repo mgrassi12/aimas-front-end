@@ -23,13 +23,13 @@ export class ReportManagementComponent implements OnInit {
     public quickSearchVal: string;
     public searchParams: ReportSearch;
 
-    public displayedColumns = ['ID','Type']
+    public displayedColumns = ['ID', 'Type']
 
     public reportDatabase: ArrayDatabase<Report>;
     public reportDataSource: ArrayDataSource<Report>;
 
 
-    constructor(private shared: SharedService, private reportAPI, ReportapiService, private dialog: MatDialog) {
+    constructor(private shared: SharedService, private reportAPI: ReportAPIService, private dialog: MatDialog) {
         this.shared.setTitle("Report Management");
 
         this.currentPage = new PageResultObj<Array<Report>>();
