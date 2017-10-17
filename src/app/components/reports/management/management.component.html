@@ -6,13 +6,46 @@
         <input matInput placeholder="Quick Search" (change)="quickSearch()" [(ngModel)]="quickSearchVal">
       </mat-form-field>
       <button mat-icon-button (click)="clearSearch()" matTooltip="Clear"><mat-icon>clear</mat-icon></button>
-      <button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
+      <!--<button mat-button (click)="showSearchOptionsDialog()"><mat-icon>search</mat-icon><span>Advance Search</span></button>
       <button mat-mini-fab (click)="addUser()" class="space left" matTooltip="Add User"><mat-icon>add</mat-icon></button>
-      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="inProgress; else spaceBlock" class="space left"></mat-spinner>-->
       <ng-template #spaceBlock><span fxFlex="56px"></span></ng-template>
     </mat-toolbar>
 
+    <div>
+      <mat-table [dataSource]="reportDataSource">
 
+        <ng-container cdkColumnDef="ID">
+          <mat-header-cell *cdkHeaderCellDef fxFlex>ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxFlex> {{row.ID}} </mat-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="Type">
+          <mat-header-cell *cdkHeaderCellDef>Type</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.Type}} </mat-cell>
+        </ng-container>
+
+
+
+        <ng-container cdkColumnDef="Actions">
+          <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+          <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" *showAuth="'Admin'"><mat-icon>more_vert</mat-icon> </button>
+            <mat-menu #moreMenu="matMenu">
+              <!--<button mat-menu-item (click)="editInventory(row)">Edit</button>
+              <button mat-menu-item (click)="deleteInventory(row)">Remove</button>-->
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+    </div>
+    <div>
+      <mat-paginator [length]="currentPage.TotalCount" [pageIndex]="searchParams.PageIndex" [pageSize]="searchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
+    </div>
 
 
   </div>

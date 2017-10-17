@@ -5,6 +5,9 @@ import { SharedService } from '../../shared/shared.service';
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
 import { Report, ReportSearch } from '../../../models/report';
 
+// Exports
+export { Report, ReportSearch, Result, ResultObj, PageResultObj };
+
 @Injectable()
 export class ReportAPIService {
 
