@@ -12,6 +12,7 @@ import { SharedService } from './app/services/shared/shared.service';
 import { InventoryAPIService } from './app/services/api/inventory/inventoryapi.service';
 import { ReportAPIService } from './app/services/api/report/reportapi.service';
 import { ReservationAPIService } from './app/services/api/reservation/reservationapi.service';
+import { LocationAPIService } from './app/services/api/location/locationapi.service';
 import { UtilAPIService } from './app/services/api/util/utilapi.service';
 
 import { MatSnackBarModule } from "@angular/material";
@@ -28,6 +29,7 @@ export const APIProviders = [
     InventoryAPIService,
     ReportAPIService,
     ReservationAPIService,
+    LocationAPIService,
     UtilAPIService
 ];
 

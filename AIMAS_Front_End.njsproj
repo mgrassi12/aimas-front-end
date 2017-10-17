@@ -225,6 +225,7 @@
     <TypeScriptCompile Include="src\app\models\report.ts" />
     <TypeScriptCompile Include="src\app\models\reservation.ts" />
     <TypeScriptCompile Include="src\app\services\api\location\locationapi.service.ts" />
+    <TypeScriptCompile Include="src\app\services\api\location\locationapi.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\api\report\reportapi.service.spec.ts" />
     <TypeScriptCompile Include="src\app\services\api\report\reportapi.service.ts" />
     <TypeScriptCompile Include="src\app\services\api\reservation\reservationapi.service.spec.ts" />

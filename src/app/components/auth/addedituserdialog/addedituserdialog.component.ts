@@ -3,20 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterModel, Role } from '../../../models/user';
 
 @Component({
-  selector: 'app-addedituserdialog',
-  templateUrl: './addedituserdialog.component.html',
-  styleUrls: ['./addedituserdialog.component.css']
+    selector: 'app-addedituserdialog',
+    templateUrl: './addedituserdialog.component.html',
+    styleUrls: ['./addedituserdialog.component.css']
 })
 export class UserAddEditDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;
     public user: RegisterModel;
-    public adderRole: Role;
-    public roleTitle: string;
 
+    public roleStr: string;
     public roles: Array<role>;
-    public present: boolean;
 
 
     constructor() {
@@ -25,7 +23,6 @@ export class UserAddEditDialogComponent implements OnInit {
             { factor: 2, title: "InventoryManager" },
             { factor: 3, title: "User" }
         ];
-        this.present = false;
     }
 
     ngOnInit() {
@@ -36,24 +33,16 @@ export class UserAddEditDialogComponent implements OnInit {
         this.btnText = btn;
     }
 
-    public addRole(roler: string) {
-        if (roler != null) {
-            for (let things of this.user.UserRoles) {
-                if (things.Name == roler) {
-                    this.present = true;
-                }
-            }
-            if (this.present == false) {
-                this.adderRole = new Role();
-                this.adderRole.Name = roler;
-                this.user.UserRoles.push(this.adderRole);
-            }
+    public addRole() {
+        if (this.roleStr != null && this.user.UserRoles.find(x => x.Name == this.roleStr) == null) {
+            let role = new Role();
+            role.Name == this.roleStr;
+            this.user.UserRoles.push(role);
         }
-        this.present = false;
     }
 
     public removeRole(change: Role) {
-        this.user.UserRoles.splice(this.user.UserRoles.indexOf(change),1)
+        this.user.UserRoles.splice(this.user.UserRoles.indexOf(change), 1)
     }
 
 }

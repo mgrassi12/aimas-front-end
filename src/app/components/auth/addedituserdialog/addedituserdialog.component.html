@@ -45,11 +45,11 @@
               </mat-chip>
             </mat-chip-list>
             <mat-form-field>
-              <mat-select #role="ngModel" name="userRole" placeholder="Role" [(ngModel)]="user.adderRole">
+              <mat-select #role="ngModel" name="userRole" placeholder="Role" [(ngModel)]="roleStr">
                 <mat-option *ngFor="let role of roles" [value]="role.title">{{role.title}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="addRole(role.value)">Add</button>
+            <button mat-raised-button color="primary" (click)="addRole()">Add</button>
           </div>
         </div>
         <div>

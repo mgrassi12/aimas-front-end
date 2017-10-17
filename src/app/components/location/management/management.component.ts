@@ -82,6 +82,18 @@ export class LocationManagementComponent implements OnInit {
             });
     }
 
+    public updatePage(page: PageEvent) {
+
+        if (this.searchParams.PageSize != page.pageSize) {
+            this.searchParams.PageSize = page.pageSize;
+            this.searchParams.PageIndex = 0;
+        }
+        else {
+            this.searchParams.PageIndex = page.pageIndex;
+        }
+        this.search();
+    }
+
     // Locations
 
     public addLocation() {

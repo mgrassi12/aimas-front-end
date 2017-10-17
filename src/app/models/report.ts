@@ -40,8 +40,8 @@ export class ReportSearch {
     @JsonMember()
     public UserName: string;
     @JsonMember()
-    public ReportType: ReportType;
- 
+    public Type: ReportType;
+
     @JsonMember()
     public PageIndex: number;
     @JsonMember()
@@ -55,6 +55,6 @@ export class ReportSearch {
     public clear() {
         this.InventoryName = null;
         this.UserName = null;
-        this.ReportType = null;
+        this.Type = null;
     }
 }

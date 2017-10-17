@@ -41,10 +41,7 @@
           <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
       </div>
-      <div>
-        <mat-paginator [length]="resCurrentPage.TotalCount" [pageIndex]="resSearchParams.PageIndex" [pageSize]="resSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
-      </div>
-      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="resInProgress; else spaceBlock" class="space left"></mat-spinner>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="resInProgress" class="space left"></mat-spinner>
     </div>
 
     <!--Item Database-->
@@ -92,10 +89,7 @@
           <mat-row *cdkRowDef="let row; columns: idisplayedColumns;"></mat-row>
         </mat-table>
       </div>
-      <div>
-        <mat-paginator [length]="itemCurrentPage.TotalCount" [pageIndex]="itemSearchParams.PageIndex" [pageSize]="itemSearchParams.PageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="updatePage($event)"></mat-paginator>
-      </div>
-      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="itemInProgress; else spaceBlock" class="space left"></mat-spinner>
+      <mat-spinner [diameter]="40" [strokeWidth]="5" *ngIf="itemInProgress" class="space left"></mat-spinner>
     </div>
   </div>
 </div>

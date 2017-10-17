@@ -86,6 +86,18 @@ export class ReportManagementComponent implements OnInit {
             });
     }
 
+    public updatePage(page: PageEvent) {
+
+        if (this.searchParams.PageSize != page.pageSize) {
+            this.searchParams.PageSize = page.pageSize;
+            this.searchParams.PageIndex = 0;
+        }
+        else {
+            this.searchParams.PageIndex = page.pageIndex;
+        }
+        this.search();
+    }
+
     //Reports
     public deleteReport(report: Report) {
         var ref = this.dialog.open(ConfirmationDialogueComponent);
