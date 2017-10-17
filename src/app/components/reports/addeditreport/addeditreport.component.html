@@ -10,17 +10,11 @@
         <ng-template matStepLabel>Details</ng-template>
         <div class="space bottom">
           <mat-form-field>
-            <mat-select #type="ngModel" name="type" placeholder="Report Type" [(ngModel)]="report.Type" required *ngIf="showType">
-              <mat-option [value]="2">Maintenance</mat-option>
-              <mat-option [value]="3">General</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput #executionDate="ngModel" name="executionDate" [matDatepicker]="date1" placeholder="Execution Date" [(ngModel)]="report.ExecutionDate" required> <!--[pattern]="DateFormat"-->
+            <input matInput #executionDate="ngModel" name="executionDate" [matDatepicker]="date1" [placeholder]="GetExecutionDateName()" [(ngModel)]="report.ExecutionDate" required> <!--[pattern]="DateFormat"-->
             <mat-datepicker-toggle matSuffix [for]="date1"></mat-datepicker-toggle>
             <mat-datepicker #date1></mat-datepicker>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field *ngIf="!(report.Type == 3)">
             <mat-select #executor="ngModel" name="executor" placeholder="Executor" [(ngModel)]="report.Executor.ID" required>
               <mat-option *ngFor="let user of users" [value]="user.Id">{{user.FirstName}} {{user.LastName}}</mat-option>
             </mat-select>

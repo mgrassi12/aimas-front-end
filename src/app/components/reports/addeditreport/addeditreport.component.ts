@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { Report } from "../../../models/report";
+import { Report, ReportType } from "../../../models/report";
 import { AuthAPIService } from "../../../../test.global";
 import { User } from "../../../models/user";
 
@@ -37,6 +37,13 @@ export class AddEditReportComponent implements OnInit {
         this.title = title;
         this.btnText = btn;
         this.showType = showType;
+    }
+
+    public GetExecutionDateName() {
+        if (this.report.Type == ReportType.General)
+            return "Incident Date";
+        else
+            return "Execution Date";
     }
 
 }
