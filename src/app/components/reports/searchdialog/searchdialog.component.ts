@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ReportSearch } from '../../../models/Report';
+import { ReportSearch } from '../../../models/report';
 
 @Component({
   selector: 'app-searchdialog',

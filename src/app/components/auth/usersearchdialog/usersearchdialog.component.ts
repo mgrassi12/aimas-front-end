@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserSearch } from '../../../models/User';
+import { UserSearch } from '../../../models/user';
 
 @Component({
   selector: 'app-usersearchdialog',
