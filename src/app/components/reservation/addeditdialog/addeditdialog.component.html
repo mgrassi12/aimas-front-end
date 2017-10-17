@@ -28,6 +28,11 @@
         <mat-form-field>
           <input matInput #bookingPurpose="ngModel" name="bookingPurpose" placeholder="Booking Purpose" type="text" [(ngModel)]="reservation.BookingPurpose">
         </mat-form-field>
+        <mat-form-field>
+          <mat-select #location="ngModel" name="location" placeholder="Location" [(ngModel)]="reservation.Location.ID" required>
+            <mat-option *ngFor="let location of locations" [value]="location.ID">{{location.Name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
         <br />
         <mat-form-field>
           <input matInput #bookingStart="ngModel" name="bookingStart" [matDatepicker]="date1" placeholder="Booking Start" [(ngModel)]="reservation.BookingStart" required [min]="now"> <!--[pattern]="DateFormat"-->
@@ -38,11 +43,6 @@
           <input matInput #bookingEnd="ngModel" name="bookingEnd" [matDatepicker]="date2" placeholder="Booking End" [(ngModel)]="reservation.BookingEnd" required [min]="now"> <!--[pattern]="DateFormat"-->
           <mat-datepicker-toggle matSuffix [for]="date2"></mat-datepicker-toggle>
           <mat-datepicker #date2></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select #location="ngModel" name="location" placeholder="Location" [(ngModel)]="reservation.Location.ID" required>
-            <mat-option *ngFor="let location of locations" [value]="location.ID">{{location.Name}}</mat-option>
-          </mat-select>
         </mat-form-field>
         <br />
         <div>
