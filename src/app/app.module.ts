@@ -25,9 +25,9 @@ import { ReservationManagementComponent } from './components/reservation/managem
 import { ReservationAddEditDialogComponent } from './components/reservation/addeditdialog/addeditdialog.component';
 import { ReservationSearchDialogComponent } from './components/reservation/searchdialog/searchdialog.component';
 import { UserSearchDialogComponent } from './components/auth/usersearchdialog/usersearchdialog.component';
-import { ManagementComponent } from './components/reports/management/management.component';
+import { ReportManagementComponent } from './components/reports/management/management.component';
 import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
-import { SearchdialogComponent } from './components/reports/searchdialog/searchdialog.component';
+import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -57,7 +57,8 @@ import { AuthModule } from './directives/auth/auth.directive';
                 { path: 'inventory/management', component: InventoryManagementComponent },
                 { path: 'auth/login', component: LoginComponent },
                 { path: 'user/management', component: UserManagementComponent },
-                { path: 'reservation/management', component: ReservationManagementComponent }
+                { path: 'reservation/management', component: ReservationManagementComponent },
+                { path: 'reports/management', component: ReportManagementComponent }
                 //, { path: '**', component: PageNotFoundComponent }
             ]
             //, { enableTracing: true } // <-- debugging purposes only
@@ -78,9 +79,9 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReservationAddEditDialogComponent,
         ReservationSearchDialogComponent,
         UserSearchDialogComponent,
-        ManagementComponent,
+        ReportManagementComponent,
         AddEditReportComponent,
-        SearchdialogComponent
+        ReportSearchDialogComponent
     ],
     providers: [
         SharedService,

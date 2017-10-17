@@ -42,6 +42,12 @@ export class SharedService {
         },
         Util: {
             Locations: "api/util/locations"
+        },
+        Report: {
+            All: "api/report/all",
+            Search: "api/report/search",
+            Add: "api/report/add",
+            Remove: "api/report/remove/{id}",
         }
     }
 
