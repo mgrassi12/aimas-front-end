@@ -28,6 +28,7 @@ import { UserSearchDialogComponent } from './components/auth/usersearchdialog/us
 import { ReportManagementComponent } from './components/reports/management/management.component';
 import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
 import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
+import { DetailsDialogComponent } from './components/reservation/detailsdialog/detailsdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -37,6 +38,7 @@ import { ReservationAPIService } from './services/api/reservation/reservationapi
 import { UtilAPIService } from './services/api/util/utilapi.service';
 import { ReportAPIService } from "./services/api/report/reportapi.service";
 import { AuthModule } from './directives/auth/auth.directive';
+
 
 
 
@@ -81,7 +83,8 @@ import { AuthModule } from './directives/auth/auth.directive';
         UserSearchDialogComponent,
         ReportManagementComponent,
         AddEditReportComponent,
-        ReportSearchDialogComponent
+        ReportSearchDialogComponent,
+        DetailsDialogComponent
     ],
     providers: [
         SharedService,
@@ -100,7 +103,9 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReservationAddEditDialogComponent,
         ReservationSearchDialogComponent,
         UserSearchDialogComponent,
-        AddEditReportComponent
+        AddEditReportComponent,
+        ReportSearchDialogComponent,
+        DetailsDialogComponent
     ],
     bootstrap: [AppComponent]
 })

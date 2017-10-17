@@ -1,3 +1,18 @@
-<p>
-  searchdialog works!
-</p>
+<div class="mat-typography">
+  <h2 mat-dialog-title>Search Reports</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Creator" type="text" [(ngModel)]="search.Creator">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Executor" type="text" [(ngModel)]="search.Executor">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Notes" type="text" [(ngModel)]="search.Notes">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="true">Search</button>
+  </mat-dialog-actions>
+</div>

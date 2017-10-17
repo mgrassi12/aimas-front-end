@@ -79,6 +79,8 @@
     <Content Include="src\app\components\reports\searchdialog\searchdialog.component.html" />
     <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.css" />
     <Content Include="src\app\components\reservation\addeditdialog\addeditdialog.component.html" />
+    <Content Include="src\app\components\reservation\detailsdialog\detailsdialog.component.css" />
+    <Content Include="src\app\components\reservation\detailsdialog\detailsdialog.component.html" />
     <Content Include="src\app\components\reservation\management\management.component.css" />
     <Content Include="src\app\components\reservation\management\management.component.html" />
     <Content Include="src\app\components\reservation\searchdialog\searchdialog.component.css" />
@@ -145,6 +147,7 @@
     <Folder Include="src\app\components\reports\searchdialog\" />
     <Folder Include="src\app\components\reservation\" />
     <Folder Include="src\app\components\reservation\addeditdialog\" />
+    <Folder Include="src\app\components\reservation\detailsdialog\" />
     <Folder Include="src\app\components\reservation\management\" />
     <Folder Include="src\app\components\reservation\searchdialog\" />
     <Folder Include="src\app\directives\" />
@@ -185,6 +188,8 @@
     <TypeScriptCompile Include="src\app\components\reports\searchdialog\searchdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\addeditdialog\addeditdialog.component.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\detailsdialog\detailsdialog.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\components\reservation\detailsdialog\detailsdialog.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.spec.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\management\management.component.ts" />
     <TypeScriptCompile Include="src\app\components\reservation\searchdialog\searchdialog.component.spec.ts" />

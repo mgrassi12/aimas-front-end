@@ -3,7 +3,7 @@ import { MatDialog, PageEvent } from '@angular/material';
 
 import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryAPIService, Inventory, InventorySearch, PageResultObj } from '../../../services/api/inventory/inventoryapi.service';
-import { ReservationAPIService, Reservation, ReservationSearch,} from '../../../services/api/reservation/reservationapi.service';
+import { ReservationAPIService, Reservation, ReservationSearch, } from '../../../services/api/reservation/reservationapi.service';
 import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arraydatabase';
 
 @Component({
@@ -35,7 +35,7 @@ export class InventoryDashboardComponent implements OnInit {
     public displayedColumns = ['UserName', 'BookingPurpose', 'BookingStart', 'BookingEnd', 'Location'];
 
     public idisplayedColumns = ['Name', 'Description', 'Expiration', 'Maintenance', 'Location'];
-    
+
 
     constructor(private shared: SharedService, private inventoryAPI: InventoryAPIService, public reservationAPI: ReservationAPIService) {
         this.shared.setTitle("Inventory Dashboard");
@@ -85,6 +85,18 @@ export class InventoryDashboardComponent implements OnInit {
                 this.itemInProgress = false;
             });
         }
+
+        //if (!this.itemInProgress) {
+        //    this.itemInProgress = true;
+        //    this.inventoryAPI.getInventoryAttention().subscribe(result => {
+        //        if (result.Success) {
+        //            this.itemCurrentPage = result;
+        //            this.inventoryDatabase.setDB(result.ReturnObj);
+        //        }
+        //        this.itemInProgress = false;
+        //    });
+        //}
+
     }
 
 }

@@ -9,7 +9,8 @@ import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arra
 import { Result, ResultObj, PageResultObj } from '../../../models/result';
 import { Report, ReportSearch } from '../../../models/report';
 
-import { ReportSearchDialogComponent } from '../searchdialog/searchdialog.component'
+import { ReportSearchDialogComponent } from '../searchdialog/searchdialog.component';
+import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
 
 @Component({
     selector: 'app-management',
@@ -23,7 +24,7 @@ export class ReportManagementComponent implements OnInit {
     public quickSearchVal: string;
     public searchParams: ReportSearch;
 
-    public displayedColumns = ['ID', 'Type']
+    public displayedColumns = ['Type', 'Creator', 'Executor', 'ExecutionDate', 'Inventory', 'Notes', 'Actions']
 
     public reportDatabase: ArrayDatabase<Report>;
     public reportDataSource: ArrayDataSource<Report>;
@@ -61,7 +62,7 @@ export class ReportManagementComponent implements OnInit {
 
     public quickSearch() {
         this.searchParams.clear()
-        this.searchParams.Name = this.quickSearchVal;
+        this.searchParams.Notes = this.quickSearchVal;
         this.search()
     }
 
@@ -69,6 +70,40 @@ export class ReportManagementComponent implements OnInit {
         this.searchParams.clear();
         this.quickSearchVal = "";
         this.search();
+    }
+
+    public showSearchOptionsDialog() {
+        var ref = this.dialog.open(ReportSearchDialogComponent);
+        var instance = ref.componentInstance;
+
+        instance.search = this.searchParams;
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.search();
+            });
+    }
+
+    //Reports
+    public deleteReport(report: Report) {
+        var ref = this.dialog.open(ConfirmationDialogueComponent);
+        var instance = ref.componentInstance;
+
+        instance.setAllText("Remove", "Are you sure?", "Remove", "Cancel");
+
+        ref.afterClosed()
+            .map(res => JSON.parse(res || false) as boolean)
+            .subscribe(res => {
+                if (res)
+                    this.reportAPI.removeReport(report.ID).subscribe(res => {
+                        if (res.Success) {
+                            this.search();
+                            this.shared.notification("Removal was Successful");
+                        }
+                    });
+            });
     }
 
 }

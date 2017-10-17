@@ -47,6 +47,7 @@
           <mat-cell *cdkCellDef="let row" fxLayout="row" fxLayoutAlign="end start">
             <button mat-icon-button [matMenuTriggerFor]="moreMenu" *showAuth="'Admin'"><mat-icon>more_vert</mat-icon> </button>
             <mat-menu #moreMenu="matMenu">
+              <button mat-menu-item (click)="showReservationDetails(row)">View Details</button>
               <button mat-menu-item (click)="deleteReservation(row)">Remove</button>
             </mat-menu>
           </mat-cell>

@@ -21,7 +21,7 @@ export class ReportAPIService {
     }
 
     public searchReports(search: ReportSearch) {
-        return this.http.post(this.shared.API.Report.All, search)
+        return this.http.post(this.shared.API.Report.Search, search)
             .map(res => PageResultObj.PageResultObjFromJson<Array<Report>>(res, Report, true));
     }
 

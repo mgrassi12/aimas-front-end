@@ -226,14 +226,13 @@ export class InventoryManagementComponent implements OnInit {
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)
             .subscribe(res => {
-                //if (res)
-                //this.inventoryAPI.addInventory(instance.inventory)
-                //    .subscribe(res => {
-                //        if (res.Success) {
-                //            this.search();
-                //            this.shared.notification("Add was Successful");
-                //        }
-                //    });
+                if (res) {
+                    this.reportAPI.addReport(instance.report)
+                        .subscribe(res => {
+                            this.search();
+                            this.shared.notification("Report Successfully Sent");
+                        });
+                }
             });
     }
 

@@ -46,6 +46,12 @@ export class InventoryAPIService {
             .map(res => ResultObj.ResultObjFromJson<Array<InventoryAlertTimeModel>>(res, InventoryAlertTimeModel, true));
     }
 
+    public getInventoryAttention() {
+        return this.http.get(this.shared.API.Inventory.Attention)
+            .map(res => PageResultObj.PageResultObjFromJson<Array<Inventory>>(res, Inventory, true));
+    }
+
+
     private formatURL(url: string, item: string | number | boolean) {
         var reg = /{[A-Za-z1-9]*}/;
         return url.replace(reg, item.toString());
