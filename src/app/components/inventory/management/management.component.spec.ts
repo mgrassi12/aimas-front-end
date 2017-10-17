@@ -1,27 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { APIImports, MaterialModule, MomentModule } from '../../../../test.global';
+import { CommonImports, DialogProvider, APIImports, APIProviders, LoccalProvider, Inventory } from '../../../../test.global';
 
-import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
-import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryManagementComponent } from './management.component';
 
-describe('ManagementComponent', () => {
+describe('InventoryManagementComponent', () => {
     let component: InventoryManagementComponent;
     let fixture: ComponentFixture<InventoryManagementComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                APIImports,
-                MaterialModule,
-                MomentModule
-            ],
-            providers: [
-                SharedService,
-                InventoryAPIService
+                CommonImports,
+                APIImports
             ],
             declarations: [
                 InventoryManagementComponent
+            ],
+            providers: [
+                DialogProvider,
+                LoccalProvider,
+                APIProviders
             ]
         })
             .compileComponents();

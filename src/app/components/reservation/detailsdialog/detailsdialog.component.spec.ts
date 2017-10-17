@@ -1,25 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonImports, DialogProvider, LoccalProvider } from '../../../../test.global';
 
-import { DetailsDialogComponent } from './detailsdialog.component';
+import { ReservationDetailsDialogComponent } from './detailsdialog.component';
 
-describe('DetailsdialogComponent', () => {
-  let component: DetailsDialogComponent;
-  let fixture: ComponentFixture<DetailsDialogComponent>;
+describe('ReservationDetailsDialogComponent', () => {
+    let component: ReservationDetailsDialogComponent;
+    let fixture: ComponentFixture<ReservationDetailsDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DetailsDialogComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                CommonImports,
+            ],
+            declarations: [
+                ReservationDetailsDialogComponent
+            ],
+            providers: [
+                DialogProvider,
+                LoccalProvider,
+            ]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DetailsDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ReservationDetailsDialogComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

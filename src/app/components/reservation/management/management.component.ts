@@ -8,7 +8,7 @@ import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arra
 import { ReservationSearchDialogComponent } from '../searchdialog/searchdialog.component';
 import { ReservationAddEditDialogComponent } from '../addeditdialog/addeditdialog.component';
 import { ConfirmationDialogueComponent } from '../../../util/confirmationdialogue/confirmationdialogue.component';
-import { DetailsDialogComponent } from '../detailsdialog/detailsdialog.component'
+import { ReservationDetailsDialogComponent } from '../detailsdialog/detailsdialog.component'
 
 
 @Component({
@@ -169,7 +169,7 @@ export class ReservationManagementComponent implements OnInit {
     }
 
     public showReservationDetails(reserve: Reservation) {
-        var ref = this.dialog.open(DetailsDialogComponent);
+        var ref = this.dialog.open(ReservationDetailsDialogComponent);
         var instance = ref.componentInstance;
 
         this.bodyTxt = "";

@@ -1,25 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CommonImports, DialogProvider, RegisterModel } from '../../../../test.global';
+
 import { UserAddEditDialogComponent } from './addedituserdialog.component';
 
-describe('AddedituserdialogComponent', () => {
-  let component: UserAddEditDialogComponent;
-  let fixture: ComponentFixture<UserAddEditDialogComponent>;
+describe('UserAddEditDialogComponent', () => {
+    let component: UserAddEditDialogComponent;
+    let fixture: ComponentFixture<UserAddEditDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UserAddEditDialogComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [...CommonImports],
+            declarations: [UserAddEditDialogComponent],
+            providers: [DialogProvider]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserAddEditDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UserAddEditDialogComponent);
+        component = fixture.componentInstance;
+        component.user = new RegisterModel();
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

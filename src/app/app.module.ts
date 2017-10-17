@@ -28,7 +28,7 @@ import { UserSearchDialogComponent } from './components/auth/usersearchdialog/us
 import { ReportManagementComponent } from './components/reports/management/management.component';
 import { AddEditReportComponent } from './components/reports/addeditreport/addeditreport.component';
 import { ReportSearchDialogComponent } from './components/reports/searchdialog/searchdialog.component';
-import { DetailsDialogComponent } from './components/reservation/detailsdialog/detailsdialog.component';
+import { ReservationDetailsDialogComponent } from './components/reservation/detailsdialog/detailsdialog.component';
 
 // Services
 import { SharedService } from './services/shared/shared.service'
@@ -84,7 +84,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         ReportManagementComponent,
         AddEditReportComponent,
         ReportSearchDialogComponent,
-        DetailsDialogComponent
+        ReservationDetailsDialogComponent
     ],
     providers: [
         SharedService,
@@ -105,7 +105,7 @@ import { AuthModule } from './directives/auth/auth.directive';
         UserSearchDialogComponent,
         AddEditReportComponent,
         ReportSearchDialogComponent,
-        DetailsDialogComponent
+        ReservationDetailsDialogComponent
     ],
     bootstrap: [AppComponent]
 })

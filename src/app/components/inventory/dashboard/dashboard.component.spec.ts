@@ -1,26 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { APIImports, MaterialModule } from '../../../../test.global';
-
+import { CommonImports, DialogProvider, APIImports, APIProviders, LoccalProvider } from '../../../../test.global';
 import { InventoryAPIService } from '../../../services/api/inventory/inventoryapi.service';
 import { SharedService } from '../../../services/shared/shared.service';
 import { InventoryDashboardComponent } from './dashboard.component';
 
-describe('DashboardComponent', () => {
+describe('InventoryDashboardComponent', () => {
     let component: InventoryDashboardComponent;
     let fixture: ComponentFixture<InventoryDashboardComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                APIImports,
-                MaterialModule
-            ],
-            providers: [
-                InventoryAPIService,
-                SharedService
+                CommonImports,
+                APIImports
             ],
             declarations: [
                 InventoryDashboardComponent
+            ],
+            providers: [
+                DialogProvider,
+                LoccalProvider,
+                APIProviders
             ]
         })
             .compileComponents();

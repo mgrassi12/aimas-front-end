@@ -1,25 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonImports, DialogProvider, Report, LoccalProvider, APIImports, APIProviders } from '../../../../test.global';
+
 
 import { AddEditReportComponent } from './addeditreport.component';
 
-describe('AddeditreportComponent', () => {
-  let component: AddEditReportComponent;
-  let fixture: ComponentFixture<AddEditReportComponent>;
+describe('AddEditReportComponent', () => {
+    let component: AddEditReportComponent;
+    let fixture: ComponentFixture<AddEditReportComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AddEditReportComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                CommonImports,
+                APIImports
+            ],
+            declarations: [
+                AddEditReportComponent
+            ],
+            providers: [
+                DialogProvider,
+                LoccalProvider,
+                APIProviders
+            ]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditReportComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AddEditReportComponent);
+        component = fixture.componentInstance;
+        component.report = new Report();
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

@@ -9,7 +9,7 @@ import { ArrayDatabase, ArrayDataSource, PropertySort } from '../../../util/arra
     templateUrl: './detailsdialog.component.html',
     styleUrls: ['./detailsdialog.component.css']
 })
-export class DetailsDialogComponent implements OnInit {
+export class ReservationDetailsDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;

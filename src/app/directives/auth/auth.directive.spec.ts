@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { APIImports, AuthAPIService, SharedService } from '../../../test.global';
+import { APIImports, APIProviders } from '../../../test.global';
 
 import { AuthShowDirective, AuthReadyDirective } from './auth.directive';
 
@@ -21,8 +21,7 @@ describe('ShowAuthDirective', () => {
                 APIImports
             ],
             providers: [
-                AuthAPIService,
-                SharedService
+                APIProviders
             ],
             declarations: [
                 AuthShowDirective,
@@ -63,8 +62,7 @@ describe('ShowAuthDirective', () => {
                 APIImports
             ],
             providers: [
-                AuthAPIService,
-                SharedService
+                APIProviders
             ],
             declarations: [
                 AuthReadyDirective,

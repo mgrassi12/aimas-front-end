@@ -1,35 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule, MatDialogRef } from '@angular/material';
-import { MaterialModule, InventorySearch } from '../../../../test.global';
+import { CommonImports, DialogProvider, APIImports, APIProviders, LoccalProvider, ReservationSearch } from '../../../../test.global';
 
-import { InventorySearchDialogComponent } from './searchdialog.component';
+import { ReservationSearchDialogComponent } from './searchdialog.component';
 
 describe('SearchdialogComponent', () => {
-    let component: InventorySearchDialogComponent;
-    let fixture: ComponentFixture<InventorySearchDialogComponent>;
+    let component: ReservationSearchDialogComponent;
+    let fixture: ComponentFixture<ReservationSearchDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialModule,
-                MatNativeDateModule,
-                FormsModule
+                CommonImports,
+                APIImports
             ],
             declarations: [
-                InventorySearchDialogComponent
+                ReservationSearchDialogComponent
             ],
             providers: [
-                { provide: MatDialogRef, useClass: class { } }
+                DialogProvider,
+                LoccalProvider,
+                APIProviders
             ]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(InventorySearchDialogComponent);
+        fixture = TestBed.createComponent(ReservationSearchDialogComponent);
         component = fixture.componentInstance;
-        component.search = new InventorySearch();
+        component.search = new ReservationSearch();
         fixture.detectChanges();
     });
 

@@ -1,25 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { CommonImports, DialogProvider, UserSearch } from '../../../../test.global';
+
 import { UserSearchDialogComponent } from './usersearchdialog.component';
 
-describe('UsersearchdialogComponent', () => {
-  let component: UserSearchDialogComponent;
-  let fixture: ComponentFixture<UserSearchDialogComponent>;
+describe('UserSearchDialogComponent', () => {
+    let component: UserSearchDialogComponent;
+    let fixture: ComponentFixture<UserSearchDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UserSearchDialogComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [CommonImports],
+            declarations: [UserSearchDialogComponent],
+            providers: [DialogProvider]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(UserSearchDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(UserSearchDialogComponent);
+        component = fixture.componentInstance;
+        component.search = new UserSearch();
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

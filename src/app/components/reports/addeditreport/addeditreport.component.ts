@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 import { Report, ReportType } from "../../../models/report";
-import { AuthAPIService } from "../../../../test.global";
+import { AuthAPIService } from "../../../services/api/auth/authapi.service";
 import { User } from "../../../models/user";
 
 @Component({
