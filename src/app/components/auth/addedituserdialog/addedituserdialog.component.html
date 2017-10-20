@@ -29,28 +29,26 @@
             <input matInput #name="ngModel" name="email" placeholder="Email" type="text" [(ngModel)]="user.Email" required>
           </mat-form-field>
           <mat-form-field>
-            <input matInput #name="ngModel" name="password" placeholder="Password" type="text" [(ngModel)]="user.Password" required>
+            <input matInput #name="ngModel" name="position" placeholder="Position" type="text" [(ngModel)]="user.Position" required>
+          </mat-form-field>
+          <mat-form-field *ngIf="!isEdit">
+            <input matInput #name="ngModel" name="password" placeholder="Password" type="password" [(ngModel)]="user.Password" required>
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field>
-            <input matInput #name="ngModel" name="position" placeholder="Position" type="text" [(ngModel)]="user.Position" required>
+          <h1>Assign Role(s)</h1>
+          <mat-chip-list class="space top bottom">
+            <mat-chip *ngFor="let role of user.UserRoles" selectable="false" removable="true" (remove)="removeRole(role)">
+              <span>{{role.Name}}</span>
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          <mat-form-field class="space top">
+            <mat-select #role="ngModel" name="userRole" placeholder="Role" [(ngModel)]="roleStr">
+              <mat-option *ngFor="let role of roles" [value]="role.title">{{role.title}}</mat-option>
+            </mat-select>
           </mat-form-field>
-          <div>
-            <h1>Assign Role(s)</h1>
-            <mat-chip-list>
-              <mat-chip *ngFor="let role of user.UserRoles" selectable="false" removable="true" (remove)="removeRole(role)">
-                <span>{{role.Name}}</span>
-                <mat-icon matChipRemove>cancel</mat-icon>
-              </mat-chip>
-            </mat-chip-list>
-            <mat-form-field>
-              <mat-select #role="ngModel" name="userRole" placeholder="Role" [(ngModel)]="roleStr">
-                <mat-option *ngFor="let role of roles" [value]="role.title">{{role.title}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <button mat-raised-button color="primary" (click)="addRole()">Add</button>
-          </div>
+          <button mat-raised-button color="primary" (click)="addRole()">Add</button>
         </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>

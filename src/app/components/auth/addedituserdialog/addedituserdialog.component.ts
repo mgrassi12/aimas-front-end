@@ -11,6 +11,7 @@ export class UserAddEditDialogComponent implements OnInit {
 
     public title: string;
     public btnText: string;
+    public isEdit: boolean;
     public user: RegisterModel;
 
     public roleStr: string;
@@ -28,15 +29,16 @@ export class UserAddEditDialogComponent implements OnInit {
     ngOnInit() {
     }
 
-    public setText(title: string, btn: string) {
+    public setText(title: string, btn: string, edit: boolean = false) {
         this.title = title;
         this.btnText = btn;
+        this.isEdit = edit;
     }
 
     public addRole() {
         if (this.roleStr != null && this.user.UserRoles.find(x => x.Name == this.roleStr) == null) {
             let role = new Role();
-            role.Name == this.roleStr;
+            role.Name = this.roleStr;
             this.user.UserRoles.push(role);
         }
     }

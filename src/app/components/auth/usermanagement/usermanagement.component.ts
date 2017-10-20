@@ -122,7 +122,7 @@ export class UserManagementComponent implements OnInit {
         var instance = ref.componentInstance;
 
         instance.user = Object.assign(new RegisterModel(), user);
-        instance.setText("Edit User", "Edit");
+        instance.setText("Edit User", "Edit", true);
 
         ref.afterClosed()
             .map(res => JSON.parse(res || false) as boolean)
